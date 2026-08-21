@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Pravadh Labs  One control plane. Every product plugs in.">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B142A"/>
+      <stop offset="100%" stop-color="#141F3D"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="70%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#1E5CEE" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#1E5CEE" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="80" y="220" width="88" height="88" rx="22" fill="#1E5CEE"/>
+  <text x="124" y="282" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="700" fill="#FFFFFF">P</text>
+  <rect x="142" y="198" width="72" height="28" rx="14" fill="#FD9E01"/>
+  <text x="178" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1A1200">LABS</text>
+  <text x="240" y="255" font-family="Georgia, serif" font-size="64" fill="#FFFFFF">Pravadh Labs</text>
+  <text x="240" y="330" font-family="Arial, sans-serif" font-size="34" fill="#A9AFC0">One control plane. Every product plugs in.</text>
+  <text x="240" y="390" font-family="Arial, sans-serif" font-size="22" fill="#868A95">AI-first software for Salesforce deployment, migration, and governance</text>
+  <text x="80" y="560" font-family="Arial, sans-serif" font-size="20" fill="#FD9E01">pravadhlabs.com</text>
+</svg>

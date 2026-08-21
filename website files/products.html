@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function() {
+  try {
+    var saved = localStorage.getItem('pravadh-theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — Pravadh Labs</title>
+<meta name="description" content="PravadhIQ, Pravadh GovernX, and Pravadh PM — Salesforce control plane, data governance, and white-label project management on one rail.">
+<link rel="canonical" href="https://pravadhlabs.com/products.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Pravadh Labs">
+<meta property="og:site_name" content="Pravadh Labs">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:site" content="@pravadhlabs">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<meta name="theme-color" content="#14171F">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Products — Pravadh Labs">
+<meta property="og:description" content="PravadhIQ, GovernX, and Pravadh PM — three products on one control plane.">
+<meta property="og:url" content="https://pravadhlabs.com/products.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Products — Pravadh Labs">
+<meta name="twitter:description" content="PravadhIQ, GovernX, and Pravadh PM — three products on one control plane.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/effects.css">
+<style>
+/* ============================================
+   Pravadh Labs — Design Tokens
+   ============================================ */
+:root {
+  --ink: #0B142A;
+  --ink-soft: #141F3D;
+  --paper: #EDEEF0;
+  --paper-raised: #F7F7F8;
+  --line: #D4D4D0;
+  --line-dark: #232F52;
+  --muted: #868A95;
+  --muted-light: #A9AFC0;
+  --teal: #1E5CEE;
+  --teal-text: #1E5CEE;
+  --teal-soft: rgba(30, 92, 238, 0.14);
+  --amber: #FD9E01;
+  --amber-soft: rgba(253, 158, 1, 0.14);
+  --on-accent: #1A1200;
+  --header-bg: rgba(11, 20, 42, 0.88);
+
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --max-width: 1180px;
+  --edge: clamp(24px, 5vw, 72px);
+
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --ink: #FEFEFE;
+  --ink-soft: #F0F1F5;
+  --paper: #0E162C;
+  --line-dark: #E4E6ED;
+  --muted: #6E7178;
+  --muted-light: #4A4E56;
+  --teal-text: #1544B8;
+  --header-bg: rgba(254, 254, 254, 0.88);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0; }
+
+img, svg { display: block; max-width: 100%; }
+
+::selection { background: var(--teal); color: var(--paper); }
+
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 16px;
+  background: var(--amber);
+  color: var(--on-accent);
+  padding: 12px 18px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 1000;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--edge);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--teal);
+  display: inline-block;
+}
+
+/* ============================================
+   Header / Nav
+   ============================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--header-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo .header-logo {
+  display: block;
+}
+
+.logo .header-logo-dark { display: none; }
+.logo .header-logo-light { display: none; }
+html[data-theme="dark"] .logo .header-logo-dark { display: block; }
+html[data-theme="light"] .logo .header-logo-light { display: block; }
+
+nav.primary {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+nav.primary a {
+  font-size: 14.5px;
+  color: var(--muted-light);
+  transition: color 0.15s ease;
+  position: relative;
+}
+
+nav.primary a:hover { color: var(--paper); }
+
+nav.primary a.active { color: var(--paper); }
+
+nav.primary a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--teal);
+}
+
+.nav-cta {
+  border: 1px solid var(--line-dark);
+  padding: 9px 16px;
+  border-radius: 3px;
+  font-size: 13.5px !important;
+  color: var(--paper) !important;
+}
+
+.nav-cta:hover {
+  border-color: var(--teal);
+  background: var(--teal-soft);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--paper);
+  cursor: pointer;
+  padding: 8px;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--line-dark);
+  color: var(--paper);
+  cursor: pointer;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.theme-toggle:hover {
+  border-color: var(--teal);
+  background: var(--teal-soft);
+}
+
+.theme-toggle svg { width: 17px; height: 17px; display: none; }
+
+html[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 500;
+  padding: 13px 22px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--amber);
+  color: var(--on-accent);
+}
+
+.btn-primary:hover {
+  background: #DDA05A;
+}
+
+.btn-secondary {
+  border-color: var(--line-dark);
+  color: var(--paper);
+}
+
+.btn-secondary:hover {
+  border-color: var(--teal);
+  background: var(--teal-soft);
+}
+
+.btn svg { width: 15px; height: 15px; }
+
+/* ============================================
+   Hero
+   ============================================ */
+.hero {
+  padding: 108px 0 88px;
+  border-bottom: 1px solid var(--line-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--line-dark) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -14px -14px;
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 85%);
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+  pointer-events: none;
+}
+
+.hero .wrap {
+  position: relative;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 5.4vw, 64px);
+  line-height: 1.06;
+  margin: 22px 0 26px;
+  max-width: 15ch;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--teal-text);
+}
+
+.hero .sub {
+  font-size: 18px;
+  color: var(--muted-light);
+  max-width: 52ch;
+  margin-bottom: 40px;
+}
+
+.hero .actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   Trust strip
+   ============================================ */
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted-light);
+}
+
+.trust-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* ============================================
+   Persona strip
+   ============================================ */
+.persona-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.persona {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--paper);
+  border: 1px solid var(--line-dark);
+  border-radius: 20px;
+  padding: 9px 18px;
+}
+
+/* ============================================
+   Rail diagram (signature element)
+   ============================================ */
+.rail-section {
+  padding: 88px 0;
+  border-bottom: 1px solid var(--line-dark);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#railSvg {
+  min-width: 720px;
+}
+
+.rail-caption {
+  text-align: center;
+  color: var(--muted-light);
+  font-size: 14.5px;
+  margin-top: 28px;
+}
+
+.rail-caption strong { color: var(--paper); font-weight: 500; }
+
+/* ============================================
+   Sections
+   ============================================ */
+section { padding: 88px 0; }
+.section-border { border-bottom: 1px solid var(--line-dark); }
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: 56px;
+}
+
+.section-head h2 {
+  font-size: clamp(28px, 3.4vw, 38px);
+  margin-top: 18px;
+  line-height: 1.15;
+}
+
+/* Principles grid */
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line-dark);
+  border: 1px solid var(--line-dark);
+}
+
+.principle {
+  background: var(--ink);
+  padding: 36px 32px;
+  transition: background 0.2s ease;
+}
+
+.principle:hover {
+  background: var(--ink-soft);
+}
+
+.principle .num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.principle h3 {
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+
+.principle p {
+  color: var(--muted-light);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* Module cards */
+.modules {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.modules-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Comparison table */
+.compare-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.compare-table th, .compare-table td {
+  padding: 16px 22px;
+  text-align: left;
+  border-bottom: 1px solid var(--line-dark);
+  font-size: 15px;
+}
+
+.compare-table th {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted-light);
+  background: var(--ink-soft);
+  font-weight: 500;
+}
+
+.compare-table td:first-child {
+  color: var(--muted-light);
+}
+
+.compare-table td:last-child {
+  color: var(--paper);
+  font-weight: 500;
+}
+
+.compare-table tr:last-child td {
+  border-bottom: none;
+}
+
+.compare-table tbody tr:hover {
+  background: var(--ink-soft);
+}
+
+@media (max-width: 640px) {
+  .compare-table { font-size: 13px; }
+  .compare-table th, .compare-table td { padding: 12px 14px; }
+}
+
+/* GovernX module tag colors */
+.module-card.govx-extract .tag { background: var(--teal); color: #FFFFFF; }
+.module-card.govx-govern .tag { background: #1E5CEE; color: #FFFFFF; }
+.module-card.govx-notify .tag { background: var(--amber); color: #1A1200; }
+.module-card.govx-copilot .tag { background: var(--muted-light); color: #1A1200; }
+
+/* Product overview cards (Products page top-level listing) */
+.product-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.product-overview-card {
+  display: block;
+  border: 1px solid var(--line-dark);
+  border-radius: 6px;
+  padding: 36px;
+  background: var(--ink-soft);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.product-overview-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-3px);
+}
+
+.product-overview-icon {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.product-overview-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.product-overview-card p {
+  color: var(--muted-light);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.product-overview-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--paper);
+}
+
+.product-overview-card:hover .product-overview-link {
+  color: var(--teal-text);
+}
+
+.module-card {
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+  padding: 32px;
+  background: var(--ink-soft);
+  position: relative;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.module-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-3px);
+}
+
+.module-card .tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--on-accent);
+  background: var(--teal);
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 2px;
+  margin-bottom: 22px;
+}
+
+.module-card.ship .tag { background: var(--teal); color: #FFFFFF; }
+.module-card.move .tag { background: var(--amber); color: #1A1200; }
+.module-card.govern .tag { background: var(--muted-light); color: #1A1200; }
+
+.module-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.module-card p {
+  color: var(--muted-light);
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+.module-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: var(--muted-light);
+}
+
+.module-card li {
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 9px;
+}
+
+.module-card li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--muted);
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--line-dark);
+  padding: 48px 0;
+}
+
+footer .wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+footer .footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+footer .foot-links {
+  display: flex;
+  gap: 28px;
+}
+
+footer a {
+  color: var(--muted-light);
+  font-size: 14px;
+}
+
+footer a:hover { color: var(--paper); }
+
+footer .copyright {
+  color: var(--muted);
+  font-size: 13px;
+  font-family: var(--font-mono);
+}
+
+/* ============================================
+   About page specifics
+   ============================================ */
+.about-block {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-block .label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  padding-top: 8px;
+}
+
+.about-copy p {
+  font-size: 17px;
+  color: var(--muted-light);
+  margin-bottom: 20px;
+  max-width: 62ch;
+  line-height: 1.7;
+}
+
+.about-copy p strong {
+  color: var(--paper);
+  font-weight: 500;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.stat {
+  padding: 32px 0;
+  text-align: center;
+  border-left: 1px solid var(--line-dark);
+}
+
+.stat:first-child { border-left: none; }
+
+.stat .num {
+  font-family: var(--font-display);
+  font-size: 34px;
+  color: var(--teal-text);
+}
+
+.stat .label {
+  font-size: 13.5px;
+  color: var(--muted-light);
+  margin-top: 6px;
+}
+
+/* ============================================
+   Contact page
+   ============================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.contact-info h3 {
+  font-size: 15px;
+  color: var(--muted-light);
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+}
+
+.contact-info .item {
+  margin-bottom: 32px;
+}
+
+.contact-info a.big-link {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--paper);
+  border-bottom: 1px solid var(--line-dark);
+  padding-bottom: 2px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.contact-info a.big-link:hover { border-color: var(--teal); color: var(--teal-text); }
+
+form.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field { display: flex; flex-direction: column; gap: 8px; }
+
+.field label {
+  font-size: 13px;
+  font-family: var(--font-mono);
+  color: var(--muted-light);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.field input, .field textarea, .field select {
+  background: var(--ink-soft);
+  border: 1px solid var(--line-dark);
+  border-radius: 3px;
+  padding: 12px 14px;
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 15px;
+  resize: vertical;
+}
+
+.field input:focus, .field textarea:focus, .field select:focus {
+  border-color: var(--teal);
+  outline: none;
+}
+
+.field textarea { min-height: 120px; }
+
+.form-note {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.form-status {
+  font-size: 14px;
+  color: var(--teal-text);
+  min-height: 18px;
+}
+
+.office-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.office-card {
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+  padding: 28px;
+  background: var(--ink-soft);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.sponsor-banner-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 640px;
+}
+
+.sponsor-banner {
+  width: 100%;
+  min-width: 560px;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+
+.office-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-3px);
+}
+
+.office-card .tag-city {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal-text);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.office-card p {
+  color: var(--muted-light);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+/* Tablet: ease 3-column grids down to 2 before the full mobile stack */
+@media (max-width: 1024px) {
+  .principles { grid-template-columns: repeat(2, 1fr); }
+  .modules { grid-template-columns: repeat(2, 1fr); }
+  .office-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Mobile: nav collapses, all grids go to a single column */
+@media (max-width: 860px) {
+  nav.primary { position: fixed; inset: 76px 0 0 0; background: var(--ink); flex-direction: column; padding: 32px var(--edge); gap: 26px; align-items: flex-start; border-top: 1px solid var(--line-dark); transform: translateX(100%); transition: transform 0.25s ease; overflow-y: auto; }
+  nav.primary.open { transform: translateX(0); }
+  nav.primary a.active::after { display: none; }
+  .menu-toggle { display: block; }
+  .principles { grid-template-columns: 1fr; }
+  .modules { grid-template-columns: 1fr; }
+  .about-block { grid-template-columns: 1fr; gap: 24px; }
+  .stat-row { grid-template-columns: 1fr; }
+  .stat { border-left: none; border-top: 1px solid var(--line-dark); }
+  .stat:first-child { border-top: none; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .office-grid { grid-template-columns: 1fr; }
+  .product-overview-grid { grid-template-columns: 1fr; }
+  .persona-strip { gap: 10px; }
+  .hero { padding: 64px 0 56px; }
+  section { padding: 56px 0; }
+  .rail-section { padding: 64px 0; }
+}
+
+/* Small phones: tighten spacing further, keep touch targets comfortable */
+@media (max-width: 480px) {
+  .site-header .wrap { height: 68px; }
+  .logo { font-size: 15.5px; gap: 8px; }
+  .theme-toggle { width: 34px; height: 34px; margin-left: 6px; }
+  .menu-toggle { padding: 6px; }
+  .hero { padding: 48px 0 40px; }
+  .hero .sub { font-size: 16px; }
+  .hero .actions { flex-direction: column; align-items: stretch; }
+  .hero .actions .btn { justify-content: center; width: 100%; }
+  section { padding: 48px 0; }
+  .rail-section { padding: 48px 0; }
+  .section-head { margin-bottom: 36px; }
+  .principle { padding: 28px 24px; }
+  .module-card { padding: 24px; }
+  .office-card { padding: 22px; }
+  .stat { padding: 24px 0; }
+  .trust-strip { gap: 20px 24px; justify-content: flex-start; text-align: left; }
+  .persona { font-size: 12.5px; padding: 8px 14px; }
+  .contact-info a.big-link { font-size: 19px; }
+  footer .wrap { flex-direction: column; align-items: flex-start; }
+}
+
+/* Very small phones (older/smaller devices) */
+@media (max-width: 360px) {
+  .hero h1 { font-size: 32px; }
+  .btn { padding: 12px 18px; font-size: 14px; }
+  .module-card, .office-card { padding: 20px; }
+}
+
+
+/* ============================================
+   Scroll animations
+   ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal-stagger.in-view > * { opacity: 1; transform: translateY(0); }
+  .reveal-stagger.in-view > *:nth-child(1) { transition-delay: 0.04s; }
+  .reveal-stagger.in-view > *:nth-child(2) { transition-delay: 0.11s; }
+  .reveal-stagger.in-view > *:nth-child(3) { transition-delay: 0.18s; }
+  .reveal-stagger.in-view > *:nth-child(4) { transition-delay: 0.25s; }
+  .reveal-stagger.in-view > *:nth-child(5) { transition-delay: 0.32s; }
+  .reveal-stagger.in-view > *:nth-child(6) { transition-delay: 0.39s; }
+}
+
+.hero h1, .hero .eyebrow, .hero .sub, .hero .actions {
+  animation: heroRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero .eyebrow { animation-delay: 0s; }
+.hero h1 { animation-delay: 0.08s; }
+.hero .sub { animation-delay: 0.18s; }
+.hero .actions { animation-delay: 0.28s; }
+
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1, .hero .eyebrow, .hero .sub, .hero .actions { animation: none; }
+}
+
+</style>
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "PravadhIQ",
+      "url": "https://pravadhiq.pravadhlabs.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Deployment, migration, and governance for Salesforce, unified into a single control plane.",
+      "brand": { "@type": "Organization", "name": "Pravadh Labs" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Pravadh GovernX",
+      "url": "https://pravadhgx.pravadhlabs.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "A data governance platform connecting CRM, ERP, and finance platforms, with real-time alerts and AES-256 security.",
+      "brand": { "@type": "Organization", "name": "Pravadh Labs" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Pravadh PM",
+      "url": "https://pravadhpm.pravadhlabs.com",
+      "applicationCategory": "ProjectManagementApplication",
+      "operatingSystem": "Web",
+      "description": "White-label project management: Jira-grade issues, ClickUp-grade views, your brand or your servers — without handing over source.",
+      "brand": { "@type": "Organization", "name": "Pravadh Labs" }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 210 52" width="132" height="33" class="header-logo header-logo-dark" aria-label="Pravadh Labs">
+        <rect x="2" y="6" width="42" height="42" rx="11" fill="#1E5CEE"/>
+        <text x="23" y="37" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="27" fill="#FFFFFF">P</text>
+        <rect x="30" y="0" width="34" height="15" rx="7.5" fill="#FD9E01"/>
+        <text x="47" y="10.5" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="7.5" letter-spacing="0.5" fill="#1A1200">LABS</text>
+        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#FFFFFF">Pravadh</text>
+      </svg>
+      <svg viewBox="0 0 210 52" width="132" height="33" class="header-logo header-logo-light" aria-label="Pravadh Labs">
+        <rect x="2" y="6" width="42" height="42" rx="11" fill="#1E5CEE"/>
+        <text x="23" y="37" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="27" fill="#FFFFFF">P</text>
+        <rect x="30" y="0" width="34" height="15" rx="7.5" fill="#FD9E01"/>
+        <text x="47" y="10.5" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="7.5" letter-spacing="0.5" fill="#1A1200">LABS</text>
+        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#0E162C">Pravadh</text>
+      </svg>
+    </a>
+    <nav class="primary" id="primaryNav">
+      <a href="index.html">Home</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="compare.html">Compare</a>
+      <a href="security.html">Security</a>
+      <a href="about.html">About</a>
+      <a href="blogs_page.html">Insights</a>
+      <a href="contact.html" class="nav-contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" role="switch" aria-checked="false" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 20 20" width="17" height="17" fill="none"><circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M10 2v2.2M10 15.8V18M2 10h2.2M15.8 10H18M4.5 4.5l1.6 1.6M13.9 13.9l1.6 1.6M4.5 15.5l1.6-1.6M13.9 6.1l1.6-1.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <svg class="icon-moon" viewBox="0 0 20 20" width="17" height="17" fill="none"><path d="M16 12.4A6.8 6.8 0 017.6 4a6.8 6.8 0 108.4 8.4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main-content">
+  <section class="hero" style="padding-bottom: 48px;">
+    <div class="wrap">
+      <span class="eyebrow">Products</span>
+      <h1>Three products. One rail.</h1>
+      <p class="sub">Every product we build plugs into the same control plane. Here's what's live today.</p>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="product-overview-grid reveal-stagger">
+        <a href="#pravadhiq" class="product-overview-card">
+          <svg class="product-overview-icon" viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
+            <rect x="4" y="4" width="56" height="56" rx="15" fill="#1E5CEE"/>
+            <text x="26" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" fill="#FFFFFF">P</text>
+            <rect x="40" y="0" width="24" height="20" rx="8" fill="#FD9E01"/>
+            <text x="52" y="14" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="10" fill="#1A1200">IQ</text>
+          </svg>
+          <h3>PravadhIQ</h3>
+          <p>Deployment, migration, and governance for Salesforce — unified into a single control plane.</p>
+          <span class="product-overview-link">Explore PravadhIQ
+            <svg viewBox="0 0 15 15" width="13" height="13" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a href="#governx" class="product-overview-card">
+          <svg class="product-overview-icon" viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
+            <rect x="4" y="4" width="56" height="56" rx="15" fill="#1E5CEE"/>
+            <text x="26" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" fill="#FFFFFF">P</text>
+            <rect x="40" y="0" width="24" height="20" rx="8" fill="#FD9E01"/>
+            <text x="52" y="14" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="10" fill="#1A1200">GX</text>
+          </svg>
+          <h3>Pravadh GovernX</h3>
+          <p>Extract, clean, and govern data across your CRM, ERP, and finance platforms.</p>
+          <span class="product-overview-link">Explore GovernX
+            <svg viewBox="0 0 15 15" width="13" height="13" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a href="#pravadhpm" class="product-overview-card">
+          <svg class="product-overview-icon" viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
+            <rect x="4" y="4" width="56" height="56" rx="15" fill="#1E5CEE"/>
+            <text x="26" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" fill="#FFFFFF">P</text>
+            <rect x="40" y="0" width="24" height="20" rx="8" fill="#FD9E01"/>
+            <text x="52" y="14" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="9" fill="#1A1200">PM</text>
+          </svg>
+          <h3>Pravadh PM</h3>
+          <p>White-label project management — Jira-grade issues, ClickUp-grade views, your brand or your servers.</p>
+          <span class="product-overview-link">Explore Pravadh PM
+            <svg viewBox="0 0 15 15" width="13" height="13" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border" id="pravadhiq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Product 001</span>
+        <h2>PravadhIQ</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px; margin-bottom: 32px;">
+        <p>Deployment, migration, and governance for Salesforce — unified into a single control plane, so nothing gets released, moved, or changed without a record of it.</p>
+        <p class="who-replaces">Who this replaces: stitching <strong>Copado / Gearset / AutoRABIT</strong> for deploy with <strong>Data Loader / dataloader.io / Informatica</strong> for data — see the <a href="compare.html#pravadhiq">full comparison</a>.</p>
+      </div>
+      <a href="https://pravadhiq.pravadhlabs.com" class="btn btn-primary">
+        Visit pravadhiq.pravadhlabs.com
+        <svg viewBox="0 0 15 15" width="15" height="15" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The problem</span>
+        <h2>Deployment success and release success aren't the same thing.</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px;">
+        <p>A deployment can complete cleanly and still break something downstream. Most Salesforce teams run deployment, data migration, and governance as three separate disciplines — three tools, three owners, three places where something can fall through.</p>
+        <p><strong>PravadhIQ treats them as one problem.</strong> One platform, one audit trail, one place to see what changed, what moved, and who approved it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Modules</span>
+        <h2>Three modules. One control plane.</h2>
+      </div>
+      <div class="modules reveal-stagger">
+        <div class="module-card ship">
+          <span class="tag">SHIP</span>
+          <h3>Code deployment</h3>
+          <p>Move metadata and code between Salesforce environments with a clear, repeatable pipeline instead of a manual checklist.</p>
+          <ul>
+            <li>Environment-to-environment promotion</li>
+            <li>Pre-deployment validation</li>
+            <li>Dependency-aware package selection</li>
+            <li>Rollback on failure</li>
+          </ul>
+        </div>
+        <div class="module-card move">
+          <span class="tag">MOVE</span>
+          <h3>Data migration</h3>
+          <p>Bring data into Salesforce from the systems it actually lives in today. Salesforce is the destination — every source connects to it.</p>
+          <ul>
+            <li>Zoho, HubSpot, Snowflake, Unleashed</li>
+            <li>Excel, CSV, JSON, XML</li>
+            <li>Field mapping and transform before load</li>
+            <li>15+ source integrations and growing</li>
+          </ul>
+        </div>
+        <div class="module-card govern">
+          <span class="tag">GOVERN</span>
+          <h3>Governance</h3>
+          <p>Every deployment and every migration leaves a record — who did it, when, and what it touched.</p>
+          <ul>
+            <li>Full audit trail</li>
+            <li>Approval workflows</li>
+            <li>Change accountability, by default</li>
+            <li>Release + migration in one timeline</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Who it's for</span>
+        <h2>Built for the Salesforce ecosystem.</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px; margin-bottom: 40px;">
+        <p>PravadhIQ is built for Salesforce consultancies, in-house architects, and RevOps teams who are done stitching together separate DevOps and ETL tools to do work that should live in one system.</p>
+      </div>
+      <a href="https://pravadhiq.pravadhlabs.com" class="btn btn-primary">
+        Explore PravadhIQ
+        <svg viewBox="0 0 15 15" width="15" height="15" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="persona-strip">
+        <a href="compare.html#pravadhiq" class="persona" style="text-decoration:none;">See how PravadhIQ compares →</a>
+        <a href="security.html#pravadhiq" class="persona" style="text-decoration:none;">PravadhIQ security &amp; compliance →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border" id="governx" style="padding-top:96px;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Product 002</span>
+        <h2>Pravadh GovernX</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px; margin-bottom: 32px;">
+        <p>A data governance platform. Pravadh GovernX connects your CRM, ERP, and finance platforms, cleans the data, and enforces governance across every product — with real-time alerts, a visual pipeline canvas, and AES-256 security.</p>
+        <p class="who-replaces">Who this replaces: manual spreadsheet audits, custom policy scripts, and digging through logs — with <strong>EMIE Co-pilot</strong> on the canvas. See the <a href="compare.html#governx">full comparison</a>.</p>
+      </div>
+      <a href="https://pravadhgx.pravadhlabs.com" class="btn btn-primary">
+        Visit pravadhgx.pravadhlabs.com
+        <svg viewBox="0 0 15 15" width="15" height="15" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The platform</span>
+        <h2>Four modules. One governed system.</h2>
+      </div>
+      <div class="modules modules-4 reveal-stagger">
+        <div class="module-card govx-extract">
+          <span class="tag">EXTRACT</span>
+          <h3>Extract</h3>
+          <p>Pull data from every connected platform into one governed pipeline on the canvas — on schedule or on demand.</p>
+          <ul>
+            <li>Salesforce, Zoho, Oracle Fusion, NetSuite, EBS</li>
+            <li>Scheduled or on-demand extraction</li>
+            <li>Change-only sync to avoid re-pulling unchanged records</li>
+            <li>Visual pipeline nodes you can inspect and replay</li>
+          </ul>
+        </div>
+        <div class="module-card govx-govern">
+          <span class="tag">GOVERN</span>
+          <h3>Govern</h3>
+          <p>Enforce policies, limits, and access rules across all your products from a single control plane.</p>
+          <ul>
+            <li>Field- and record-level access rules</li>
+            <li>Cross-platform policy enforcement</li>
+            <li>Configurable approval thresholds</li>
+            <li>Policy explainability for every trigger</li>
+          </ul>
+        </div>
+        <div class="module-card govx-notify">
+          <span class="tag">NOTIFY</span>
+          <h3>Notify</h3>
+          <p>Real-time alerts the moment a limit is breached, a record drifts, or a policy is violated.</p>
+          <ul>
+            <li>Real-time breach and drift alerts</li>
+            <li>Configurable thresholds per policy</li>
+            <li>Email and webhook delivery</li>
+            <li>Linked back to the exact pipeline step</li>
+          </ul>
+        </div>
+        <div class="module-card govx-copilot">
+          <span class="tag">EMIE</span>
+          <h3>EMIE Co-pilot</h3>
+          <p>Your governance assistant on the pipeline canvas — query, explain, and act on your data ecosystem in plain language.</p>
+          <ul>
+            <li>Plain-language queries across connected data</li>
+            <li>Explains why a policy triggered</li>
+            <li>Suggests corrective action, you approve it</li>
+            <li>Works against live canvas nodes, not a separate chat silo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Connections</span>
+        <h2>One governance layer across your ecosystem.</h2>
+      </div>
+      <div class="persona-strip">
+        <div class="persona">Salesforce</div>
+        <div class="persona">Zoho CRM</div>
+        <div class="persona">Zoho Books</div>
+        <div class="persona">Oracle Fusion</div>
+        <div class="persona">Oracle NetSuite</div>
+        <div class="persona">Oracle EBS</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Who it's for</span>
+        <h2>Built for teams running data across more than one system.</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px; margin-bottom: 40px;">
+        <p>Pravadh GovernX is built for teams whose CRM, ERP, and finance platforms don't agree with each other — and who need one governance layer that enforces policy across all of them, with a 7-day free trial and no card required to start.</p>
+      </div>
+      <a href="https://pravadhgx.pravadhlabs.com" class="btn btn-primary">
+        Explore GovernX
+        <svg viewBox="0 0 15 15" width="15" height="15" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="persona-strip">
+        <a href="compare.html#governx" class="persona" style="text-decoration:none;">See how GovernX compares →</a>
+        <a href="security.html#governx" class="persona" style="text-decoration:none;">GovernX security &amp; compliance →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border" id="pravadhpm" style="padding-top:96px;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Product 003</span>
+        <h2>Pravadh PM</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px; margin-bottom: 32px;">
+        <p>White-label project management from Pravadh Labs. Jira-grade issue keys and workflow. ClickUp-grade views. Your brand, your domain, or your servers — without handing over source.</p>
+        <p class="who-replaces">Who this replaces: stitching <strong>Jira</strong> you cannot white-label with <strong>ClickUp / Asana</strong> that will not run on your metal — see the <a href="compare.html#pravadhpm">full comparison</a>.</p>
+      </div>
+      <a href="https://pravadhpm.pravadhlabs.com" class="btn btn-primary">
+        Visit pravadhpm.pravadhlabs.com
+        <svg viewBox="0 0 15 15" width="15" height="15" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The problem</span>
+        <h2>Delivery tools are either someone else's brand, or someone else's cloud.</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px;">
+        <p>You should not have to choose between a serious issue tracker and a product that can wear your name — or live on your servers. Classic trackers still look like the vendor. All-in-one views work until security asks for on-prem, and you are back to a spreadsheet.</p>
+        <p><strong>Pravadh PM is the operating system for delivery.</strong> Issue keys and workflow teams already speak. Board, list, and timeline on the same issues. Logo, colors, custom domain, branded email. Cloud on our domain, yours, white-label, or a private package — source stays with Pravadh Labs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Modules</span>
+        <h2>Four choices. One full product.</h2>
+      </div>
+      <div class="modules modules-4 reveal-stagger">
+        <div class="module-card pm-issues">
+          <span class="tag">ISSUES</span>
+          <h3>Issue keys &amp; workflow</h3>
+          <p>The grammar Jira teams already speak — without Atlassian chrome you cannot rebrand.</p>
+          <ul>
+            <li>WEB-4 style keys, types, priority, due date</li>
+            <li>Epic, story, task, bug</li>
+            <li>Comments, activity, and inbox</li>
+            <li>Command palette to jump by key</li>
+          </ul>
+        </div>
+        <div class="module-card pm-views">
+          <span class="tag">VIEWS</span>
+          <h3>Board, list, timeline</h3>
+          <p>Same issues, three ways to look — ClickUp-grade views without a feature-gated board.</p>
+          <ul>
+            <li>Kanban, list, and timeline</li>
+            <li>Reports across every space</li>
+            <li>Git and test-tool connections</li>
+            <li>Full product on every plan</li>
+          </ul>
+        </div>
+        <div class="module-card pm-brand">
+          <span class="tag">BRAND</span>
+          <h3>White-label</h3>
+          <p>Put it in front of clients as yours. Guests stay free.</p>
+          <ul>
+            <li>Logo, colors, custom domain</li>
+            <li>Branded email</li>
+            <li>Hide Pravadh marks</li>
+            <li>Stay on our domain, or move to yours</li>
+          </ul>
+        </div>
+        <div class="module-card pm-runtime">
+          <span class="tag">PRIVATE</span>
+          <h3>Your servers, no source</h3>
+          <p>We host it, you point a domain, or you run the package in your network.</p>
+          <ul>
+            <li>Cloud, domain, white-label, or private</li>
+            <li>Runnable package and named update channel</li>
+            <li>Source stays with Pravadh Labs</li>
+            <li>14-day trial, then view-only until paid</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Who it's for</span>
+        <h2>Built for delivery teams who cannot look like a vendor.</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px; margin-bottom: 40px;">
+        <p>Pravadh PM is built for consultancies and in-house teams who need Jira-grade tracking in a workspace that looks like theirs — including a 40-person delivery team or a private deploy inside a VPC. IQ is Salesforce change. PM is delivery. Same Labs brand, different job.</p>
+      </div>
+      <a href="https://pravadhpm.pravadhlabs.com" class="btn btn-primary">
+        Explore Pravadh PM
+        <svg viewBox="0 0 15 15" width="15" height="15" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="persona-strip">
+        <a href="compare.html#pravadhpm" class="persona" style="text-decoration:none;">See how Pravadh PM compares →</a>
+        <a href="security.html#pravadhpm" class="persona" style="text-decoration:none;">Pravadh PM security &amp; compliance →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="sponsor-banner-wrap">
+      <svg viewBox="0 0 1115 210" class="sponsor-banner" role="img" aria-label="Pravadh Labs, Proud Sponsor of West Africa Dreamin 2026">
+        <defs>
+          <linearGradient id="sponsorLineLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1E5CEE" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#1E5CEE" stop-opacity="1"/>
+          </linearGradient>
+          <linearGradient id="sponsorLineRight" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1E5CEE" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#1E5CEE" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect width="1115" height="210" rx="16" fill="#0B142A"/>
+        <rect x="45" y="55" width="100" height="100" rx="24" fill="#1E5CEE"/>
+        <text x="95" y="128" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="64" fill="#FFFFFF">P</text>
+        <rect x="108" y="35" width="72" height="28" rx="14" fill="#FD9E01"/>
+        <text x="144" y="54" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#1A1200">LABS</text>
+        <text x="170" y="108" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="52" fill="#FFFFFF">Pravadh</text>
+        <rect x="170" y="128" width="48" height="2.5" fill="url(#sponsorLineLeft)"/>
+        <text x="228" y="136" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="15" letter-spacing="3" fill="#FD9E01">LABS</text>
+        <rect x="305" y="128" width="48" height="2.5" fill="url(#sponsorLineRight)"/>
+        <text x="170" y="162" font-family="'Segoe UI', sans-serif" font-weight="500" font-size="11" letter-spacing="2" fill="#868A95">POWERING ENTERPRISE INNOVATION</text>
+        <line x1="620" y1="40" x2="620" y2="170" stroke="#2A3550" stroke-width="1.5"/>
+        <text x="655" y="65" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="14" letter-spacing="2" fill="#4C8DFF">PROUD SPONSOR</text>
+        <text x="655" y="100" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="30" fill="#FFFFFF">West Africa</text>
+        <text x="655" y="136" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="30" fill="#FFFFFF">Dreamin 2026</text>
+        <text x="655" y="166" font-family="'Segoe UI', sans-serif" font-weight="400" font-size="16" fill="#868A95">pravadhlabs.com</text>
+      </svg>
+    </div>
+    <div class="footer-bottom">
+      <div class="copyright">© 2026 Pravadh Labs Private Limited</div>
+      <div class="foot-links">
+        <a href="products.html">Products</a>
+        <a href="compare.html">Compare</a>
+        <a href="security.html">Security</a>
+        <a href="about.html">About</a>
+        <a href="blogs_page.html">Insights</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Theme toggle
+const themeToggle = document.getElementById('themeToggle');
+
+if (themeToggle) {
+  const setToggleState = (theme) => {
+    const isDark = theme === 'dark';
+    themeToggle.setAttribute('aria-checked', String(isDark));
+    themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+  };
+
+  // Sync initial state (head script sets data-theme before this runs)
+  setToggleState(document.documentElement.getAttribute('data-theme') || 'dark');
+
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('pravadh-theme', next); } catch (e) { /* storage unavailable */ }
+    setToggleState(next);
+  });
+}
+
+// Rail draw-in animation, respecting reduced motion
+const railDraw = document.getElementById('railDraw');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (railDraw && !prefersReducedMotion) {
+  railDraw.style.transition = 'stroke-dashoffset 1.1s ease';
+  requestAnimationFrame(() => {
+    setTimeout(() => { railDraw.style.strokeDashoffset = '0'; }, 200);
+  });
+} else if (railDraw) {
+  railDraw.style.strokeDashoffset = '0';
+}
+
+
+// Scroll-reveal animations
+(function() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  if (!revealEls.length) return;
+
+  if (prefersReducedMotion) {
+    revealEls.forEach(el => el.classList.add('in-view'));
+    return;
+  }
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+})();
+
+// Animated stat counters
+(function() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const counters = document.querySelectorAll('[data-count-to]');
+  if (!counters.length) return;
+
+  function animateCount(el) {
+    const target = parseFloat(el.getAttribute('data-count-to'));
+    const suffix = el.getAttribute('data-count-suffix') || '';
+    const pad = parseInt(el.getAttribute('data-count-pad') || '0', 10);
+    if (prefersReducedMotion) { el.textContent = String(target).padStart(pad, '0') + suffix; return; }
+    const duration = 1100;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(target * eased);
+      el.textContent = String(value).padStart(pad, '0') + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(el => counterObserver.observe(el));
+})();
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="assets/js/effects.js" defer></script>
+</body>
+</html>

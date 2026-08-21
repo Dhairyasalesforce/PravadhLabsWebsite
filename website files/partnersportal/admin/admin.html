@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard | Pravadh Labs</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+  :root {
+    --navy: #14171F; --navy-light: #1F2430; --teal: #3E7C74; --teal-light: #E9F3F1;
+    --amber: #C98A3B; --gray: #6B7280; --offwhite: #F7F7F5; --red: #B23A2E; --red-bg: #FEF2F2;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Calibri, sans-serif; background: var(--offwhite); color: var(--navy); }
+  .hidden { display: none !important; }
+
+  #login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--navy); padding: 20px; }
+  .login-card { background: white; border-radius: 12px; padding: 40px; width: 100%; max-width: 380px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .login-card img { display: block; margin: 0 auto 24px; max-width: 200px; }
+  .login-card h1 { font-size: 18px; text-align: center; margin: 0 0 28px; color: var(--gray); font-weight: 600; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--navy); }
+  .field input { width: 100%; padding: 10px 12px; border: 1.5px solid #E5E7EB; border-radius: 8px; font-size: 14px; outline: none; }
+  .field input:focus { border-color: var(--teal); }
+  .btn-primary { width: 100%; padding: 11px; background: var(--navy); color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 8px; }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+  #login-error { background: var(--red-bg); color: var(--red); padding: 10px 12px; border-radius: 6px; font-size: 13px; margin-bottom: 16px; }
+  #access-denied { background: var(--red-bg); color: var(--red); padding: 12px; border-radius: 6px; font-size: 13px; margin-bottom: 16px; line-height: 1.4; }
+
+  #app-screen { min-height: 100vh; }
+  header { background: var(--navy); color: white; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; }
+  header img { max-width: 150px; display: block; }
+  header .who { font-size: 13px; color: #9AA5B1; text-align: right; }
+  header .who strong { color: white; display: block; font-size: 14px; }
+  .logout-btn { background: transparent; border: 1px solid #3A4152; color: #CADCE0; padding: 6px 14px; border-radius: 6px; font-size: 12.5px; cursor: pointer; margin-top: 6px; }
+
+  main { max-width: 1300px; margin: 0 auto; padding: 28px 20px 60px; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border-left: 4px solid var(--teal); }
+  .stat-card.amber { border-left-color: var(--amber); }
+  .stat-card.navy { border-left-color: var(--navy); }
+  .stat-card .label { font-size: 12px; color: var(--gray); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+  .stat-card .value { font-size: 26px; font-weight: 700; color: var(--navy); margin-top: 6px; }
+
+  .panel { background: white; border-radius: 10px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 24px; }
+  .panel h2 { font-size: 16px; margin: 0; color: var(--navy); display: flex; align-items: center; justify-content: space-between; }
+
+  .filters { display: flex; gap: 10px; margin: 16px 0; flex-wrap: wrap; }
+  .filters select, .filters input {
+    padding: 8px 10px; border: 1.5px solid #E5E7EB; border-radius: 7px; font-size: 13px; font-family: inherit;
+  }
+
+  .btn-teal { background: var(--teal); color: white; border: none; padding: 8px 16px; border-radius: 7px; font-size: 12.5px; font-weight: 600; cursor: pointer; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: left; padding: 10px 12px; background: var(--offwhite); color: var(--gray); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px; cursor: pointer; user-select: none; }
+  th:hover { color: var(--navy); }
+  td { padding: 12px; border-bottom: 1px solid #F0F0EE; }
+  tr:last-child td { border-bottom: none; }
+  .stage-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11.5px; font-weight: 600; }
+  .stage-Registered { background: #EFF6FF; color: #1D4ED8; }
+  .stage-Discovery { background: #F5F3FF; color: #6D28D9; }
+  .stage-Demo-Scheduled { background: #FEF3C7; color: #92400E; }
+  .stage-Proposal { background: #FFEDD5; color: #C2410C; }
+  .stage-Negotiation { background: #FEE2E2; color: #B91C1C; }
+  .stage-Closed-Won { background: var(--teal-light); color: var(--teal); }
+  .stage-Closed-Lost { background: #F3F4F6; color: var(--gray); }
+
+  .partner-summary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
+  .partner-card { background: var(--offwhite); border-radius: 8px; padding: 16px; }
+  .partner-card .pname { font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 8px; }
+  .partner-card .prow { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--gray); padding: 3px 0; }
+  .partner-card .prow strong { color: var(--navy); }
+
+  .empty-state { text-align: center; padding: 40px 20px; color: var(--gray); font-size: 13.5px; }
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-card">
+    <img src="logo.jpg" alt="Pravadh Labs" onerror="this.onerror=null; this.outerHTML='<div style=&quot;font-weight:700;font-size:20px;color:#14171F;text-align:center;margin-bottom:24px;&quot;>Pravadh Labs</div>';" />
+    <h1>Super Admin Login</h1>
+    <div id="login-error" class="hidden"></div>
+    <div id="access-denied" class="hidden">This account does not have admin access. Log in with your admin account, or ask Dhairya to grant access.</div>
+    <div class="field"><label>Email</label><input type="email" id="login-email" placeholder="you@pravadhlabs.com" /></div>
+    <div class="field"><label>Password</label><input type="password" id="login-password" placeholder="••••••••" /></div>
+    <button class="btn-primary" id="login-btn">Log In</button>
+  </div>
+</div>
+
+<div id="app-screen" class="hidden">
+  <header>
+    <img src="logo.jpg" alt="Pravadh Labs" onerror="this.onerror=null; this.outerHTML='<div style=&quot;font-weight:700;font-size:18px;color:white;&quot;>Pravadh Labs</div>';" />
+    <div class="who">
+      <strong>Super Admin</strong>
+      <span id="admin-email"></span>
+      <button class="logout-btn" id="logout-btn">Log Out</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="stats-row">
+      <div class="stat-card"><div class="label">Total Open Pipeline</div><div class="value" id="stat-pipeline">$0</div></div>
+      <div class="stat-card amber"><div class="label">Total Weighted Forecast</div><div class="value" id="stat-forecast">$0</div></div>
+      <div class="stat-card navy"><div class="label">Total Closed Won</div><div class="value" id="stat-won">$0</div></div>
+      <div class="stat-card"><div class="label">Active Partners</div><div class="value" id="stat-partners">0</div></div>
+    </div>
+
+    <div class="panel">
+      <h2>By Partner</h2>
+      <div id="partner-summary" class="partner-summary-grid"></div>
+    </div>
+
+    <div class="panel">
+      <h2>
+        All Deals
+        <button class="btn-teal" id="export-btn">Download Excel Report</button>
+      </h2>
+      <div class="filters">
+        <select id="filter-partner"><option value="">All Partners</option></select>
+        <select id="filter-stage">
+          <option value="">All Stages</option>
+          <option>Registered</option><option>Discovery</option><option>Demo Scheduled</option>
+          <option>Proposal</option><option>Negotiation</option><option>Closed Won</option><option>Closed Lost</option>
+        </select>
+      </div>
+      <div id="deals-table-wrap"><div class="empty-state">Loading...</div></div>
+    </div>
+  </main>
+</div>
+
+<script>
+  const SUPABASE_URL = "https://vemqyugfmthyqypowopz.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_5bO8nURqPsROTA9U6kWBVA_ZEEunKl-";
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  let allDeals = [];
+  let filteredDeals = [];
+
+  const STAGE_WEIGHTS = {
+    "Registered": 0.1, "Discovery": 0.25, "Demo Scheduled": 0.4,
+    "Proposal": 0.6, "Negotiation": 0.8, "Closed Won": 1, "Closed Lost": 0,
+  };
+
+  function currency(n) {
+    return "$" + Number(n || 0).toLocaleString("en-US", { maximumFractionDigits: 0 });
+  }
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  async function checkSession() {
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) {
+      await tryEnterAdmin(session.user);
+    }
+  }
+
+  async function tryEnterAdmin(user) {
+    const isAdmin = user.user_metadata && user.user_metadata.is_admin === true;
+    if (!isAdmin) {
+      await sb.auth.signOut();
+      document.getElementById("access-denied").classList.remove("hidden");
+      return;
+    }
+    document.getElementById("login-screen").classList.add("hidden");
+    document.getElementById("app-screen").classList.remove("hidden");
+    document.getElementById("admin-email").textContent = user.email;
+    await loadAllData();
+  }
+
+  async function attemptLogin() {
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value;
+    const loginError = document.getElementById("login-error");
+    loginError.classList.add("hidden");
+    document.getElementById("access-denied").classList.add("hidden");
+    const btn = document.getElementById("login-btn");
+    btn.disabled = true; btn.textContent = "Logging in...";
+    const { data, error } = await sb.auth.signInWithPassword({ email, password });
+    btn.disabled = false; btn.textContent = "Log In";
+    if (error) {
+      loginError.textContent = "Login failed: " + error.message;
+      loginError.classList.remove("hidden");
+      return;
+    }
+    await tryEnterAdmin(data.user);
+  }
+
+  document.getElementById("login-btn").addEventListener("click", attemptLogin);
+  document.getElementById("login-email").addEventListener("keydown", e => { if (e.key === "Enter") attemptLogin(); });
+  document.getElementById("login-password").addEventListener("keydown", e => { if (e.key === "Enter") attemptLogin(); });
+  document.getElementById("logout-btn").addEventListener("click", async () => {
+    await sb.auth.signOut();
+    location.reload();
+  });
+
+  async function loadAllData() {
+    const { data: deals, error } = await sb
+      .from("deals")
+      .select("*, partners(company_name)")
+      .order("created_at", { ascending: false });
+
+    const wrap = document.getElementById("deals-table-wrap");
+    if (error) {
+      wrap.innerHTML = `<div class="empty-state">Error loading deals: ${error.message}</div>`;
+      return;
+    }
+
+    allDeals = deals || [];
+    populatePartnerFilter();
+    applyFilters();
+  }
+
+  function populatePartnerFilter() {
+    const select = document.getElementById("filter-partner");
+    const names = [...new Set(allDeals.map(d => (d.partners && d.partners.company_name) || "Unknown Partner"))].sort();
+    select.innerHTML = '<option value="">All Partners</option>' + names.map(n => `<option value="${escapeHtml(n)}">${escapeHtml(n)}</option>`).join("");
+  }
+
+  document.getElementById("filter-partner").addEventListener("change", applyFilters);
+  document.getElementById("filter-stage").addEventListener("change", applyFilters);
+
+  function applyFilters() {
+    const partnerFilter = document.getElementById("filter-partner").value;
+    const stageFilter = document.getElementById("filter-stage").value;
+
+    filteredDeals = allDeals.filter(d => {
+      const pname = (d.partners && d.partners.company_name) || "Unknown Partner";
+      if (partnerFilter && pname !== partnerFilter) return false;
+      if (stageFilter && d.stage !== stageFilter) return false;
+      return true;
+    });
+
+    renderStats(filteredDeals);
+    renderPartnerSummary();
+    renderTable(filteredDeals);
+  }
+
+  function renderStats(deals) {
+    const open = deals.filter(d => d.stage !== "Closed Won" && d.stage !== "Closed Lost");
+    const won = deals.filter(d => d.stage === "Closed Won");
+    const pipeline = open.reduce((s, d) => s + Number(d.deal_value || 0), 0);
+    const forecast = open.reduce((s, d) => s + Number(d.deal_value || 0) * (STAGE_WEIGHTS[d.stage] || 0), 0);
+    const wonRevenue = won.reduce((s, d) => s + Number(d.deal_value || 0), 0);
+    const partnerCount = new Set(deals.map(d => d.partner_id)).size;
+
+    document.getElementById("stat-pipeline").textContent = currency(pipeline);
+    document.getElementById("stat-forecast").textContent = currency(forecast);
+    document.getElementById("stat-won").textContent = currency(wonRevenue);
+    document.getElementById("stat-partners").textContent = partnerCount;
+  }
+
+  function renderPartnerSummary() {
+    const byPartner = {};
+    for (const d of filteredDeals) {
+      const pname = (d.partners && d.partners.company_name) || "Unknown Partner";
+      if (!byPartner[pname]) byPartner[pname] = { open: 0, won: 0, count: 0 };
+      if (d.stage === "Closed Won") byPartner[pname].won += Number(d.deal_value || 0);
+      else if (d.stage !== "Closed Lost") byPartner[pname].open += Number(d.deal_value || 0);
+      byPartner[pname].count += 1;
+    }
+
+    const container = document.getElementById("partner-summary");
+    const names = Object.keys(byPartner).sort();
+    if (names.length === 0) {
+      container.innerHTML = `<div class="empty-state">No deals yet.</div>`;
+      return;
+    }
+    container.innerHTML = names.map(name => `
+      <div class="partner-card">
+        <div class="pname">${escapeHtml(name)}</div>
+        <div class="prow"><span>Open Pipeline</span><strong>${currency(byPartner[name].open)}</strong></div>
+        <div class="prow"><span>Closed Won</span><strong>${currency(byPartner[name].won)}</strong></div>
+        <div class="prow"><span>Deals</span><strong>${byPartner[name].count}</strong></div>
+      </div>
+    `).join("");
+  }
+
+  function renderTable(deals) {
+    const wrap = document.getElementById("deals-table-wrap");
+    if (deals.length === 0) {
+      wrap.innerHTML = `<div class="empty-state">No deals match this filter.</div>`;
+      return;
+    }
+    let html = `<table><thead><tr>
+      <th>Partner</th><th>Company</th><th>Contact</th><th>Value</th><th>Stage</th><th>Expected Close</th>
+    </tr></thead><tbody>`;
+    for (const d of deals) {
+      const pname = (d.partners && d.partners.company_name) || "Unknown Partner";
+      const stageClass = "stage-" + d.stage.replace(/\s+/g, "-");
+      html += `<tr>
+        <td>${escapeHtml(pname)}</td>
+        <td>${escapeHtml(d.company_name)}</td>
+        <td>${escapeHtml(d.contact_name || "—")}</td>
+        <td>${currency(d.deal_value)}</td>
+        <td><span class="stage-badge ${stageClass}">${escapeHtml(d.stage)}</span></td>
+        <td>${d.expected_close_date || "—"}</td>
+      </tr>`;
+    }
+    html += `</tbody></table>`;
+    wrap.innerHTML = html;
+  }
+
+  document.getElementById("export-btn").addEventListener("click", () => {
+    if (!filteredDeals || filteredDeals.length === 0) {
+      alert("No deals to export.");
+      return;
+    }
+    const rows = filteredDeals.map(d => ({
+      "Partner": (d.partners && d.partners.company_name) || "Unknown Partner",
+      "Company": d.company_name,
+      "Contact": d.contact_name || "",
+      "Deal Value ($)": Number(d.deal_value || 0),
+      "Stage": d.stage,
+      "Expected Close Date": d.expected_close_date || "",
+      "Notes": d.notes || "",
+      "Registered On": d.created_at ? new Date(d.created_at).toLocaleDateString("en-US") : "",
+    }));
+    const worksheet = XLSX.utils.json_to_sheet(rows);
+    worksheet["!cols"] = [{ wch: 20 }, { wch: 22 }, { wch: 18 }, { wch: 14 }, { wch: 16 }, { wch: 18 }, { wch: 30 }, { wch: 14 }];
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "All Deals");
+    const dateStr = new Date().toISOString().split("T")[0];
+    XLSX.writeFile(workbook, `PravadhIQ_AllPartnerDeals_${dateStr}.xlsx`);
+  });
+
+  checkSession();
+</script>
+
+</body>
+</html>

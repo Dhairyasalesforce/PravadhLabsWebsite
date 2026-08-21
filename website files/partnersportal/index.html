@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Partner Portal | Pravadh Labs</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+  :root {
+    --navy: #14171F;
+    --navy-light: #1F2430;
+    --teal: #3E7C74;
+    --teal-light: #E9F3F1;
+    --amber: #C98A3B;
+    --gray: #6B7280;
+    --offwhite: #F7F7F5;
+    --red: #B23A2E;
+    --red-bg: #FEF2F2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Calibri, sans-serif;
+    background: var(--offwhite); color: var(--navy);
+  }
+  .hidden { display: none !important; }
+
+  /* ---------- Login screen ---------- */
+  #login-screen {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: var(--navy); padding: 20px;
+  }
+  .login-card {
+    background: white; border-radius: 12px; padding: 40px; width: 100%; max-width: 380px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .login-card img { display: block; margin: 0 auto 24px; max-width: 200px; }
+  .login-card h1 { font-size: 18px; text-align: center; margin: 0 0 28px; color: var(--gray); font-weight: 600; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--navy); }
+  .field input {
+    width: 100%; padding: 10px 12px; border: 1.5px solid #E5E7EB; border-radius: 8px;
+    font-size: 14px; outline: none; transition: border-color 0.15s;
+  }
+  .field input:focus { border-color: var(--teal); }
+  .btn-primary {
+    width: 100%; padding: 11px; background: var(--navy); color: white; border: none;
+    border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 8px;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--navy-light); }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+  #login-error {
+    background: var(--red-bg); color: var(--red); padding: 10px 12px; border-radius: 6px;
+    font-size: 13px; margin-bottom: 16px;
+  }
+
+  /* ---------- Dashboard ---------- */
+  #app-screen { min-height: 100vh; }
+  header {
+    background: var(--navy); color: white; padding: 16px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  header img { max-width: 150px; display: block; }
+  header .who { font-size: 13px; color: #9AA5B1; text-align: right; }
+  header .who strong { color: white; display: block; font-size: 14px; }
+  .logout-btn {
+    background: transparent; border: 1px solid #3A4152; color: #CADCE0; padding: 6px 14px;
+    border-radius: 6px; font-size: 12.5px; cursor: pointer; margin-top: 6px;
+  }
+  .logout-btn:hover { background: var(--navy-light); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .stat-card {
+    background: white; border-radius: 10px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--teal);
+  }
+  .stat-card.amber { border-left-color: var(--amber); }
+  .stat-card.navy { border-left-color: var(--navy); }
+  .stat-card .label { font-size: 12px; color: var(--gray); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+  .stat-card .value { font-size: 26px; font-weight: 700; color: var(--navy); margin-top: 6px; }
+
+  .panel { background: white; border-radius: 10px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 24px; }
+  .panel h2 { font-size: 16px; margin: 0 0 18px; color: var(--navy); }
+
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 14px; }
+  .form-grid .field input, .form-grid .field select, .form-grid .field textarea {
+    width: 100%; padding: 9px 11px; border: 1.5px solid #E5E7EB; border-radius: 7px; font-size: 13.5px; font-family: inherit;
+  }
+  .btn-teal {
+    background: var(--teal); color: white; border: none; padding: 10px 22px; border-radius: 7px;
+    font-size: 13.5px; font-weight: 600; cursor: pointer;
+  }
+  .btn-teal:hover { background: #326860; }
+  .btn-teal:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: left; padding: 10px 12px; background: var(--offwhite); color: var(--gray); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px; }
+  td { padding: 12px; border-bottom: 1px solid #F0F0EE; }
+  tr:last-child td { border-bottom: none; }
+  .stage-badge {
+    display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11.5px; font-weight: 600;
+  }
+  .stage-Registered { background: #EFF6FF; color: #1D4ED8; }
+  .stage-Discovery { background: #F5F3FF; color: #6D28D9; }
+  .stage-Demo-Scheduled { background: #FEF3C7; color: #92400E; }
+  .stage-Proposal { background: #FFEDD5; color: #C2410C; }
+  .stage-Negotiation { background: #FEE2E2; color: #B91C1C; }
+  .stage-Closed-Won { background: var(--teal-light); color: var(--teal); }
+  .stage-Closed-Lost { background: #F3F4F6; color: var(--gray); }
+  select.stage-select { border: 1px solid #E5E7EB; border-radius: 6px; padding: 4px 6px; font-size: 12.5px; }
+
+  .empty-state { text-align: center; padding: 40px 20px; color: var(--gray); font-size: 13.5px; }
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN SCREEN ============ -->
+<div id="login-screen">
+  <div class="login-card">
+    <img src="logo.jpg" alt="Pravadh Labs" onerror="this.onerror=null; this.outerHTML='<div style=&quot;font-weight:700;font-size:20px;color:#14171F;&quot;>Pravadh Labs</div>';" />
+    <h1>Partner Portal Login</h1>
+    <div id="login-error" class="hidden"></div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="login-email" placeholder="you@company.com" />
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="login-password" placeholder="••••••••" />
+    </div>
+    <button class="btn-primary" id="login-btn">Log In</button>
+  </div>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<div id="app-screen" class="hidden">
+  <header>
+    <img src="logo.jpg" alt="Pravadh Labs" onerror="this.onerror=null; this.outerHTML='<div style=&quot;font-weight:700;font-size:20px;color:#14171F;&quot;>Pravadh Labs</div>';" />
+    <div class="who">
+      <strong id="partner-name">Partner</strong>
+      <span id="partner-email"></span>
+      <button class="logout-btn" id="logout-btn">Log Out</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="label">Open Pipeline</div>
+        <div class="value" id="stat-pipeline">$0</div>
+      </div>
+      <div class="stat-card amber">
+        <div class="label">Weighted Forecast</div>
+        <div class="value" id="stat-forecast">$0</div>
+      </div>
+      <div class="stat-card navy">
+        <div class="label">Closed Won Revenue</div>
+        <div class="value" id="stat-won">$0</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Open Deals</div>
+        <div class="value" id="stat-count">0</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Register a New Deal</h2>
+      <div class="form-grid">
+        <div class="field"><label>Company Name</label><input type="text" id="new-company" /></div>
+        <div class="field"><label>Contact Name</label><input type="text" id="new-contact" /></div>
+        <div class="field"><label>Deal Value ($)</label><input type="number" id="new-value" /></div>
+        <div class="field"><label>Expected Close Date</label><input type="date" id="new-date" /></div>
+      </div>
+      <div class="field" style="margin-bottom:14px;">
+        <label>Notes</label>
+        <textarea id="new-notes" rows="2" style="width:100%; padding:9px 11px; border:1.5px solid #E5E7EB; border-radius:7px; font-family:inherit; font-size:13.5px;"></textarea>
+      </div>
+      <button class="btn-teal" id="add-deal-btn">Register Deal</button>
+      <div id="add-deal-error" style="color:var(--red); font-size:12.5px; margin-top:8px;"></div>
+    </div>
+
+    <div class="panel">
+      <h2 style="display:flex; align-items:center; justify-content:space-between;">
+        Your Deals
+        <button class="btn-teal" id="export-btn" style="font-size:12.5px; padding:8px 16px;">Download Excel Report</button>
+      </h2>
+      <div id="deals-table-wrap">
+        <div class="empty-state">Loading...</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  // ============================================================
+  // SETUP: paste your Supabase project URL and anon key below.
+  // Find these in Supabase: Project Settings > API
+  // ============================================================
+  const SUPABASE_URL = "https://vemqyugfmthyqypowopz.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_5bO8nURqPsROTA9U6kWBVA_ZEEunKl-";
+
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  let currentDeals = [];
+  let currentPartnerName = "Partner";
+
+  const loginScreen = document.getElementById("login-screen");
+  const appScreen = document.getElementById("app-screen");
+  const loginError = document.getElementById("login-error");
+
+  function currency(n) {
+    return "$" + Number(n || 0).toLocaleString("en-US", { maximumFractionDigits: 0 });
+  }
+
+  const STAGE_WEIGHTS = {
+    "Registered": 0.1, "Discovery": 0.25, "Demo Scheduled": 0.4,
+    "Proposal": 0.6, "Negotiation": 0.8, "Closed Won": 1, "Closed Lost": 0,
+  };
+
+  async function checkSession() {
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) {
+      showApp(session.user);
+    } else {
+      showLogin();
+    }
+  }
+
+  function showLogin() {
+    loginScreen.classList.remove("hidden");
+    appScreen.classList.add("hidden");
+  }
+
+  async function showApp(user) {
+    loginScreen.classList.add("hidden");
+    appScreen.classList.remove("hidden");
+    const companyName = (user.user_metadata && user.user_metadata.company_name) || "Partner";
+    currentPartnerName = companyName;
+    document.getElementById("partner-name").textContent = companyName;
+    document.getElementById("partner-email").textContent = user.email;
+    await loadDeals(user.id);
+  }
+
+  document.getElementById("export-btn").addEventListener("click", () => {
+    if (!currentDeals || currentDeals.length === 0) {
+      alert("No deals to export yet.");
+      return;
+    }
+
+    const rows = currentDeals.map(d => ({
+      "Company": d.company_name,
+      "Contact": d.contact_name || "",
+      "Deal Value ($)": Number(d.deal_value || 0),
+      "Stage": d.stage,
+      "Expected Close Date": d.expected_close_date || "",
+      "Notes": d.notes || "",
+      "Registered On": d.created_at ? new Date(d.created_at).toLocaleDateString("en-US") : "",
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(rows);
+    worksheet["!cols"] = [
+      { wch: 24 }, { wch: 20 }, { wch: 14 }, { wch: 16 }, { wch: 18 }, { wch: 34 }, { wch: 14 },
+    ];
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Deals");
+
+    const dateStr = new Date().toISOString().split("T")[0];
+    const safeName = currentPartnerName.replace(/[^a-z0-9]+/gi, "_");
+    XLSX.writeFile(workbook, `PravadhIQ_Deals_${safeName}_${dateStr}.xlsx`);
+  });
+
+  async function attemptLogin() {
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value;
+    loginError.classList.add("hidden");
+    const btn = document.getElementById("login-btn");
+    btn.disabled = true; btn.textContent = "Logging in...";
+    const { data, error } = await sb.auth.signInWithPassword({ email, password });
+    btn.disabled = false; btn.textContent = "Log In";
+    if (error) {
+      loginError.textContent = "Login failed: " + error.message;
+      loginError.classList.remove("hidden");
+      return;
+    }
+    showApp(data.user);
+  }
+
+  document.getElementById("login-btn").addEventListener("click", attemptLogin);
+
+  document.getElementById("login-email").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") attemptLogin();
+  });
+  document.getElementById("login-password").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") attemptLogin();
+  });
+
+  document.getElementById("logout-btn").addEventListener("click", async () => {
+    await sb.auth.signOut();
+    showLogin();
+  });
+
+  document.getElementById("add-deal-btn").addEventListener("click", async () => {
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session) return;
+
+    const company_name = document.getElementById("new-company").value.trim();
+    const contact_name = document.getElementById("new-contact").value.trim();
+    const deal_value = parseFloat(document.getElementById("new-value").value) || 0;
+    const expected_close_date = document.getElementById("new-date").value || null;
+    const notes = document.getElementById("new-notes").value.trim();
+    const errEl = document.getElementById("add-deal-error");
+    errEl.textContent = "";
+
+    if (!company_name) {
+      errEl.textContent = "Company name is required.";
+      return;
+    }
+
+    const btn = document.getElementById("add-deal-btn");
+    btn.disabled = true; btn.textContent = "Saving...";
+
+    const { error } = await sb.from("deals").insert({
+      partner_id: session.user.id,
+      company_name, contact_name, deal_value, expected_close_date, notes,
+    });
+
+    btn.disabled = false; btn.textContent = "Register Deal";
+
+    if (error) {
+      errEl.textContent = "Error saving deal: " + error.message;
+      return;
+    }
+
+    document.getElementById("new-company").value = "";
+    document.getElementById("new-contact").value = "";
+    document.getElementById("new-value").value = "";
+    document.getElementById("new-date").value = "";
+    document.getElementById("new-notes").value = "";
+
+    loadDeals(session.user.id);
+  });
+
+  async function loadDeals(partnerId) {
+    const { data: deals, error } = await sb
+      .from("deals")
+      .select("*")
+      .eq("partner_id", partnerId)
+      .order("created_at", { ascending: false });
+
+    const wrap = document.getElementById("deals-table-wrap");
+
+    if (error) {
+      wrap.innerHTML = `<div class="empty-state">Error loading deals: ${error.message}</div>`;
+      return;
+    }
+
+    if (!deals || deals.length === 0) {
+      wrap.innerHTML = `<div class="empty-state">No deals registered yet — add your first one above.</div>`;
+      currentDeals = [];
+      updateStats([]);
+      return;
+    }
+
+    currentDeals = deals;
+    updateStats(deals);
+
+    let html = `<table><thead><tr>
+      <th>Company</th><th>Contact</th><th>Value</th><th>Stage</th><th>Expected Close</th><th>Notes</th>
+    </tr></thead><tbody>`;
+
+    for (const d of deals) {
+      const stageClass = "stage-" + d.stage.replace(/\s+/g, "-");
+      html += `<tr>
+        <td>${escapeHtml(d.company_name)}</td>
+        <td>${escapeHtml(d.contact_name || "—")}</td>
+        <td>${currency(d.deal_value)}</td>
+        <td>
+          <select class="stage-select" data-id="${d.id}">
+            ${Object.keys(STAGE_WEIGHTS).map(s => `<option value="${s}" ${s === d.stage ? "selected" : ""}>${s}</option>`).join("")}
+          </select>
+        </td>
+        <td>${d.expected_close_date || "—"}</td>
+        <td>${escapeHtml(d.notes || "—")}</td>
+      </tr>`;
+    }
+    html += `</tbody></table>`;
+    wrap.innerHTML = html;
+
+    document.querySelectorAll(".stage-select").forEach(sel => {
+      sel.addEventListener("change", async (e) => {
+        const id = e.target.getAttribute("data-id");
+        const newStage = e.target.value;
+        await sb.from("deals").update({ stage: newStage }).eq("id", id);
+        const { data: { session } } = await sb.auth.getSession();
+        loadDeals(session.user.id);
+      });
+    });
+  }
+
+  function updateStats(deals) {
+    const open = deals.filter(d => d.stage !== "Closed Won" && d.stage !== "Closed Lost");
+    const won = deals.filter(d => d.stage === "Closed Won");
+
+    const pipeline = open.reduce((sum, d) => sum + Number(d.deal_value || 0), 0);
+    const forecast = open.reduce((sum, d) => sum + Number(d.deal_value || 0) * (STAGE_WEIGHTS[d.stage] || 0), 0);
+    const wonRevenue = won.reduce((sum, d) => sum + Number(d.deal_value || 0), 0);
+
+    document.getElementById("stat-pipeline").textContent = currency(pipeline);
+    document.getElementById("stat-forecast").textContent = currency(forecast);
+    document.getElementById("stat-won").textContent = currency(wonRevenue);
+    document.getElementById("stat-count").textContent = open.length;
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  checkSession();
+</script>
+
+</body>
+</html>
