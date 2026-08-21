@@ -722,6 +722,298 @@ html[data-theme="light"] .site-header.is-scrolled {
   gap: 12px;
 }
 
+/* Dreamforce 2026 page */
+.df-hero {
+  position: relative;
+  min-height: min(78vh, 720px);
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--line-dark);
+  overflow: hidden;
+}
+
+.df-hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+.df-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.df-hero__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(11, 20, 42, 0.35) 0%, rgba(11, 20, 42, 0.82) 55%, rgba(11, 20, 42, 0.96) 100%),
+    linear-gradient(90deg, rgba(11, 20, 42, 0.75) 0%, rgba(11, 20, 42, 0.2) 70%);
+  pointer-events: none;
+}
+
+html[data-theme="light"] .df-hero__shade {
+  background:
+    linear-gradient(180deg, rgba(254, 254, 254, 0.2) 0%, rgba(254, 254, 254, 0.75) 50%, rgba(254, 254, 254, 0.95) 100%),
+    linear-gradient(90deg, rgba(254, 254, 254, 0.7) 0%, rgba(254, 254, 254, 0.15) 70%);
+}
+
+.df-hero__content {
+  position: relative;
+  z-index: 1;
+  padding: 96px 0 64px;
+  max-width: var(--max-width);
+}
+
+.df-hero h1 {
+  font-size: clamp(36px, 5.6vw, 64px);
+  line-height: 1.05;
+  margin: 18px 0 20px;
+  max-width: 14ch;
+}
+
+.df-hero h1 em {
+  font-style: normal;
+  color: var(--teal-text);
+}
+
+.df-hero .sub {
+  font-size: 18px;
+  color: var(--muted-light);
+  max-width: 48ch;
+  margin-bottom: 32px;
+}
+
+.df-intro {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.df-intro__copy h2 {
+  font-size: clamp(28px, 3.4vw, 38px);
+  margin: 16px 0 20px;
+  line-height: 1.15;
+}
+
+.df-intro__copy p {
+  color: var(--muted-light);
+  font-size: 16.5px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  max-width: 58ch;
+}
+
+.df-intro__copy p strong {
+  color: var(--paper);
+  font-weight: 500;
+}
+
+.df-intro__visual {
+  margin: 0;
+  border: 1px solid var(--line-dark);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--ink-soft);
+  aspect-ratio: 4 / 3;
+}
+
+.df-intro__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.df-checklist {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.df-checklist li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--paper);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.df-checklist li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+}
+
+.df-team {
+  display: grid;
+  grid-template-columns: minmax(260px, 1.05fr) 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.df-team__visual {
+  margin: 0;
+  border: 1px solid var(--line-dark);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--ink-soft);
+  aspect-ratio: 4 / 3;
+}
+
+.df-team__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.df-team__copy > p {
+  color: var(--muted-light);
+  font-size: 16.5px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 58ch;
+}
+
+.df-roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.df-role {
+  border: 1px solid var(--line-dark);
+  background: var(--ink-soft);
+  padding: 22px 20px;
+  border-radius: 4px;
+}
+
+.df-role__tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal-text);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.df-role h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.df-role p {
+  color: var(--muted-light);
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.df-book__panel {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+  align-items: stretch;
+}
+
+.df-book__copy h2 {
+  font-size: clamp(28px, 3.4vw, 38px);
+  margin: 16px 0 18px;
+}
+
+.df-book__copy > p {
+  color: var(--muted-light);
+  font-size: 16.5px;
+  line-height: 1.7;
+  max-width: 54ch;
+  margin-bottom: 8px;
+}
+
+.df-book__card {
+  border: 1px solid var(--line-dark);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--ink-soft);
+  display: flex;
+  flex-direction: column;
+}
+
+.df-book__card > img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #0B142A;
+}
+
+.df-book__meta {
+  padding: 24px;
+  display: grid;
+  gap: 4px;
+}
+
+.df-book__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+.df-book__label:first-child {
+  margin-top: 0;
+}
+
+.df-book__value {
+  color: var(--paper);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .df-intro,
+  .df-team,
+  .df-book__panel {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .df-intro__visual,
+  .df-team__visual {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 860px) {
+  .df-hero {
+    min-height: 70vh;
+  }
+
+  .df-hero__content {
+    padding: 72px 0 48px;
+  }
+
+  .df-roles {
+    grid-template-columns: 1fr;
+  }
+
+  .df-hero .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .df-hero .actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
 @media (max-width: 860px) {
   .founder {
     grid-template-columns: 1fr;
