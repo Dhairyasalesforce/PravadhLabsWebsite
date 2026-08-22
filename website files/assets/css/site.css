@@ -103,6 +103,12 @@ p, .hero .sub {
 .module-card.pm-views .tag { background: #1E5CEE; color: #FFFFFF; }
 .module-card.pm-brand .tag { background: var(--amber); color: #1A1200; }
 .module-card.pm-runtime .tag { background: var(--muted-light); color: #1A1200; }
+.module-card.brand .tag { background: var(--amber); color: #1A1200; }
+.module-card.llm .tag { background: var(--teal); color: #FFFFFF; }
+.module-card.fleet .tag { background: var(--muted-light); color: #1A1200; }
+.module-card.studio .tag { background: #1E5CEE; color: #FFFFFF; }
+.module-card.money .tag { background: var(--amber); color: #1A1200; }
+.module-card.copilot .tag { background: var(--teal); color: #FFFFFF; }
 
 .section-head h2 {
   letter-spacing: -0.015em;
