@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pravadh Labs — Investor Pitch Deck 2026</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0B142A;
+  --ink-soft: #141F3D;
+  --paper: #F7F7F8;
+  --line: #232F52;
+  --muted: #868A95;
+  --muted-light: #A9AFC0;
+  --blue: #1E5CEE;
+  --blue-soft: rgba(30, 92, 238, 0.12);
+  --amber: #FD9E01;
+  --amber-soft: rgba(253, 158, 1, 0.14);
+  --teal: #3E7C74;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.deck {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  padding: 48px 64px 72px;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.slide.active { display: flex; }
+
+.slide--light {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.slide__bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--amber) 100%);
+}
+
+.slide__glow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 55%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(30, 92, 238, 0.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.slide__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo__mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  background: var(--blue);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+  position: relative;
+}
+
+.logo__mark::after {
+  content: 'LABS';
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: var(--amber);
+  color: #1A1200;
+  font-family: var(--font-body);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 7px;
+}
+
+.logo__word {
+  font-family: var(--font-display);
+  font-size: 22px;
+}
+
+.slide__tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.slide--light .slide__tag { color: var(--blue); }
+
+.slide__num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.slide--light .slide__num { color: var(--muted-light); }
+
+.slide__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+}
+
+.slide__body--split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 16px;
+}
+
+.slide--light .eyebrow { color: var(--blue); }
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.06;
+  margin-bottom: 20px;
+}
+
+h1 em {
+  font-style: normal;
+  color: var(--amber);
+}
+
+.slide--light h1 em { color: var(--blue); }
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 42px);
+  line-height: 1.12;
+  margin-bottom: 18px;
+}
+
+.lead {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--muted-light);
+  max-width: 52ch;
+}
+
+.slide--light .lead { color: #4A5060; }
+
+.sub {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted-light);
+  max-width: 58ch;
+}
+
+.slide--light .sub { color: #5A6070; }
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.stat {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 20px;
+  background: rgba(20, 31, 61, 0.5);
+}
+
+.slide--light .stat {
+  background: #fff;
+  border-color: #D4D4D0;
+}
+
+.stat__num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+
+.slide--light .stat__num { color: var(--blue); }
+
+.stat__label {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted-light);
+}
+
+.slide--light .stat__label { color: #5A6070; }
+
+.cards {
+  display: grid;
+  gap: 14px;
+}
+
+.cards--3 { grid-template-columns: repeat(3, 1fr); }
+.cards--2 { grid-template-columns: repeat(2, 1fr); }
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 22px;
+  background: var(--ink-soft);
+}
+
+.slide--light .card {
+  background: #fff;
+  border-color: #D4D4D0;
+}
+
+.card--accent-blue { border-top: 3px solid var(--blue); }
+.card--accent-amber { border-top: 3px solid var(--amber); }
+
+.card__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted-light);
+}
+
+.slide--light .card p { color: #5A6070; }
+
+.card__mods {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+}
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted-light);
+}
+
+.pill--blue { border-color: var(--blue); color: var(--blue); background: var(--blue-soft); }
+.pill--amber { border-color: var(--amber); color: var(--amber); background: var(--amber-soft); }
+
+.rail-viz {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 28px;
+  background: var(--ink-soft);
+}
+
+.slide--light .rail-viz {
+  background: #fff;
+  border-color: #D4D4D0;
+}
+
+.rail-viz__line {
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--amber));
+  border-radius: 2px;
+  margin: 24px 0;
+  position: relative;
+}
+
+.rail-viz__line::before,
+.rail-viz__line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 0 4px rgba(253, 158, 1, 0.25);
+}
+
+.rail-viz__line::before { left: 0; }
+.rail-viz__line::after { right: 0; background: var(--blue); box-shadow: 0 0 0 4px rgba(30, 92, 238, 0.25); }
+
+.rail-viz__products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.rail-node {
+  text-align: center;
+  padding: 16px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.rail-node strong { display: block; margin-bottom: 4px; font-size: 15px; }
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.slide--light .compare-table th,
+.slide--light .compare-table td { border-color: #D4D4D0; }
+
+.compare-table th {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.compare-table td:first-child { color: var(--muted-light); width: 38%; }
+.slide--light .compare-table td:first-child { color: #5A6070; }
+
+.compare-table td:last-child { color: var(--paper); font-weight: 500; }
+.slide--light .compare-table td:last-child { color: var(--ink); }
+
+.compare-table .tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--amber);
+  margin-right: 6px;
+}
+
+.bullet-list {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.bullet-list li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted-light);
+}
+
+.slide--light .bullet-list li { color: #4A5060; }
+
+.bullet-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--amber);
+}
+
+.slide--light .bullet-list li::before { color: var(--blue); }
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.timeline__step {
+  padding: 18px;
+  border-left: 3px solid var(--blue);
+  background: rgba(30, 92, 238, 0.08);
+  border-radius: 0 6px 6px 0;
+}
+
+.timeline__step:nth-child(2) { border-color: var(--amber); background: rgba(253, 158, 1, 0.08); }
+.timeline__step:nth-child(3) { border-color: var(--teal); background: rgba(62, 124, 116, 0.08); }
+
+.timeline__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: var(--amber);
+}
+
+.timeline__step h4 { font-size: 16px; margin-bottom: 6px; }
+.timeline__step p { font-size: 13px; line-height: 1.5; color: var(--muted-light); }
+
+.ask-box {
+  border: 2px solid var(--amber);
+  border-radius: 8px;
+  padding: 32px;
+  margin-top: 24px;
+  background: rgba(253, 158, 1, 0.06);
+}
+
+.ask-box h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 28px;
+  font-size: 15px;
+}
+
+.contact-row a {
+  color: var(--amber);
+  text-decoration: none;
+}
+
+.slide--light .contact-row a { color: var(--blue); }
+
+.slide__footer {
+  position: absolute;
+  bottom: 28px;
+  left: 64px;
+  right: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--muted);
+  z-index: 2;
+}
+
+.slide--light .slide__footer { color: #868A95; }
+
+.slide__linkbar {
+  display: none;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.slide--light .slide__linkbar { border-top-color: #D4D4D0; }
+
+.slide__linkbar a {
+  color: var(--amber);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.slide--light .slide__linkbar a { color: var(--blue); }
+
+.product-url {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.product-url:hover { text-decoration: underline; }
+
+.nav-hint {
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  z-index: 100;
+  opacity: 0.7;
+}
+
+.progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--blue);
+  transition: width 0.25s ease;
+  z-index: 100;
+}
+
+@media print {
+  @page {
+    size: 13.333in 7.5in;
+    margin: 0;
+  }
+
+  html, body {
+    overflow: visible;
+    height: auto;
+    width: 13.333in;
+    margin: 0;
+    padding: 0;
+    background: var(--ink);
+  }
+
+  .deck {
+    height: auto;
+    width: 13.333in;
+  }
+
+  .slide {
+    display: flex !important;
+    position: relative;
+    inset: auto;
+    width: 13.333in;
+    height: 7.5in;
+    min-height: 7.5in;
+    max-height: 7.5in;
+    padding: 32px 44px 48px;
+    page-break-after: always;
+    page-break-inside: avoid;
+    overflow: hidden;
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .slide:last-child { page-break-after: auto; }
+
+  .slide__body {
+    justify-content: flex-start;
+    padding-top: 4px;
+  }
+
+  .slide__body--split {
+    gap: 28px;
+    align-items: start;
+  }
+
+  h1 { font-size: 40px; margin-bottom: 14px; }
+  h2 { font-size: 30px; margin-bottom: 12px; }
+  .lead { font-size: 16px; }
+  .sub { font-size: 13px; }
+  .stat-row { gap: 10px; margin-top: 20px; }
+  .stat { padding: 12px 14px; }
+  .stat__num { font-size: 26px; }
+  .stat__label { font-size: 11px; }
+  .card { padding: 16px; }
+  .card h3 { font-size: 15px; }
+  .card p { font-size: 12px; }
+  .cards { gap: 10px; }
+  .cards--3 { margin-top: 16px !important; }
+  .timeline { gap: 10px; margin-top: 14px; }
+  .timeline__step { padding: 12px; }
+  .timeline__step h4 { font-size: 13px; }
+  .compare-table { font-size: 11px; }
+  .compare-table th, .compare-table td { padding: 8px 10px; }
+  .ask-box { padding: 20px; margin-top: 16px; }
+  .ask-box h3 { font-size: 22px; }
+  .contact-row { gap: 14px; margin-top: 16px; font-size: 12px; }
+  .slide__header { margin-bottom: 20px; }
+  .slide__footer {
+    bottom: 18px;
+    left: 44px;
+    right: 44px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .slide__linkbar {
+    display: flex !important;
+    width: 100%;
+  }
+  .nav-hint, .progress { display: none !important; }
+}
+
+@media (max-width: 900px) {
+  .slide { padding: 32px 28px 64px; }
+  .slide__body--split { grid-template-columns: 1fr; }
+  .cards--3, .stat-row, .timeline { grid-template-columns: 1fr; }
+  .slide__footer { left: 28px; right: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- 1 COVER -->
+  <section class="slide slide--cover active" data-slide="1">
+    <div class="slide__bar"></div>
+    <div class="slide__glow"></div>
+    <div class="slide__header">
+      <a href="https://pravadhlabs.com" class="logo">
+        <span class="logo__mark">P</span>
+        <span class="logo__word">Pravadh Labs</span>
+      </a>
+      <span class="slide__tag">Confidential · Investor Deck 2026</span>
+    </div>
+    <div class="slide__body">
+      <p class="eyebrow">Powering enterprise innovation</p>
+      <h1>One rail.<br><em>Three live products.</em></h1>
+      <p class="lead">Pravadh Labs is a product studio building AI-first software on a shared control plane — Salesforce DevOps, cross-platform data governance, and white-label delivery — without stitching Copado to Informatica to a spreadsheet.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="stat__num">3</div><div class="stat__label">Products live on the rail</div></div>
+        <div class="stat"><div class="stat__num">15+</div><div class="stat__label">Data sources into Salesforce</div></div>
+        <div class="stat"><div class="stat__num">1</div><div class="stat__label">Audit trail across deploy + migrate + govern</div></div>
+        <div class="stat"><div class="stat__num">3</div><div class="stat__label">India offices · global Salesforce GTM</div></div>
+      </div>
+    </div>
+    <div class="slide__footer">
+      <span>Pravadh Labs Private Limited</span>
+      <span><a href="https://pravadhlabs.com" style="color:inherit;text-decoration:none;">pravadhlabs.com</a></span>
+    </div>
+  </section>
+
+  <!-- 2 PROBLEM -->
+  <section class="slide" data-slide="2">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">The problem</span>
+      <span class="slide__num">02 / 15</span>
+    </div>
+    <div class="slide__body slide__body--split">
+      <div>
+        <h2>Enterprise teams run change as three disconnected jobs.</h2>
+        <p class="lead">Deployment, migration, and governance each get their own tool, owner, and blind spot. A deploy can succeed while the release still breaks downstream.</p>
+        <ul class="bullet-list">
+          <li><strong style="color:var(--paper)">DevOps</strong> — Copado, Gearset, AutoRABIT, Change Sets</li>
+          <li><strong style="color:var(--paper)">Data</strong> — Informatica, MuleSoft, Data Loader, one-off scripts</li>
+          <li><strong style="color:var(--paper)">Governance</strong> — spreadsheet audits, tribal knowledge, log digging</li>
+          <li><strong style="color:var(--paper)">Delivery</strong> — Jira chrome, feature-gated PM, no white-label or on-prem</li>
+        </ul>
+      </div>
+      <div class="cards">
+        <div class="card card--accent-blue">
+          <div class="card__num">Pain 01</div>
+          <h3>No single source of truth</h3>
+          <p>Who changed what, what moved, and who approved it lives in three systems — if it was recorded at all.</p>
+        </div>
+        <div class="card card--accent-amber">
+          <div class="card__num">Pain 02</div>
+          <h3>Migration knowledge walks out</h3>
+          <p>Field mapping intelligence lives in people, not systems. Every new migration starts from zero.</p>
+        </div>
+        <div class="card card--accent-blue">
+          <div class="card__num">Pain 03</div>
+          <h3>Consultancies can't own the stack</h3>
+          <p>Client-facing teams need Jira-grade delivery under their brand — or on their servers — without a source license.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 3 MARKET -->
+  <section class="slide slide--light" data-slide="3">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Market opportunity</span>
+      <span class="slide__num">03 / 15</span>
+    </div>
+    <div class="slide__body">
+      <h2>Three large categories. One buyer persona.</h2>
+      <p class="sub" style="margin-bottom:28px;">We land where Salesforce architects, RevOps leaders, and implementation consultancies already spend — then expand across the rail.</p>
+      <div class="cards cards--3">
+        <div class="card card--accent-blue">
+          <div class="card__num">Beachhead A</div>
+          <h3>Salesforce DevOps + migration</h3>
+          <p>Replace Copado-class deploy + Informatica-class ETL + manual audit stitching. Every mid-market and enterprise Salesforce org is a prospect.</p>
+          <div class="pill-row"><span class="pill pill--blue">~150K+ Salesforce customers globally</span></div>
+        </div>
+        <div class="card card--accent-amber">
+          <div class="card__num">Beachhead B</div>
+          <h3>Cross-platform data governance</h3>
+          <p>CRM + ERP + finance misalignment. GovernX targets orgs on Salesforce, Oracle, Zoho with reactive spreadsheet audits today.</p>
+          <div class="pill-row"><span class="pill pill--amber">Multi-system RevOps &amp; finance ops</span></div>
+        </div>
+        <div class="card card--accent-blue">
+          <div class="card__num">Beachhead C</div>
+          <h3>White-label delivery PM</h3>
+          <p>SIs and consultancies reselling delivery tooling. Jira-grade issues + ClickUp-grade views + private deploy without source transfer.</p>
+          <div class="pill-row"><span class="pill pill--blue">40+ person delivery teams · VPC deploy</span></div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="stat__num">$8B+</div><div class="stat__label">Salesforce ecosystem services &amp; tooling (proxy TAM)</div></div>
+        <div class="stat"><div class="stat__num">$12B+</div><div class="stat__label">Data integration &amp; governance (Gartner category)</div></div>
+        <div class="stat"><div class="stat__num">$6B+</div><div class="stat__label">Work management / PM for professional services</div></div>
+        <div class="stat"><div class="stat__num">1 rail</div><div class="stat__label">Cross-sell: IQ → GovernX → PM on same account</div></div>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 4 SOLUTION / RAIL -->
+  <section class="slide" data-slide="4">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Our solution</span>
+      <span class="slide__num">04 / 15</span>
+    </div>
+    <div class="slide__body slide__body--split">
+      <div>
+        <h2>The rail — one control plane, every product plugs in.</h2>
+        <p class="lead">We build depth-first on a shared architecture. Each product solves one hard problem completely — then the next module lands on the same audit trail, approval model, and AI layer.</p>
+        <div class="pill-row">
+          <span class="pill pill--blue">Audit by default</span>
+          <span class="pill pill--amber">Human-in-the-loop AI</span>
+          <span class="pill pill--blue">Built in Salesforce ecosystem</span>
+          <span class="pill pill--amber">Depth over breadth</span>
+        </div>
+      </div>
+      <div class="rail-viz">
+        <p style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Pravadh Labs control plane</p>
+        <div class="rail-viz__line"></div>
+        <div class="rail-viz__products">
+          <div class="rail-node"><strong><a href="https://pravadhiq.pravadhlabs.com" style="color:inherit;text-decoration:none;">PravadhIQ</a></strong>SHIP · MOVE · GOVERN<br><span style="color:var(--muted);font-size:11px;">Salesforce change</span></div>
+          <div class="rail-node"><strong><a href="https://pravadhgx.pravadhlabs.com" style="color:inherit;text-decoration:none;">GovernX</a></strong>EXTRACT · GOVERN · NOTIFY · EMIE<br><span style="color:var(--muted);font-size:11px;">Cross-platform data</span></div>
+          <div class="rail-node"><strong><a href="https://pravadhpm.pravadhlabs.com" style="color:inherit;text-decoration:none;">Pravadh PM</a></strong>ISSUES · VIEWS · BRAND · PRIVATE<br><span style="color:var(--muted);font-size:11px;">White-label delivery</span></div>
+        </div>
+        <p style="margin-top:20px;font-size:13px;color:var(--muted-light);text-align:center;">One platform · one audit trail · one place to see what changed, what moved, and who approved it</p>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 5 PRAVADHIQ -->
+  <section class="slide slide--light" data-slide="5">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Product 01 · v1 on the rail</span>
+      <span class="slide__num">05 / 15</span>
+    </div>
+    <div class="slide__body">
+      <h2>PravadhIQ — deployment, migration, governance for Salesforce.</h2>
+      <p class="sub"><a class="product-url" href="https://pravadhiq.pravadhlabs.com">pravadhiq.pravadhlabs.com</a> · <em>Deployment success and release success aren't the same thing.</em></p>
+      <div class="cards cards--3" style="margin-top:28px;">
+        <div class="card card--accent-blue">
+          <h3>SHIP</h3>
+          <p>Env-to-env metadata promotion. Pre-deploy validation, dependency-aware packages, rollback on failure.</p>
+          <div class="card__mods">Replaces Copado · Gearset · AutoRABIT · Change Sets</div>
+        </div>
+        <div class="card card--accent-amber">
+          <h3>MOVE</h3>
+          <p>15+ sources — Zoho, HubSpot, Snowflake, Unleashed, files. Field mapping and transform before load.</p>
+          <div class="card__mods">Replaces Informatica · MuleSoft · Data Loader</div>
+        </div>
+        <div class="card card--accent-blue">
+          <h3>GOVERN</h3>
+          <p>Full audit trail, approval workflows, release + migration in one timeline. Data never leaves your org.</p>
+          <div class="card__mods">Replaces spreadsheet audits · tribal knowledge</div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="stat__num">60–70%</div><div class="stat__label">AI mapping accuracy (internal benchmarks)</div></div>
+        <div class="stat"><div class="stat__num">70%+</div><div class="stat__label">Time saved on field mapping vs manual</div></div>
+        <div class="stat"><div class="stat__num">1</div><div class="stat__label">Timeline for deploy + migrate + govern</div></div>
+        <div class="stat"><div class="stat__num">0</div><div class="stat__label">Data residency risk — stays in Salesforce org</div></div>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 6 GOVERNX -->
+  <section class="slide" data-slide="6">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Product 02 · v2 on the rail</span>
+      <span class="slide__num">06 / 15</span>
+    </div>
+    <div class="slide__body">
+      <h2>Pravadh GovernX — one governance layer across your ecosystem.</h2>
+      <p class="sub"><a class="product-url" href="https://pravadhgx.pravadhlabs.com">pravadhgx.pravadhlabs.com</a> · CRM, ERP, and finance platforms that don't agree — governed on one canvas.</p>
+      <div class="cards cards--3" style="margin-top:28px;">
+        <div class="card card--accent-blue">
+          <h3>EXTRACT</h3>
+          <p>Salesforce, Zoho, Oracle Fusion, NetSuite, EBS. Scheduled or on-demand. Visual pipeline nodes — inspect and replay.</p>
+        </div>
+        <div class="card card--accent-amber">
+          <h3>GOVERN + NOTIFY</h3>
+          <p>Field- and record-level policy. Real-time breach alerts linked to the exact pipeline step. AES-256 at rest.</p>
+        </div>
+        <div class="card card--accent-blue">
+          <h3>EMIE Co-pilot</h3>
+          <p>Plain-language queries on live canvas nodes. Suggests corrective action — human approves, audit entry logged. Not a chat silo.</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline__step"><div class="timeline__label">Ask</div><h4>"Why did NetSuite → SF skip 42 records?"</h4><p>EMIE explains on the canvas, not in a separate bot.</p></div>
+        <div class="timeline__step"><div class="timeline__label">Explain</div><h4>Policy triggers &amp; drift</h4><p>Every breach tied to a pipeline step and timestamp.</p></div>
+        <div class="timeline__step"><div class="timeline__label">Act</div><h4>Human approval gate</h4><p>Nothing lands without a decision and an audit entry.</p></div>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 7 PRAVADH PM -->
+  <section class="slide slide--light" data-slide="7">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Product 03 · v3 on the rail</span>
+      <span class="slide__num">07 / 15</span>
+    </div>
+    <div class="slide__body">
+      <h2>Pravadh PM — the operating system for delivery.</h2>
+      <p class="sub"><a class="product-url" href="https://pravadhpm.pravadhlabs.com">pravadhpm.pravadhlabs.com</a> · <em>Delivery tools are either someone else's brand, or someone else's cloud.</em></p>
+      <div class="cards cards--3" style="margin-top:28px;">
+        <div class="card card--accent-blue">
+          <h3>ISSUES</h3>
+          <p>WEB-4 style keys. Epic, story, task, bug. Comments, activity, command palette. Jira-grade workflow.</p>
+        </div>
+        <div class="card card--accent-amber">
+          <h3>VIEWS</h3>
+          <p>Board, list, timeline. Reports across spaces. Git and test-tool connections. Full product on every plan.</p>
+        </div>
+        <div class="card card--accent-blue">
+          <h3>BRAND + PRIVATE</h3>
+          <p>Your logo, domain, email. Hide Pravadh marks. Runnable package in your VPC — source stays with Labs.</p>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="stat__num">14-day</div><div class="stat__label">Trial, then view-only until paid</div></div>
+        <div class="stat"><div class="stat__num">40+</div><div class="stat__label">Person delivery team use case</div></div>
+        <div class="stat"><div class="stat__num">0</div><div class="stat__label">Source code transfer on private deploy</div></div>
+        <div class="stat"><div class="stat__num">∞</div><div class="stat__label">Guest seats free on white-label plans</div></div>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 8 PLATFORM / CROSS-SELL -->
+  <section class="slide" data-slide="8">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Platform expansion</span>
+      <span class="slide__num">08 / 15</span>
+    </div>
+    <div class="slide__body slide__body--split">
+      <div>
+        <h2>Land with IQ. Expand to GovernX. Attach PM.</h2>
+        <p class="lead">Same buyer — Salesforce architect, RevOps lead, SI partner — three expansion vectors on one contract relationship.</p>
+        <ul class="bullet-list">
+          <li><strong style="color:var(--paper)">IQ</strong> wins the Salesforce org — deploy, migrate, govern</li>
+          <li><strong style="color:var(--paper)">GovernX</strong> extends when CRM meets ERP/finance</li>
+          <li><strong style="color:var(--paper)">PM</strong> attaches when the consultancy needs client-facing delivery under their brand</li>
+          <li>Partner portal + Dreamforce GTM multiply SI channel reach</li>
+        </ul>
+      </div>
+      <div class="cards">
+        <div class="card card--accent-blue">
+          <h3>Why one studio beats a portfolio</h3>
+          <p>We ship one system deeply before the next. Shared audit model, approval workflows, and AI layer — not acquired point solutions glued together.</p>
+        </div>
+        <div class="card card--accent-amber">
+          <h3>Software that disappears</h3>
+          <p>Built where the work already happens. Reduces decisions instead of adding them. Practitioners demo on real scenarios — not slide decks.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 9 COMPETITION -->
+  <section class="slide slide--light" data-slide="9">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Competitive landscape</span>
+      <span class="slide__num">09 / 15</span>
+    </div>
+    <div class="slide__body">
+      <h2>We replace the stitched stack — not one vendor at a time.</h2>
+      <table class="compare-table" style="margin-top:24px;">
+        <thead><tr><th>Instead of…</th><th>Pravadh Labs on the rail</th></tr></thead>
+        <tbody>
+          <tr><td>Copado / Gearset / AutoRABIT / Flosum</td><td><span class="tag">SHIP</span> Unified Salesforce deployment with rollback</td></tr>
+          <tr><td>Informatica / MuleSoft / Talend / Data Loader</td><td><span class="tag">MOVE</span> Native migration with AI mapping</td></tr>
+          <tr><td>Spreadsheet audits + tribal knowledge</td><td><span class="tag">GOVERN</span> One audit trail, every change</td></tr>
+          <tr><td>One-off extract scripts across CRM/ERP</td><td><span class="tag">EXTRACT</span> Governed multi-platform pipeline</td></tr>
+          <tr><td>Log digging after breaches</td><td><span class="tag">EMIE</span> Plain-language answers on the canvas</td></tr>
+          <tr><td>Jira / ClickUp you can't white-label</td><td><span class="tag">PM</span> Your brand, your servers, no source</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 10 BUSINESS MODEL -->
+  <section class="slide" data-slide="10">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Business model</span>
+      <span class="slide__num">10 / 15</span>
+    </div>
+    <div class="slide__body">
+      <h2>SaaS + partner-led. Expand on the rail.</h2>
+      <div class="cards cards--3" style="margin-top:28px;">
+        <div class="card card--accent-blue">
+          <h3>PravadhIQ</h3>
+          <p>Per-org / per-seat SaaS for Salesforce teams and SIs. Implementation services attach for complex migrations.</p>
+          <div class="card__mods">Land · expand seats · migration projects</div>
+        </div>
+        <div class="card card--accent-amber">
+          <h3>GovernX</h3>
+          <p>Platform fee + connected-system tiers. 7-day free trial. EMIE as premium governance copilot layer.</p>
+          <div class="card__mods">Trial → platform → EMIE upsell</div>
+        </div>
+        <div class="card card--accent-blue">
+          <h3>Pravadh PM</h3>
+          <p>Seat-based SaaS. White-label and private-deploy packages at premium. Full product on every plan — no feature-gating the board.</p>
+          <div class="card__mods">Cloud · white-label · private VPC</div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="stat__num">SI</div><div class="stat__label">Primary channel — resell IQ + PM under partner program</div></div>
+        <div class="stat"><div class="stat__num">NDR</div><div class="stat__label">Cross-sell IQ → GovernX → PM on same account</div></div>
+        <div class="stat"><div class="stat__num">VPC</div><div class="stat__label">Private deploy premium for regulated verticals</div></div>
+        <div class="stat"><div class="stat__num">AI</div><div class="stat__label">EMIE + mapping intelligence as usage-based layer</div></div>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 11 GTM -->
+  <section class="slide slide--light" data-slide="11">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Go-to-market</span>
+      <span class="slide__num">11 / 15</span>
+    </div>
+    <div class="slide__body">
+      <h2>Salesforce ecosystem GTM + SI channel.</h2>
+      <div class="cards cards--2" style="margin-top:28px;">
+        <div class="card card--accent-blue">
+          <h3>Events &amp; community</h3>
+          <p>Dreamforce 2026 (San Francisco), West Africa Dreamin 2026 sponsor. Live product walkthroughs — practitioner-led, not booth scripts. Calendly 30-min sessions.</p>
+        </div>
+        <div class="card card--accent-amber">
+          <h3>Partner portal</h3>
+          <p>SI-friendly deal tracking for PravadhIQ. Partnership conversations for white-label PM and GovernX pipeline attach.</p>
+        </div>
+        <div class="card card--accent-blue">
+          <h3>Product-led trials</h3>
+          <p>GovernX 7-day trial (no card). PM 14-day trial. IQ pilot on real migration projects — no cost, honest feedback.</p>
+        </div>
+        <div class="card card--accent-amber">
+          <h3>India → global</h3>
+          <p>Founder-led team across Ahmedabad, Bengaluru, Jaipur. Cost-efficient R&amp;D with global Salesforce buyer access.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 12 TRACTION -->
+  <section class="slide" data-slide="12">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Traction &amp; proof</span>
+      <span class="slide__num">12 / 15</span>
+    </div>
+    <div class="slide__body slide__body--split">
+      <div>
+        <h2>Three products live. One rail shipping.</h2>
+        <ul class="bullet-list">
+          <li>PravadhIQ, GovernX, and Pravadh PM in production</li>
+          <li>15+ data source integrations into Salesforce</li>
+          <li>Partner portal operational for SI deal flow</li>
+          <li>Dreamforce 2026 + West Africa Dreamin 2026 sponsor</li>
+          <li>Built for 40-person delivery team deployments (PM)</li>
+          <li>60–70% AI mapping accuracy on internal benchmarks</li>
+        </ul>
+        <p class="sub" style="margin-top:20px;">Customer logos and revenue metrics available under NDA in data room.</p>
+      </div>
+      <div class="cards">
+        <div class="card card--accent-blue">
+          <div class="card__num">Product studio proof</div>
+          <h3>Depth-first execution</h3>
+          <p>Three live products on one control plane — not a roadmap of half-finished modules. Each product complete before the next ships.</p>
+        </div>
+        <div class="card card--accent-amber">
+          <div class="card__num">Community credibility</div>
+          <h3>Salesforce-native team</h3>
+          <p>Founder: 11+ years Salesforce architecture. Agentblazer Legend. Salesforce MVP nominee. Practitioner-built, practitioner-sold.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 13 SECURITY -->
+  <section class="slide slide--light" data-slide="13">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Security &amp; enterprise</span>
+      <span class="slide__num">13 / 15</span>
+    </div>
+    <div class="slide__body">
+      <h2>Security as default — honest about where we stand.</h2>
+      <p class="sub" style="margin-bottom:24px;">We'd rather tell you exactly where we are than round up.</p>
+      <div class="cards cards--3">
+        <div class="card card--accent-blue">
+          <h3>PravadhIQ</h3>
+          <p>TLS in transit. Environment isolation. Role-based approvals. Data never leaves Salesforce org. Rollback on failure.</p>
+        </div>
+        <div class="card card--accent-amber">
+          <h3>GovernX</h3>
+          <p>AES-256 at rest. TLS in transit. Cross-platform audit trail. Real-time policy violation alerts.</p>
+        </div>
+        <div class="card card--accent-blue">
+          <h3>Pravadh PM</h3>
+          <p>Workspace isolation. Private package in customer network. Source stays with Labs. Trial → view-only.</p>
+        </div>
+      </div>
+      <div class="pill-row" style="margin-top:28px;">
+        <span class="pill">SOC 2 Type II — in progress</span>
+        <span class="pill">ISO 27001 — in progress</span>
+        <span class="pill">GDPR review — in progress</span>
+        <span class="pill">India DPDP Act — in progress</span>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 14 TEAM -->
+  <section class="slide" data-slide="14">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <span class="slide__tag">Team</span>
+      <span class="slide__num">14 / 15</span>
+    </div>
+    <div class="slide__body slide__body--split">
+      <div>
+        <h2>Founder-led product studio. Distributed across India.</h2>
+        <p class="lead">Small team, depth-first. We'd rather ship one product that does one job completely than spread across a roadmap of half-finished ideas.</p>
+        <ul class="bullet-list">
+          <li><strong style="color:var(--paper)">Founder</strong> — 11+ years Salesforce solution &amp; enterprise architecture. Former VP Salesforce Practice. Agentblazer Legend.</li>
+          <li><strong style="color:var(--paper)">Offices</strong> — Ahmedabad (HQ), Bengaluru, Jaipur</li>
+          <li><strong style="color:var(--paper)">Build philosophy</strong> — Inside ecosystems customers trust. AI that runs the rail, not around it.</li>
+        </ul>
+      </div>
+      <div class="cards">
+        <div class="card card--accent-blue">
+          <h3>Architecture &amp; product</h3>
+          <p>Salesforce-native builders shipping IQ, GovernX, and PM on the same control plane.</p>
+        </div>
+        <div class="card card--accent-amber">
+          <h3>Partnerships &amp; delivery</h3>
+          <p>SI-friendly GTM. Live demos on real migration and governance scenarios.</p>
+        </div>
+        <div class="card card--accent-blue">
+          <h3>Hiring with raise</h3>
+          <p>Engineering, customer success, and partner sales to scale post-funding.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide__footer"><span>Pravadh Labs</span><span>Investor Deck 2026</span></div>
+  </section>
+
+  <!-- 15 ASK -->
+  <section class="slide slide--light" data-slide="15">
+    <div class="slide__bar"></div>
+    <div class="slide__header">
+      <a href="https://pravadhlabs.com" class="logo">
+        <span class="logo__mark">P</span>
+        <span class="logo__word">Pravadh Labs</span>
+      </a>
+      <span class="slide__tag">The ask</span>
+    </div>
+    <div class="slide__body">
+      <h2>Raising to scale the rail.</h2>
+      <p class="lead">Capital to accelerate GTM across all three products, complete enterprise certifications, and expand the SI partner network globally.</p>
+      <div class="ask-box">
+        <h3>Use of funds</h3>
+        <div class="cards cards--2" style="margin-top:16px;">
+          <div class="card" style="background:transparent;border:none;padding:0;">
+            <p><strong>40%</strong> — Product &amp; AI (EMIE, mapping intelligence, GovernX connectors)</p>
+            <p style="margin-top:8px;"><strong>30%</strong> — GTM (Dreamforce, SI partners, customer success)</p>
+          </div>
+          <div class="card" style="background:transparent;border:none;padding:0;">
+            <p><strong>20%</strong> — Security &amp; compliance (SOC 2, ISO 27001, GDPR)</p>
+            <p style="margin-top:8px;"><strong>10%</strong> — Team (engineering, partnerships, delivery)</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <a href="mailto:inquire@pravadhlabs.com">inquire@pravadhlabs.com</a>
+        <a href="tel:+919998525192">+91 99985 25192</a>
+        <a href="https://calendly.com/partners-pravadhlabs/30min">calendly.com/partners-pravadhlabs/30min</a>
+        <a href="https://pravadhlabs.com">pravadhlabs.com</a>
+        <a href="https://pravadhiq.pravadhlabs.com">pravadhiq.pravadhlabs.com</a>
+        <a href="https://pravadhgx.pravadhlabs.com">pravadhgx.pravadhlabs.com</a>
+        <a href="https://pravadhpm.pravadhlabs.com">pravadhpm.pravadhlabs.com</a>
+      </div>
+      <p class="sub" style="margin-top:24px;">Pravadh Labs Private Limited · Ahmedabad · Bengaluru · Jaipur · pravadhlabs.com</p>
+    </div>
+    <div class="slide__footer"><span>Confidential</span><span>Investor Deck 2026</span></div>
+  </section>
+
+</div>
+
+<div class="progress" id="progress"></div>
+<p class="nav-hint" id="navHint">← → navigate · P print/PDF</p>
+
+<script>
+(function() {
+  const LINKS = [
+    { href: 'https://pravadhlabs.com', label: 'pravadhlabs.com' },
+    { href: 'https://pravadhiq.pravadhlabs.com', label: 'pravadhiq.pravadhlabs.com' },
+    { href: 'https://pravadhgx.pravadhlabs.com', label: 'pravadhgx.pravadhlabs.com' },
+    { href: 'https://pravadhpm.pravadhlabs.com', label: 'pravadhpm.pravadhlabs.com' },
+    { href: 'https://calendly.com/partners-pravadhlabs/30min', label: 'calendly.com/partners-pravadhlabs/30min' },
+    { href: 'mailto:inquire@pravadhlabs.com', label: 'inquire@pravadhlabs.com' }
+  ];
+
+  document.querySelectorAll('.slide__footer').forEach((footer) => {
+    if (footer.querySelector('.slide__linkbar')) return;
+    const bar = document.createElement('div');
+    bar.className = 'slide__linkbar';
+    bar.setAttribute('aria-label', 'Product and contact links');
+    LINKS.forEach(({ href, label }) => {
+      const a = document.createElement('a');
+      a.href = href;
+      a.textContent = label;
+      bar.appendChild(a);
+    });
+    footer.appendChild(bar);
+  });
+
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const progress = document.getElementById('progress');
+  const hint = document.getElementById('navHint');
+  let index = 0;
+
+  function show(i) {
+    index = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach((s, n) => s.classList.toggle('active', n === index));
+    progress.style.width = ((index + 1) / slides.length * 100) + '%';
+    hint.textContent = (index + 1) + ' / ' + slides.length + ' · ← → navigate · P print/PDF';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      show(index + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      show(index - 1);
+    } else if (e.key === 'Home') {
+      show(0);
+    } else if (e.key === 'End') {
+      show(slides.length - 1);
+    } else if (e.key === 'p' || e.key === 'P') {
+      window.print();
+    }
+  });
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+  });
+
+  show(0);
+})();
+</script>
+</body>
+</html>

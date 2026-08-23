@@ -500,9 +500,227 @@ html[data-theme="light"] .site-header.is-scrolled {
 
 .pipeline-layout {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 48px;
   align-items: center;
+}
+
+/* EMIE canvas — CSS pipeline flow */
+.emie-canvas {
+  border: 1px solid var(--line-dark);
+  border-radius: 8px;
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(30, 92, 238, 0.08) 0%, transparent 55%),
+    var(--ink-soft);
+  padding: 22px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.emie-canvas__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.emie-canvas__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.emie-canvas__link {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--teal-text);
+  text-decoration: none;
+}
+
+.emie-canvas__link:hover {
+  text-decoration: underline;
+}
+
+.emie-copilot {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid rgba(253, 158, 1, 0.45);
+  border-radius: 8px;
+  background: rgba(253, 158, 1, 0.08);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.emie-copilot.is-active {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 1px rgba(253, 158, 1, 0.25);
+}
+
+.emie-copilot__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(253, 158, 1, 0.15);
+  color: var(--amber);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.emie-copilot__tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.emie-copilot__copy strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--paper);
+  margin-bottom: 4px;
+}
+
+.emie-copilot__copy p {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted-light);
+  margin: 0;
+}
+
+.emie-flow {
+  display: grid;
+  grid-template-columns: 1fr 28px 1fr 28px 1fr 28px 1fr;
+  align-items: center;
+  gap: 0;
+}
+
+.emie-flow__step {
+  border: 1px solid var(--line-dark);
+  border-radius: 8px;
+  background: var(--ink);
+  padding: 14px 10px;
+  text-align: center;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.emie-flow__step.is-active {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 1px rgba(30, 92, 238, 0.35);
+  transform: translateY(-2px);
+}
+
+.emie-flow__step--highlight.is-active {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 1px rgba(253, 158, 1, 0.35);
+}
+
+.emie-flow__num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.emie-flow__step strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--paper);
+  margin-bottom: 4px;
+}
+
+.emie-flow__meta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  color: var(--muted-light);
+  line-height: 1.35;
+}
+
+.emie-flow__connector {
+  position: relative;
+  height: 2px;
+  background: var(--line-dark);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.emie-flow__connector.is-drawn {
+  transform: scaleX(1);
+  background: linear-gradient(90deg, var(--teal), #1E5CEE);
+}
+
+.emie-flow__dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 0 3px rgba(253, 158, 1, 0.25);
+  opacity: 0;
+}
+
+.emie-flow__connector.is-drawn .emie-flow__dot {
+  animation: emieDotTravel 1.6s ease-in-out infinite;
+}
+
+@keyframes emieDotTravel {
+  0% { left: 0; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { left: calc(100% - 8px); opacity: 0; }
+}
+
+.emie-canvas__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+  border-top: 1px solid var(--line-dark);
+}
+
+.emie-canvas__dest {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted-light);
+}
+
+.emie-canvas__notify {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal-text);
+  border: 1px solid var(--line-dark);
+  padding: 5px 10px;
+  border-radius: 999px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.emie-canvas__notify.is-active {
+  border-color: var(--teal);
+  color: var(--paper);
 }
 
 .pipeline-canvas {
@@ -1045,6 +1263,38 @@ html[data-theme="light"] .df-hero__shade {
     gap: 32px;
   }
   .agent-workflow__viz { max-width: 100%; }
+
+  .emie-flow {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .emie-flow__connector {
+    width: 2px;
+    height: 20px;
+    margin: 0 auto;
+    transform: scaleY(0);
+    transform-origin: center top;
+  }
+
+  .emie-flow__connector.is-drawn {
+    transform: scaleY(1);
+  }
+
+  .emie-flow__dot {
+    left: 50%;
+    margin-left: -4px;
+    top: 0;
+    animation-name: emieDotTravelVertical;
+  }
+
+  @keyframes emieDotTravelVertical {
+    0% { top: 0; opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { top: calc(100% - 8px); opacity: 0; }
+  }
+
   .capability-grid {
     grid-template-columns: 1fr;
   }
@@ -1090,4 +1340,7 @@ html[data-theme="light"] .df-hero__shade {
   .hero-particles { display: none; }
   .pipeline-packet { display: none; }
   .pipeline-side .prompt-list li.is-active { transform: none; }
+  .emie-flow__connector { transform: scaleX(1); }
+  .emie-flow__dot { animation: none; opacity: 0; }
+  .emie-flow__step.is-active { transform: none; }
 }
