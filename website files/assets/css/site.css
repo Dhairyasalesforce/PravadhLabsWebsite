@@ -96,19 +96,16 @@ p, .hero .sub {
 }
 
 .product-overview-grid {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .module-card.pm-issues .tag { background: var(--teal); color: #FFFFFF; }
 .module-card.pm-views .tag { background: #1E5CEE; color: #FFFFFF; }
 .module-card.pm-brand .tag { background: var(--amber); color: #1A1200; }
 .module-card.pm-runtime .tag { background: var(--muted-light); color: #1A1200; }
-.module-card.brand .tag { background: var(--amber); color: #1A1200; }
-.module-card.llm .tag { background: var(--teal); color: #FFFFFF; }
-.module-card.fleet .tag { background: var(--muted-light); color: #1A1200; }
-.module-card.studio .tag { background: #1E5CEE; color: #FFFFFF; }
-.module-card.money .tag { background: var(--amber); color: #1A1200; }
-.module-card.copilot .tag { background: var(--teal); color: #FFFFFF; }
+.module-card.si-connect .tag { background: #1E5CEE; color: #FFFFFF; }
+.module-card.si-qualify .tag { background: var(--amber); color: #1A1200; }
+.module-card.si-act .tag { background: var(--teal); color: #FFFFFF; }
 
 .section-head h2 {
   letter-spacing: -0.015em;
@@ -403,13 +400,15 @@ body.nav-open {
   }
 }
 
+@media (max-width: 1200px) {
+  .product-overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   nav.primary {
     gap: 28px;
-  }
-
-  .product-overview-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 

@@ -383,6 +383,67 @@
     const section = document.querySelector('.pipeline-section');
     if (!section) return;
 
+    const connectors = section.querySelectorAll('.emie-flow__connector');
+    const nodes = section.querySelectorAll('[data-pipe-node]');
+    const prompts = section.querySelectorAll('.prompt-list li');
+
+    function showStatic() {
+      connectors.forEach((c) => c.classList.add('is-drawn'));
+      nodes.forEach((n) => n.classList.add('is-active'));
+      prompts.forEach((p) => p.classList.add('is-active'));
+    }
+
+    if (connectors.length) {
+      if (prefersReducedMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        showStatic();
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 72%',
+          toggleActions: 'play none none none'
+        }
+      });
+
+      connectors.forEach((connector, i) => {
+        tl.to(connector, {
+          onStart: () => connector.classList.add('is-drawn'),
+          duration: 0.01
+        }, i * 0.22);
+      });
+
+      const nodeOrder = ['emie', 'sources', 'extract', 'transform', 'govern', 'notify'];
+      nodeOrder.forEach((id, i) => {
+        const node = section.querySelector(`[data-pipe-node="${id}"]`);
+        if (!node) return;
+        tl.to(node, {
+          onStart: () => node.classList.add('is-active'),
+          duration: 0.01
+        }, 0.1 + i * 0.18);
+      });
+
+      prompts.forEach((prompt, i) => {
+        tl.to(prompt, {
+          onStart: () => {
+            prompts.forEach((p) => p.classList.remove('is-active'));
+            prompt.classList.add('is-active');
+          },
+          duration: 0.01
+        }, 0.35 + i * 0.55);
+      });
+
+      tl.call(() => {
+        prompts.forEach((p) => p.classList.remove('is-active'));
+        prompts[prompts.length - 1]?.classList.add('is-active');
+      });
+
+      return;
+    }
+
     const edges = [
       section.querySelector('#pipeEdge1'),
       section.querySelector('#pipeEdge2'),
@@ -396,8 +457,7 @@
       section.querySelector('#pipePacket3')
     ].filter(Boolean);
 
-    const nodes = section.querySelectorAll('.pipeline-node');
-    const prompts = section.querySelectorAll('.prompt-list li');
+    const legacyNodes = section.querySelectorAll('.pipeline-node');
 
     function prepareEdges() {
       edges.forEach((edge) => {
@@ -407,9 +467,9 @@
       });
     }
 
-    function showStatic() {
+    function showLegacyStatic() {
       edges.forEach((edge) => { edge.style.strokeDashoffset = '0'; });
-      nodes.forEach((n) => n.classList.add('is-active'));
+      legacyNodes.forEach((n) => n.classList.add('is-active'));
       prompts.forEach((p) => p.classList.add('is-active'));
       packets.forEach((p) => { p.style.opacity = '0'; });
     }
@@ -417,7 +477,7 @@
     prepareEdges();
 
     if (prefersReducedMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-      showStatic();
+      showLegacyStatic();
       return;
     }
 
@@ -484,7 +544,6 @@
       });
     }
 
-    // Keep last prompt active at end
     tl.call(() => {
       prompts.forEach((p) => p.classList.remove('is-active'));
       prompts[prompts.length - 1]?.classList.add('is-active');
@@ -494,16 +553,28 @@
   function initRailNodes() {
     const section = document.querySelector('.rail-section');
     if (!section || prefersReducedMotion || typeof gsap === 'undefined') return;
-    const groups = section.querySelectorAll('#railSvg > g');
-    if (!groups.length) return;
-    gsap.from(groups, {
+    const targets = section.querySelectorAll('.rail-map__hub, .rail-product-card');
+    if (!targets.length) {
+      const groups = section.querySelectorAll('#railSvg > g');
+      if (!groups.length) return;
+      gsap.from(groups, {
+        opacity: 0,
+        scale: 0.96,
+        transformOrigin: 'center',
+        duration: 0.55,
+        stagger: 0.12,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: section, start: 'top 70%' }
+      });
+      return;
+    }
+    gsap.from(targets, {
       opacity: 0,
-      scale: 0.96,
-      transformOrigin: 'center',
+      y: 16,
       duration: 0.55,
-      stagger: 0.12,
+      stagger: 0.08,
       ease: 'power2.out',
-      scrollTrigger: { trigger: section, start: 'top 70%' }
+      scrollTrigger: { trigger: section, start: 'top 72%' }
     });
   }
 
@@ -584,7 +655,23 @@
     const section = document.querySelector('.rail-section');
     if (!section) return;
 
+    const railMap = section.querySelector('.rail-map');
     const paths = section.querySelectorAll('.rail-draw');
+
+    if (railMap) {
+      if (prefersReducedMotion) {
+        railMap.classList.add('is-drawn');
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          railMap.classList.toggle('is-drawn', entry.isIntersecting);
+        });
+      }, { threshold: 0.35 });
+      observer.observe(section);
+      return;
+    }
+
     if (!paths.length) return;
 
     paths.forEach((path) => {
