@@ -5,18 +5,18 @@
 (function() {
   try {
     var saved = localStorage.getItem('pravadh-theme');
-    var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    var theme = saved || 'light';
     document.documentElement.setAttribute('data-theme', theme);
   } catch (e) {
-    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.setAttribute('data-theme', 'light');
   }
 })();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Products — Pravadh Labs</title>
-<meta name="description" content="PravadhIQ, GovernX, Pravadh PM, and Pravadh SI — Salesforce control plane, data governance, white-label delivery, and AI sales intelligence on one rail.">
-<link rel="canonical" href="https://pravadhlabs.com/products.html">
+<title>Products — PravadhIQ, GovernX, PM, SI, DocSign, Caliber</title>
+<meta name="description" content="Six products on the systems you already run: PravadhIQ, GovernX, Pravadh PM, Pravadh SI, Pravadh DocSign and Caliber. Features, modules and links.">
+<link rel="canonical" href="https://pravadhlabs.com/products">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
@@ -29,55 +29,59 @@
 <meta name="theme-color" content="#14171F">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Products — Pravadh Labs">
-<meta property="og:description" content="PravadhIQ, GovernX, Pravadh PM, and Pravadh SI — four products on one control plane.">
-<meta property="og:url" content="https://pravadhlabs.com/products.html">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="PravadhIQ Foundation first. GovernX to connect and clean data. Pravadh PM for branded delivery. Pravadh SI to command the next send. Pravadh DocSign to generate and eSign inside Salesforce — free.">
+<meta property="og:url" content="https://pravadhlabs.com/products">
+<meta property="og:image" content="https://pravadhlabs.com/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Products — Pravadh Labs">
-<meta name="twitter:description" content="PravadhIQ, GovernX, Pravadh PM, and Pravadh SI — four products on one control plane.">
+<meta name="twitter:description" content="PravadhIQ, GovernX, Pravadh PM, Pravadh SI, Pravadh DocSign, and Caliber — six products. DocSign is free document generation and eSignature inside Salesforce.">
+<meta name="twitter:image" content="https://pravadhlabs.com/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/effects.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================
    Pravadh Labs — Design Tokens
    ============================================ */
 :root {
-  --ink: #0B142A;
-  --ink-soft: #141F3D;
-  --paper: #EDEEF0;
+  --ink: #071430;
+  --ink-soft: #0d1f45;
+  --paper: #EAF3FF;
   --paper-raised: #F7F7F8;
   --line: #D4D4D0;
   --line-dark: #232F52;
   --muted: #868A95;
   --muted-light: #A9AFC0;
-  --teal: #1E5CEE;
-  --teal-text: #1E5CEE;
-  --teal-soft: rgba(30, 92, 238, 0.14);
+  --teal: #2563eb;
+  --teal-text: #2563eb;
+  --teal-soft: rgba(37, 99, 235, 0.14);
   --amber: #FD9E01;
   --amber-soft: rgba(253, 158, 1, 0.14);
-  --on-accent: #1A1200;
+  --on-accent: #ffffff;
   --header-bg: rgba(11, 20, 42, 0.88);
 
-  --font-display: Georgia, 'Times New Roman', serif;
-  --font-body: 'IBM Plex Sans', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-display: "Poppins", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", "Poppins", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --max-width: 1180px;
-  --edge: clamp(24px, 5vw, 72px);
+  --max-width: 1440px;
+  --edge: clamp(16px, 2.4vw, 40px);
 
   color-scheme: dark;
 }
 
 html[data-theme="light"] {
-  --ink: #FEFEFE;
-  --ink-soft: #F0F1F5;
-  --paper: #0E162C;
-  --line-dark: #E4E6ED;
-  --muted: #6E7178;
-  --muted-light: #4A4E56;
-  --teal-text: #1544B8;
-  --header-bg: rgba(254, 254, 254, 0.88);
+  --ink: #ffffff;
+  --ink-soft: #f3f4f6;
+  --paper: #0b1b3a;
+  --line-dark: #e5e7eb;
+  --muted: #5b6475;
+  --muted-light: #334155;
+  --teal-text: #1d4ed8;
+  --header-bg: rgba(255, 255, 255, 0.96);
   color-scheme: light;
 }
 
@@ -110,7 +114,7 @@ a { color: inherit; text-decoration: none; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 700;
   margin: 0;
   letter-spacing: -0.01em;
 }
@@ -324,7 +328,7 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
    Hero
    ============================================ */
 .hero {
-  padding: 108px 0 88px;
+  padding: 56px 0 40px;
   border-bottom: 1px solid var(--line-dark);
   position: relative;
   overflow: hidden;
@@ -414,7 +418,7 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
    Rail diagram (signature element)
    ============================================ */
 .rail-section {
-  padding: 88px 0;
+  padding: 52px 0;
   border-bottom: 1px solid var(--line-dark);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -436,12 +440,12 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 /* ============================================
    Sections
    ============================================ */
-section { padding: 88px 0; }
+section { padding: 52px 0; }
 .section-border { border-bottom: 1px solid var(--line-dark); }
 
 .section-head {
-  max-width: 640px;
-  margin-bottom: 56px;
+  max-width: none;
+  margin-bottom: 28px;
 }
 
 .section-head h2 {
@@ -562,15 +566,15 @@ section { padding: 88px 0; }
 /* Product overview cards (Products page top-level listing) */
 .product-overview-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
 .product-overview-card {
   display: block;
   border: 1px solid var(--line-dark);
   border-radius: 6px;
-  padding: 36px;
+  padding: 24px 22px;
   background: var(--ink-soft);
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
@@ -613,7 +617,7 @@ section { padding: 88px 0; }
 .module-card {
   border: 1px solid var(--line-dark);
   border-radius: 4px;
-  padding: 32px;
+  padding: 24px 22px;
   background: var(--ink-soft);
   position: relative;
   transition: border-color 0.2s ease, transform 0.2s ease;
@@ -716,8 +720,8 @@ footer .copyright {
    ============================================ */
 .about-block {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 64px;
+  grid-template-columns: minmax(140px, 0.7fr) 1.6fr;
+  gap: 40px;
   align-items: start;
 }
 
@@ -732,8 +736,8 @@ footer .copyright {
   font-size: 17px;
   color: var(--muted-light);
   margin-bottom: 20px;
-  max-width: 62ch;
-  line-height: 1.7;
+  max-width: none;
+  line-height: 1.65;
 }
 
 .about-copy p strong {
@@ -773,8 +777,8 @@ footer .copyright {
    ============================================ */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 40px;
 }
 
 .contact-info h3 {
@@ -877,7 +881,7 @@ form.contact-form {
 .sponsor-banner-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  max-width: 640px;
+  max-width: none;
 }
 
 .sponsor-banner {
@@ -937,8 +941,8 @@ form.contact-form {
   .product-overview-grid { grid-template-columns: 1fr; }
   .persona-strip { gap: 10px; }
   .hero { padding: 64px 0 56px; }
-  section { padding: 56px 0; }
-  .rail-section { padding: 64px 0; }
+  section { padding: 40px 0; }
+  .rail-section { padding: 40px 0; }
 }
 
 /* Small phones: tighten spacing further, keep touch targets comfortable */
@@ -951,8 +955,8 @@ form.contact-form {
   .hero .sub { font-size: 16px; }
   .hero .actions { flex-direction: column; align-items: stretch; }
   .hero .actions .btn { justify-content: center; width: 100%; }
-  section { padding: 48px 0; }
-  .rail-section { padding: 48px 0; }
+  section { padding: 36px 0; }
+  .rail-section { padding: 36px 0; }
   .section-head { margin-bottom: 36px; }
   .principle { padding: 28px 24px; }
   .module-card { padding: 24px; }
@@ -1015,7 +1019,27 @@ form.contact-form {
 }
 
 </style>
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/site.css?v=58">
+<link rel="stylesheet" href="assets/css/effects.css?v=17">
+<style id="light-contrast">
+html[data-theme="light"] { --ink:#ffffff; --ink-soft:#f3f4f6; --paper:#0b1b3a; --line:#e5e7eb; --line-dark:#e5e7eb; --muted:#5b6475; --muted-light:#334155; --header-bg:rgba(255,255,255,.96); }
+html[data-theme="light"] body { background:#ffffff; color:#0b1b3a; }
+html[data-theme="light"] .aurora-bg { display:none !important; }
+html[data-theme="light"] .hero__orb { display:none !important; }
+html[data-theme="light"] .hero { background:none; }
+html[data-theme="light"] .hero h1 em, html[data-theme="light"] .hero-rotate__word { background:none !important; -webkit-text-fill-color:#1d4ed8 !important; color:#1d4ed8 !important; }
+html[data-theme="light"] .df-hero { min-height:0; align-items:flex-start; background:#ffffff; border-bottom:1px solid #e5e7eb; }
+html[data-theme="light"] .df-hero__media, html[data-theme="light"] .df-hero__shade { display:none !important; }
+html[data-theme="light"] .df-hero__content { padding:56px 0 40px; }
+html[data-theme="light"] .df-hero h1 { color:#0b1b3a !important; -webkit-text-fill-color:#0b1b3a !important; background:none !important; }
+html[data-theme="light"] .df-hero h1 em, html[data-theme="light"] .df-hero .brand-tagline--hero { color:#1d4ed8 !important; -webkit-text-fill-color:#1d4ed8 !important; background:none !important; }
+html[data-theme="light"] .df-hero .sub { color:#334155 !important; -webkit-text-fill-color:#334155 !important; background:none !important; }
+html[data-theme="light"] .df-hero .btn-secondary { color:#0b1b3a !important; background:#fff !important; border-color:#d1d5db !important; }
+html[data-theme="light"] .df-pill { color:#0b1b3a !important; background:#fff !important; border-color:#e5e7eb !important; }
+html[data-theme="light"] .ev-home__copy h2, html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { background:none !important; -webkit-text-fill-color:#0b1b3a !important; color:#0b1b3a !important; }
+html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { color:#1d4ed8 !important; -webkit-text-fill-color:#1d4ed8 !important; }
+</style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1026,7 +1050,7 @@ form.contact-form {
       "url": "https://pravadhiq.pravadhlabs.com",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "description": "Deployment, migration, and governance for Salesforce, unified into a single control plane.",
+      "description": "Foundation first — one record per customer across the systems you already run. Deploy code. Ready the data. Govern everything.",
       "brand": { "@type": "Organization", "name": "Pravadh Labs" }
     },
     {
@@ -1035,7 +1059,7 @@ form.contact-form {
       "url": "https://pravadhgx.pravadhlabs.com",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "description": "A data governance platform connecting CRM, ERP, and finance platforms, with real-time alerts and AES-256 security.",
+      "description": "Connect. Clean. Govern. One canvas across CRM, ERP, and finance — you approve the fix.",
       "brand": { "@type": "Organization", "name": "Pravadh Labs" }
     },
     {
@@ -1044,7 +1068,7 @@ form.contact-form {
       "url": "https://pravadhpm.pravadhlabs.com",
       "applicationCategory": "ProjectManagementApplication",
       "operatingSystem": "Web",
-      "description": "White-label project management: Jira-grade issues, ClickUp-grade views, your brand or your servers — without handing over source.",
+      "description": "White-label project management: delivery-grade issues, board-and-timeline views, your brand or your servers — without handing over source.",
       "brand": { "@type": "Organization", "name": "Pravadh Labs" }
     },
     {
@@ -1053,7 +1077,30 @@ form.contact-form {
       "url": "https://pravadhsi.pravadhlabs.com",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "description": "AI sales intelligence — connect your CRM, qualify leads with explainable ICP scores, and act with recommendations that write back to Salesforce, HubSpot, or Zoho.",
+      "description": "Command the next send. Find the buyer, rank the moment, draft the touch — nothing reaches a person until you approve.",
+      "brand": { "@type": "Organization", "name": "Pravadh Labs" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Pravadh DocSign",
+      "url": "https://pravadhdocsign.pravadhlabs.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Salesforce",
+      "description": "Free, open-source (Apache 2.0) document generation and eSignature inside Salesforce. Generate, sign, and store on any record — unlimited users, documents, recipients, and signatures. No paid tier.",
+      "isAccessibleForFree": true,
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "downloadUrl": "https://github.com/Dhairyasalesforce/Pravadh-DocSign",
+      "sameAs": ["https://github.com/Dhairyasalesforce/Pravadh-DocSign"],
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "brand": { "@type": "Organization", "name": "Pravadh Labs" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Caliber",
+      "url": "https://caliberai.pravadhlabs.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "AI first-round interviewer. Live voice interviews on camera, rubric scoring, integrity flags, and sealed reports stored in your own cloud or server.",
       "brand": { "@type": "Organization", "name": "Pravadh Labs" }
     }
   ]
@@ -1065,30 +1112,34 @@ form.contact-form {
 
 <header class="site-header">
   <div class="wrap">
-    <a href="index.html" class="logo">
-      <svg viewBox="0 0 210 52" width="132" height="33" class="header-logo header-logo-dark" aria-label="Pravadh Labs">
-        <rect x="2" y="6" width="42" height="42" rx="11" fill="#1E5CEE"/>
+    <div class="brand-lockup"><a href="index.html" class="logo">
+      <svg viewBox="0 0 224 52" width="140" height="33" class="header-logo header-logo-dark" aria-label="Pravadh Labs">
+        <rect x="2" y="6" width="42" height="42" rx="11" fill="#2563eb"/>
         <text x="23" y="37" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="27" fill="#FFFFFF">P</text>
         <rect x="30" y="0" width="34" height="15" rx="7.5" fill="#FD9E01"/>
         <text x="47" y="10.5" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="7.5" letter-spacing="0.5" fill="#1A1200">LABS</text>
-        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#FFFFFF">Pravadh</text>
+        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#FFFFFF">Pravadh<tspan font-size="10" dy="-11">®</tspan></text>
       </svg>
-      <svg viewBox="0 0 210 52" width="132" height="33" class="header-logo header-logo-light" aria-label="Pravadh Labs">
-        <rect x="2" y="6" width="42" height="42" rx="11" fill="#1E5CEE"/>
+      <svg viewBox="0 0 224 52" width="140" height="33" class="header-logo header-logo-light" aria-label="Pravadh Labs">
+        <rect x="2" y="6" width="42" height="42" rx="11" fill="#2563eb"/>
         <text x="23" y="37" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="27" fill="#FFFFFF">P</text>
         <rect x="30" y="0" width="34" height="15" rx="7.5" fill="#FD9E01"/>
         <text x="47" y="10.5" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="7.5" letter-spacing="0.5" fill="#1A1200">LABS</text>
-        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#0E162C">Pravadh</text>
+        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#0E162C">Pravadh<tspan font-size="10" dy="-11">®</tspan></text>
       </svg>
     </a>
+    <p class="brand-tagline">You decide. We do the rest.</p>
+    </div>
     <nav class="primary" id="primaryNav">
       <a href="index.html">Home</a>
       <a href="products.html" class="active">Products</a>
       <a href="compare.html">Compare</a>
       <a href="security.html">Security</a>
       <a href="about.html">About</a>
-      <a href="dreamforce.html">Dreamforce</a>
+      <a href="partners.html">Partners</a>
+      <a href="events.html">Events</a>
       <a href="blogs_page.html">Insights</a>
+      <a href="eap.html">Early Access</a>
       <a href="contact.html" class="nav-contact">Contact</a>
     </nav>
     <button class="theme-toggle" id="themeToggle" role="switch" aria-checked="false" aria-label="Toggle theme">
@@ -1104,64 +1155,100 @@ form.contact-form {
 <main id="main-content">
   <section class="hero" style="padding-bottom: 48px;">
     <div class="wrap">
-      <span class="eyebrow">Products</span>
-      <h1>Four products. One rail.</h1>
-      <p class="sub">Every product we build plugs into the same control plane. Here's what's live today.</p>
+      <p class="brand-tagline brand-tagline--hero">You decide. We do the rest.</p>
+      <h1>Six products. One rail.</h1>
+      <p class="sub">Foundation first. Data you can trust. Delivery you can brand. A next send you approve. Documents signed inside Salesforce — free.</p>
     </div>
   </section>
 
   <section class="section-border">
     <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Start here</span>
+        <h2>Pick one product. Then read only that.</h2>
+      </div>
       <div class="product-overview-grid reveal-stagger">
         <a href="#pravadhiq" class="product-overview-card">
           <svg class="product-overview-icon" viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
-            <rect x="4" y="4" width="56" height="56" rx="15" fill="#1E5CEE"/>
+            <rect x="4" y="4" width="56" height="56" rx="15" fill="#2563eb"/>
             <text x="26" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" fill="#FFFFFF">P</text>
             <rect x="40" y="0" width="24" height="20" rx="8" fill="#FD9E01"/>
             <text x="52" y="14" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="10" fill="#1A1200">IQ</text>
           </svg>
           <h3>PravadhIQ</h3>
-          <p>Deployment, migration, and governance for Salesforce — unified into a single control plane.</p>
+          <p>Foundation first. One record per customer across the systems you already run — then deploy, ready the data, and govern everything.</p>
+          <span class="wl-badge">White-label ready</span>
           <span class="product-overview-link">Explore PravadhIQ
             <svg viewBox="0 0 15 15" width="13" height="13" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
         <a href="#governx" class="product-overview-card">
           <svg class="product-overview-icon" viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
-            <rect x="4" y="4" width="56" height="56" rx="15" fill="#1E5CEE"/>
+            <rect x="4" y="4" width="56" height="56" rx="15" fill="#2563eb"/>
             <text x="26" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" fill="#FFFFFF">P</text>
             <rect x="40" y="0" width="24" height="20" rx="8" fill="#FD9E01"/>
             <text x="52" y="14" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="10" fill="#1A1200">GX</text>
           </svg>
           <h3>Pravadh GovernX</h3>
-          <p>Extract, clean, and govern data across your CRM, ERP, and finance platforms.</p>
+          <p>Connect. Clean. Govern. One canvas across CRM, ERP, and finance — EMIE reads it, you approve the fix.</p>
+          <span class="wl-badge">White-label ready</span>
           <span class="product-overview-link">Explore GovernX
             <svg viewBox="0 0 15 15" width="13" height="13" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
         <a href="#pravadhpm" class="product-overview-card">
           <svg class="product-overview-icon" viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
-            <rect x="4" y="4" width="56" height="56" rx="15" fill="#1E5CEE"/>
+            <rect x="4" y="4" width="56" height="56" rx="15" fill="#2563eb"/>
             <text x="26" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" fill="#FFFFFF">P</text>
             <rect x="40" y="0" width="24" height="20" rx="8" fill="#FD9E01"/>
             <text x="52" y="14" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="9" fill="#1A1200">PM</text>
           </svg>
           <h3>Pravadh PM</h3>
-          <p>White-label project management — Jira-grade issues, ClickUp-grade views, your brand or your servers.</p>
+          <p>Delivery-grade issue tracking — board-and-timeline views, your brand, your domain, or your servers.</p>
+          <span class="wl-badge">White-label ready</span>
           <span class="product-overview-link">Explore Pravadh PM
             <svg viewBox="0 0 15 15" width="13" height="13" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
         <a href="#pravadhsi" class="product-overview-card">
           <svg class="product-overview-icon" viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
-            <rect x="4" y="4" width="56" height="56" rx="15" fill="#1E5CEE"/>
+            <rect x="4" y="4" width="56" height="56" rx="15" fill="#2563eb"/>
             <text x="26" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" fill="#FFFFFF">P</text>
             <rect x="40" y="0" width="24" height="20" rx="8" fill="#FD9E01"/>
             <text x="52" y="14" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="9" fill="#1A1200">SI</text>
           </svg>
           <h3>Pravadh SI</h3>
-          <p>AI sales intelligence — your CRM has the data. Pravadh tells you who to pursue, why, and what to do next.</p>
+          <p>Command the next send. Find the buyer, rank the moment, draft the touch — nothing reaches a person until you approve.</p>
+          <span class="wl-badge">White-label ready</span>
           <span class="product-overview-link">Explore Pravadh SI
+            <svg viewBox="0 0 15 15" width="13" height="13" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a href="#pravadhdocsign" class="product-overview-card">
+          <svg class="product-overview-icon" viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
+            <rect x="4" y="4" width="56" height="56" rx="15" fill="#2563eb"/>
+            <text x="26" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" fill="#FFFFFF">P</text>
+            <rect x="40" y="0" width="24" height="20" rx="8" fill="#0891b2"/>
+            <text x="52" y="14" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="9" fill="#FFFFFF">DS</text>
+          </svg>
+          <h3>Pravadh DocSign</h3>
+          <p>Document generation and eSignature inside Salesforce. Any object, any document — generate, sign, and store on the record. Free. No licence to sign.</p>
+          <span class="wl-badge">Free &amp; open source</span>
+          <span class="product-overview-link">Explore Pravadh DocSign
+            <svg viewBox="0 0 15 15" width="13" height="13" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+        <a href="#caliber" class="product-overview-card">
+          <svg class="product-overview-icon" viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
+            <rect x="4" y="4" width="56" height="56" rx="15" fill="#2563eb"/>
+            <text x="26" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" fill="#FFFFFF">P</text>
+            <rect x="40" y="0" width="24" height="20" rx="8" fill="#7c3aed"/>
+            <text x="52" y="14" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="9" fill="#FFFFFF">CB</text>
+          </svg>
+          <h3>Caliber</h3>
+          <p>The first-round interviewer that actually listens. Live AI voice interviews, rubric scoring, integrity flags, and sealed reports.</p>
+          <span class="wl-badge">AI interviewer</span>
+          <span class="product-overview-link">Explore Caliber
             <svg viewBox="0 0 15 15" width="13" height="13" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -1169,15 +1256,88 @@ form.contact-form {
     </div>
   </section>
 
+  <section class="section-border" id="teasers">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Teasers</span>
+        <h2>Watch the product in a few minutes.</h2>
+      </div>
+      <div class="teaser-grid">
+        <div class="teaser-card">
+          <button class="teaser" type="button" data-youtube="nRhKza7emIo" aria-label="Play the PravadhIQ teaser">
+            <img src="https://i.ytimg.com/vi/nRhKza7emIo/hqdefault.jpg" alt="" width="480" height="360">
+          </button>
+          <p class="teaser__name">PravadhIQ</p>
+        </div>
+        <div class="teaser-card">
+          <button class="teaser" type="button" data-youtube="Eh9e3w3HFAQ" aria-label="Play the Pravadh PM teaser">
+            <img src="https://i.ytimg.com/vi/Eh9e3w3HFAQ/hqdefault.jpg" alt="" width="480" height="360">
+          </button>
+          <p class="teaser__name">Pravadh PM</p>
+        </div>
+        <div class="teaser-card">
+          <button class="teaser" type="button" data-youtube="faeIumnydo8" aria-label="Play the Pravadh SI teaser">
+            <img src="https://i.ytimg.com/vi/faeIumnydo8/hqdefault.jpg" alt="" width="480" height="360">
+          </button>
+          <p class="teaser__name">Pravadh SI</p>
+        </div>
+        <div class="teaser-card">
+          <button class="teaser" type="button" data-youtube="dTtUZdvBDKw" aria-label="Play the Pravadh DocSign teaser">
+            <img src="https://i.ytimg.com/vi/dTtUZdvBDKw/hqdefault.jpg" alt="" width="480" height="360">
+          </button>
+          <p class="teaser__name">Pravadh DocSign</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border" id="platform-journey">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">One rail. One trail.</span>
+        <h2>Entry, expand, monetize — Pravadh PM runs underneath.</h2>
+      </div>
+      <div class="journey-strip reveal-stagger">
+        <a href="#pravadhiq" class="journey-card journey-card--entry">
+          <span class="journey-card__tag">Entry</span>
+          <strong class="journey-card__name">PravadhIQ</strong>
+          <span class="journey-card__desc">Foundation first — one record per customer, then deploy, ready, and govern.</span>
+        </a>
+        <span class="journey-arrow" aria-hidden="true">&rarr;</span>
+        <a href="#governx" class="journey-card journey-card--expand">
+          <span class="journey-card__tag">Expand</span>
+          <strong class="journey-card__name">GovernX</strong>
+          <span class="journey-card__desc">Connect. Clean. Govern. — across CRM, ERP, and finance.</span>
+        </a>
+        <span class="journey-arrow" aria-hidden="true">&rarr;</span>
+        <a href="#pravadhsi" class="journey-card journey-card--monetize">
+          <span class="journey-card__tag">Monetize</span>
+          <strong class="journey-card__name">Pravadh SI</strong>
+          <span class="journey-card__desc">Find the buyer, rank the moment, draft the touch — nothing sends until you approve.</span>
+        </a>
+      </div>
+      <a href="#pravadhpm" class="journey-underneath">
+        <span class="journey-underneath__tag">Runs underneath</span>
+        <strong class="journey-underneath__name">Pravadh PM</strong>
+        <span class="journey-underneath__desc">The operating system for delivery — your brand, your domain, or your servers.</span>
+      </a>
+      <a href="#pravadhdocsign" class="journey-underneath journey-underneath--docsign">
+        <span class="journey-underneath__tag">Lives in Salesforce</span>
+        <strong class="journey-underneath__name">Pravadh DocSign</strong>
+        <span class="journey-underneath__desc">Generate, sign, and store on any record — free managed package, no licence to sign.</span>
+      </a>
+    </div>
+  </section>
+
   <section class="section-border" id="pravadhiq">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Product 001</span>
+        <span class="eyebrow">Entry</span>
         <h2>PravadhIQ</h2>
       </div>
       <div class="about-copy" style="max-width: 800px; margin-bottom: 32px;">
-        <p>Deployment, migration, and governance for Salesforce — unified into a single control plane, so nothing gets released, moved, or changed without a record of it.</p>
-        <p class="who-replaces">Who this replaces: stitching <strong>Copado / Gearset / AutoRABIT</strong> for deploy with <strong>Data Loader / dataloader.io / Informatica</strong> for data — see the <a href="compare.html#pravadhiq">full comparison</a>.</p>
+        <p>Deploy code. Ready the data. Govern everything. PravadhIQ starts from an industry cloud, brings records from the systems that hold them, and places each fact where that industry says it belongs — one record per customer, with a person on every write.</p>
+        <p class="who-replaces">Foundation first. Salesforce is one destination, not the product. <a href="compare.html#pravadhiq">See how the rail is put together</a>.</p>
       </div>
       <a href="https://pravadhiq.pravadhlabs.com" class="btn btn-primary">
         Visit pravadhiq.pravadhlabs.com
@@ -1190,11 +1350,11 @@ form.contact-form {
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">The problem</span>
-        <h2>Deployment success and release success aren't the same thing.</h2>
+        <h2>A clean deploy is not a ready customer.</h2>
       </div>
       <div class="about-copy" style="max-width: 800px;">
-        <p>A deployment can complete cleanly and still break something downstream. Most Salesforce teams run deployment, data migration, and governance as three separate disciplines — three tools, three owners, three places where something can fall through.</p>
-        <p><strong>PravadhIQ treats them as one problem.</strong> One platform, one audit trail, one place to see what changed, what moved, and who approved it.</p>
+        <p>Most teams still run releases, data movement, and the audit as three jobs — three owners, three logins, and no single record of the customer. A package can succeed and still leave the same person split across CRM, billing, orders, and a ticket queue.</p>
+        <p><strong>PravadhIQ treats Foundation as the control room.</strong> An industry cloud decides what each system may hold. Any listed source to any listed destination. People approve writes. Releases and the records behind them share the same evidence.</p>
       </div>
     </div>
   </section>
@@ -1203,40 +1363,40 @@ form.contact-form {
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Modules</span>
-        <h2>Three modules. One control plane.</h2>
+        <h2>Foundation first. Then ship and govern.</h2>
       </div>
       <div class="modules reveal-stagger">
-        <div class="module-card ship">
-          <span class="tag">SHIP</span>
-          <h3>Code deployment</h3>
-          <p>Move metadata and code between Salesforce environments with a clear, repeatable pipeline instead of a manual checklist.</p>
+        <div class="module-card move">
+          <span class="tag">FOUNDATION</span>
+          <h3>One record per customer</h3>
+          <p>Start from an industry cloud, then the systems you bring data from and the systems where it should be ready. Salesforce is one destination — alongside the rest of the stack you already run.</p>
           <ul>
-            <li>Environment-to-environment promotion</li>
-            <li>Pre-deployment validation</li>
-            <li>Dependency-aware package selection</li>
-            <li>Rollback on failure</li>
+            <li>Industry cloud decides what each system may hold</li>
+            <li>Any listed source to any listed destination</li>
+            <li>A person approves before anything is written</li>
+            <li>Borderline matches never merge without a person</li>
           </ul>
         </div>
-        <div class="module-card move">
-          <span class="tag">MOVE</span>
-          <h3>Data migration</h3>
-          <p>Bring data into Salesforce from the systems it actually lives in today. Salesforce is the destination — every source connects to it.</p>
+        <div class="module-card ship">
+          <span class="tag">SHIP</span>
+          <h3>Governed releases</h3>
+          <p>Pipelines into the org you already run. Every change sits on a branch, gets reviewed, and is risk-scored before it lands.</p>
           <ul>
-            <li>Zoho, HubSpot, Snowflake, Unleashed</li>
-            <li>Excel, CSV, JSON, XML</li>
-            <li>Field mapping and transform before load</li>
-            <li>15+ source integrations and growing</li>
+            <li>Risk analysis on every diff</li>
+            <li>Generated rollback plans</li>
+            <li>Approvals and an audit trail</li>
+            <li>Environment-to-environment promotion</li>
           </ul>
         </div>
         <div class="module-card govern">
           <span class="tag">GOVERN</span>
-          <h3>Governance</h3>
-          <p>Every deployment and every migration leaves a record — who did it, when, and what it touched.</p>
+          <h3>Prove every action</h3>
+          <p>A chain of custody from source commit to destination record — who did it, what it touched, and why the risk was scored that way.</p>
           <ul>
-            <li>Full audit trail</li>
-            <li>Approval workflows</li>
-            <li>Change accountability, by default</li>
-            <li>Release + migration in one timeline</li>
+            <li>Shared audit chain for code and data</li>
+            <li>Disagreements between systems are shown, not hidden</li>
+            <li>Every value traceable to its source system</li>
+            <li>Release + readiness on one timeline</li>
           </ul>
         </div>
       </div>
@@ -1247,10 +1407,10 @@ form.contact-form {
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Who it's for</span>
-        <h2>Built for the Salesforce ecosystem.</h2>
+        <h2>Built for teams whose customer lives in more than one system.</h2>
       </div>
       <div class="about-copy" style="max-width: 800px; margin-bottom: 40px;">
-        <p>PravadhIQ is built for Salesforce consultancies, in-house architects, and RevOps teams who are done stitching together separate DevOps and ETL tools to do work that should live in one system.</p>
+        <p>PravadhIQ is built for consultancies, in-house architects, and RevOps teams who need one record per customer before they ship another release — and who are done running Foundation, pipelines, and the audit as three separate jobs.</p>
       </div>
       <a href="https://pravadhiq.pravadhlabs.com" class="btn btn-primary">
         Explore PravadhIQ
@@ -1262,7 +1422,7 @@ form.contact-form {
   <section class="section-border">
     <div class="wrap">
       <div class="persona-strip">
-        <a href="compare.html#pravadhiq" class="persona" style="text-decoration:none;">See how PravadhIQ compares →</a>
+        <a href="compare.html#pravadhiq" class="persona" style="text-decoration:none;">See how the rail is put together →</a>
         <a href="security.html#pravadhiq" class="persona" style="text-decoration:none;">PravadhIQ security &amp; compliance →</a>
       </div>
     </div>
@@ -1271,12 +1431,12 @@ form.contact-form {
   <section class="section-border" id="governx" style="padding-top:96px;">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Product 002</span>
+        <span class="eyebrow">Expand</span>
         <h2>Pravadh GovernX</h2>
       </div>
       <div class="about-copy" style="max-width: 800px; margin-bottom: 32px;">
-        <p>A data governance platform. Pravadh GovernX connects your CRM, ERP, and finance platforms, cleans the data, and enforces governance across every product — with real-time alerts, a visual pipeline canvas, and AES-256 security.</p>
-        <p class="who-replaces">Who this replaces: manual spreadsheet audits, custom policy scripts, and digging through logs — with <strong>EMIE Co-pilot</strong> on the canvas. See the <a href="compare.html#governx">full comparison</a>.</p>
+        <p>Connect. Clean. Govern. Pravadh GovernX pulls CRM, ERP, and finance onto one canvas, enforces policy across those systems, and alerts the moment something drifts — with EMIE on the model you connect.</p>
+        <p class="who-replaces">Ask the canvas in plain language. You approve the fix. <a href="compare.html#governx">See how the rail is put together</a>.</p>
       </div>
       <a href="https://pravadhgx.pravadhlabs.com" class="btn btn-primary">
         Visit pravadhgx.pravadhlabs.com
@@ -1297,7 +1457,7 @@ form.contact-form {
           <h3>Extract</h3>
           <p>Pull data from every connected platform into one governed pipeline on the canvas — on schedule or on demand.</p>
           <ul>
-            <li>Salesforce, Zoho, Oracle Fusion, NetSuite, EBS</li>
+            <li>CRM, ERP, and finance systems</li>
             <li>Scheduled or on-demand extraction</li>
             <li>Change-only sync to avoid re-pulling unchanged records</li>
             <li>Visual pipeline nodes you can inspect and replay</li>
@@ -1328,8 +1488,9 @@ form.contact-form {
         <div class="module-card govx-copilot">
           <span class="tag">EMIE</span>
           <h3>EMIE Co-pilot</h3>
-          <p>Your governance assistant on the pipeline canvas — query, explain, and act on your data ecosystem in plain language.</p>
+          <p>Your governance assistant on the pipeline canvas. <span class="term-wrap"><button type="button" class="term" aria-expanded="false" aria-controls="tip-emie-products">EMIE</button><span id="tip-emie-products" class="term-tip" role="tooltip">EMIE: our AI co-pilot that reads live pipeline data and suggests corrective actions for your approval.</span></span> runs on the model you connect — reading live canvas nodes, not a separate chat silo.</p>
           <ul>
+            <li>Bring your own LLM — your key, your contract</li>
             <li>Plain-language queries across connected data</li>
             <li>Explains why a policy triggered</li>
             <li>Suggests corrective action, you approve it</li>
@@ -1347,12 +1508,12 @@ form.contact-form {
         <h2>One governance layer across your ecosystem.</h2>
       </div>
       <div class="persona-strip">
-        <div class="persona">Salesforce</div>
-        <div class="persona">Zoho CRM</div>
-        <div class="persona">Zoho Books</div>
-        <div class="persona">Oracle Fusion</div>
-        <div class="persona">Oracle NetSuite</div>
-        <div class="persona">Oracle EBS</div>
+        <div class="persona">CRM</div>
+        <div class="persona">ERP</div>
+        <div class="persona">Finance</div>
+        <div class="persona">Spreadsheets</div>
+        <div class="persona">Warehouses</div>
+        <div class="persona">Project tools</div>
       </div>
     </div>
   </section>
@@ -1376,7 +1537,7 @@ form.contact-form {
   <section class="section-border">
     <div class="wrap">
       <div class="persona-strip">
-        <a href="compare.html#governx" class="persona" style="text-decoration:none;">See how GovernX compares →</a>
+        <a href="compare.html#governx" class="persona" style="text-decoration:none;">See how the rail is put together →</a>
         <a href="security.html#governx" class="persona" style="text-decoration:none;">GovernX security &amp; compliance →</a>
       </div>
     </div>
@@ -1385,12 +1546,12 @@ form.contact-form {
   <section class="section-border" id="pravadhpm" style="padding-top:96px;">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Product 003</span>
+        <span class="eyebrow">Runs underneath</span>
         <h2>Pravadh PM</h2>
       </div>
       <div class="about-copy" style="max-width: 800px; margin-bottom: 32px;">
-        <p>White-label project management from Pravadh Labs. Jira-grade issue keys and workflow. ClickUp-grade views. Your brand, your domain, or your servers — without handing over source.</p>
-        <p class="who-replaces">Who this replaces: stitching <strong>Jira</strong> you cannot white-label with <strong>ClickUp / Asana</strong> that will not run on your metal — see the <a href="compare.html#pravadhpm">full comparison</a>.</p>
+        <p>White-label project management from Pravadh Labs. Delivery-grade issue keys and workflow. Board-and-timeline views. Your brand, your domain, or your servers — without handing over source.</p>
+        <p class="who-replaces">Your name on the workspace. Your network if security asks. Source stays with us. <a href="compare.html#pravadhpm">See how the rail is put together</a>.</p>
       </div>
       <a href="https://pravadhpm.pravadhlabs.com" class="btn btn-primary">
         Visit pravadhpm.pravadhlabs.com
@@ -1406,7 +1567,7 @@ form.contact-form {
         <h2>Delivery tools are either someone else's brand, or someone else's cloud.</h2>
       </div>
       <div class="about-copy" style="max-width: 800px;">
-        <p>You should not have to choose between a serious issue tracker and a product that can wear your name — or live on your servers. Classic trackers still look like the vendor. All-in-one views work until security asks for on-prem, and you are back to a spreadsheet.</p>
+        <p>You should not have to choose between a serious issue tracker and a product that can wear your name — or live on your servers. Too many workspaces still carry someone else's name. Modern views often stop at the door of a private network, and the trail ends up in a sheet.</p>
         <p><strong>Pravadh PM is the operating system for delivery.</strong> Issue keys and workflow teams already speak. Board, list, and timeline on the same issues. Logo, colors, custom domain, branded email. Cloud on our domain, yours, white-label, or a private package — source stays with Pravadh Labs.</p>
       </div>
     </div>
@@ -1422,7 +1583,7 @@ form.contact-form {
         <div class="module-card pm-issues">
           <span class="tag">ISSUES</span>
           <h3>Issue keys &amp; workflow</h3>
-          <p>The grammar Jira teams already speak — without Atlassian chrome you cannot rebrand.</p>
+          <p>The grammar delivery teams already speak — with your name on every screen.</p>
           <ul>
             <li>WEB-4 style keys, types, priority, due date</li>
             <li>Epic, story, task, bug</li>
@@ -1433,7 +1594,7 @@ form.contact-form {
         <div class="module-card pm-views">
           <span class="tag">VIEWS</span>
           <h3>Board, list, timeline</h3>
-          <p>Same issues, three ways to look — ClickUp-grade views without a feature-gated board.</p>
+          <p>Same issues, three ways to look — board-and-timeline views without a feature-gated board.</p>
           <ul>
             <li>Kanban, list, and timeline</li>
             <li>Reports across every space</li>
@@ -1471,10 +1632,10 @@ form.contact-form {
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Who it's for</span>
-        <h2>Built for delivery teams who cannot look like a vendor.</h2>
+        <h2>Built for delivery teams who need the workspace to look like theirs.</h2>
       </div>
       <div class="about-copy" style="max-width: 800px; margin-bottom: 40px;">
-        <p>Pravadh PM is built for consultancies and in-house teams who need Jira-grade tracking in a workspace that looks like theirs — including a 40-person delivery team or a private deploy inside a VPC. IQ is Salesforce change. PM is delivery. Same Labs brand, different job.</p>
+        <p>Pravadh PM is built for consultancies and in-house teams who need delivery-grade tracking in a workspace that looks like theirs — including a 40-person delivery team or a private deploy inside a VPC. IQ is Foundation. PM is delivery. Same Labs brand, different job.</p>
       </div>
       <a href="https://pravadhpm.pravadhlabs.com" class="btn btn-primary">
         Explore Pravadh PM
@@ -1486,7 +1647,7 @@ form.contact-form {
   <section class="section-border">
     <div class="wrap">
       <div class="persona-strip">
-        <a href="compare.html#pravadhpm" class="persona" style="text-decoration:none;">See how Pravadh PM compares →</a>
+        <a href="compare.html#pravadhpm" class="persona" style="text-decoration:none;">See how the rail is put together →</a>
         <a href="security.html#pravadhpm" class="persona" style="text-decoration:none;">Pravadh PM security &amp; compliance →</a>
       </div>
     </div>
@@ -1495,12 +1656,12 @@ form.contact-form {
   <section class="section-border" id="pravadhsi" style="padding-top:96px;">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Product 004</span>
+        <span class="eyebrow">Monetize</span>
         <h2>Pravadh SI</h2>
       </div>
       <div class="about-copy" style="max-width: 800px; margin-bottom: 32px;">
-        <p>AI sales intelligence from Pravadh Labs. Your sales tools have the data — Pravadh tells you what to do with it. Connect the CRM you already run, qualify leads with explainable ICP scores, and act on recommendations that write back to Salesforce, HubSpot, or Zoho.</p>
-        <p class="who-replaces">Who this replaces: stitching <strong>Apollo / ZoomInfo / spreadsheet prospecting</strong> with CRM-native views that never tell you <em>why now</em> — see the <a href="compare.html#pravadhsi">full comparison</a>.</p>
+        <p>Command the next send. Never burn the domain. Pravadh SI is the control plane for teams that already have a CRM. It finds the buyer, ranks the moment, drafts the touch — and will not reach a real person until you approve.</p>
+        <p class="who-replaces">Who, why, why now, what next — then you send it. We do not scrape professional networks. <a href="compare.html#pravadhsi">See how the rail is put together</a>.</p>
       </div>
       <a href="https://pravadhsi.pravadhlabs.com" class="btn btn-primary">
         Visit pravadhsi.pravadhlabs.com
@@ -1513,11 +1674,11 @@ form.contact-form {
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">The problem</span>
-        <h2>Your CRM has records. It does not have a next move.</h2>
+        <h2>A list is not a plan. A sequencer is not a next send.</h2>
       </div>
       <div class="about-copy" style="max-width: 800px;">
-        <p>Sales teams live inside Salesforce, HubSpot, or Zoho — but the intelligence layer is still a patchwork of enrichment tools, spreadsheets, and rep memory. You know who is in the database. You do not always know who matters today, why they fit your ICP, or what action to take before the window closes.</p>
-        <p><strong>Pravadh SI is intelligence first, with a native CRM path.</strong> Connect your systems. Qualify with explainable scores. Act on who, why, why now, and what next — then write it back to the CRM your team already runs.</p>
+        <p>Contact databases dump names. Sequencers dump cadences. The CRM stores what you already know. None of them tell a rep who is actually ready — or protect the mailbox while they find out. Signals sit in the pipeline, the inbox, the website, and a sheet nobody opens twice.</p>
+        <p><strong>Pravadh SI discovers, ranks, and drafts — then waits.</strong> New mailboxes ramp. Duplicates are skipped. A bounce guard pauses the sender. A reply stops the cadence. Anything that would reach a real person still waits for your approval.</p>
       </div>
     </div>
   </section>
@@ -1526,24 +1687,24 @@ form.contact-form {
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Modules</span>
-        <h2>Connect. Qualify. Act.</h2>
+        <h2>Find. Rank. Draft. Wait.</h2>
       </div>
       <div class="modules reveal-stagger">
         <div class="module-card si-connect">
           <span class="tag">CONNECT</span>
-          <h3>Your CRM stays yours</h3>
-          <p>Plug into Salesforce, HubSpot, or Zoho. On Pro, Apollo and Hunter lookups are included — we do not scrape LinkedIn.</p>
+          <h3>Name the buyer in plain English</h3>
+          <p>Your CRM stays yours. Finder turns a sentence into a live search — nothing is stored until you add someone to outreach.</p>
           <ul>
             <li>CRM-native connection — no rip-and-replace</li>
-            <li>Capture leads in Pravadh SI</li>
-            <li>Apollo &amp; Hunter on Pro plans</li>
+            <li>Plain-English search across companies and people</li>
+            <li>We do not scrape professional networks</li>
             <li>Your systems still win</li>
           </ul>
         </div>
         <div class="module-card si-qualify">
           <span class="tag">QUALIFY</span>
-          <h3>Explainable ICP scoring</h3>
-          <p>Pravadh scores quality and fit. Governance decides when a lead becomes an account, contact, and opportunity.</p>
+          <h3>Every lead scored. Every score explained.</h3>
+          <p>Quality and ICP fit ship with a breakdown — who to contact, why they fit, and why now.</p>
           <ul>
             <li>Best account, best contact, likely buying team</li>
             <li>Explainable ICP and opportunity scores</li>
@@ -1553,13 +1714,13 @@ form.contact-form {
         </div>
         <div class="module-card si-act">
           <span class="tag">ACT</span>
-          <h3>Recommendations that write back</h3>
-          <p>Today's recommendations explain who to pursue, why they fit, why now — then sync to your CRM.</p>
+          <h3>Draft the touch. Protect the mailbox.</h3>
+          <p>Email, SMS, and WhatsApp go out after you approve. A bounce pauses the sender. A reply stops the cadence. New mailboxes ramp — they do not blast.</p>
           <ul>
-            <li>Recommended next action per opportunity</li>
-            <li>Write-back to Salesforce, HubSpot, or Zoho</li>
+            <li>Nothing reaches a person until you approve</li>
+            <li>Write-back to the CRM you already run</li>
             <li>Who · why · why now · what next</li>
-            <li>Intro pricing through 31 Dec 2026</li>
+            <li>Suggest, draft, or run on a schedule — the send still waits</li>
           </ul>
         </div>
       </div>
@@ -1573,7 +1734,7 @@ form.contact-form {
         <h2>Built for RevOps and sales leaders who need action, not another dashboard.</h2>
       </div>
       <div class="about-copy" style="max-width: 800px; margin-bottom: 40px;">
-        <p>Pravadh SI is built for revenue teams and consultancies who already run Salesforce, HubSpot, or Zoho — and need intelligence that explains itself, respects governance, and lands back in the CRM. IQ is platform change. SI is revenue motion. Same Labs brand, different job.</p>
+        <p>Pravadh SI is built for revenue teams who already have a CRM and cannot burn the domain. Intelligence that shows its work. Sequences that protect the mailbox. IQ is Foundation. SI is the next send. Same Labs brand, different job.</p>
       </div>
       <a href="https://pravadhsi.pravadhlabs.com" class="btn btn-primary">
         Explore Pravadh SI
@@ -1585,9 +1746,137 @@ form.contact-form {
   <section class="section-border">
     <div class="wrap">
       <div class="persona-strip">
-        <a href="compare.html#pravadhsi" class="persona" style="text-decoration:none;">See how Pravadh SI compares →</a>
+        <a href="compare.html#pravadhsi" class="persona" style="text-decoration:none;">See how the rail is put together →</a>
         <a href="security.html#pravadhsi" class="persona" style="text-decoration:none;">Pravadh SI security &amp; compliance →</a>
       </div>
+    </div>
+  </section>
+
+  <section class="section-border" id="pravadhdocsign" style="padding-top:96px;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Lives in Salesforce · Now live</span>
+        <h2>Pravadh DocSign</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px; margin-bottom: 32px;">
+        <p>Any object. Any document. Any signature. Pravadh DocSign is document generation and eSignature that lives inside Salesforce. Generate. Sign. Store. Automate. The signed file lands in Salesforce Files on the record.</p>
+        <p class="who-replaces">Free and open source under the Apache 2.0 licence — <a href="https://github.com/Dhairyasalesforce/Pravadh-DocSign" target="_blank" rel="noopener">the full source is on GitHub</a>. Unlimited users, documents, recipients, and signatures. No licence to sign, and no paid tier. <a href="compare.html#pravadhdocsign">See how it sits against Conga, S-Docs, and Nintex</a>.</p>
+      </div>
+      <a href="https://pravadhdocsign.pravadhlabs.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        Visit pravadhdocsign.pravadhlabs.com
+        <svg viewBox="0 0 15 15" width="15" height="15" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The problem</span>
+        <h2>One free app instead of three paid tools.</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px;">
+        <p>Teams still buy a document generator, a signature tool, and a place to store the file — then stitch them back onto the Salesforce record. Recipients need a licence. Caps show up after the pilot. S-Docs, Conga, and Nintex are paid.</p>
+        <p><strong>Pravadh DocSign does the whole path inside the org.</strong> Any standard or custom object. Templates in PDF and Word. Upload and prepare. Built-in eSign. A SHA-256 chain, re-checked on every view. Flow actions to generate, send, check status, cancel, and resend. Agentforce when it is available.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Modules</span>
+        <h2>Generate. Sign. Store. Automate.</h2>
+      </div>
+      <div class="modules modules-4 reveal-stagger">
+        <div class="module-card ds-generate">
+          <span class="tag">GENERATE</span>
+          <h3>Any object, any document</h3>
+          <p>Templates, PDF, and Word — or upload and prepare a file already on the record.</p>
+          <ul>
+            <li>Any standard or custom object</li>
+            <li>Templates, PDF, and Word</li>
+            <li>Upload and prepare</li>
+            <li>Home tab for every document and envelope</li>
+          </ul>
+        </div>
+        <div class="module-card ds-sign">
+          <span class="tag">SIGN</span>
+          <h3>No licence to sign</h3>
+          <p>Unlimited recipients and signatures. The person signing does not need a Salesforce licence.</p>
+          <ul>
+            <li>Built-in eSign</li>
+            <li>Unlimited recipients and signatures</li>
+            <li>Expiry and reminders</li>
+            <li>Branding and consent on the signing site</li>
+          </ul>
+        </div>
+        <div class="module-card ds-store">
+          <span class="tag">STORE</span>
+          <h3>Back on the record</h3>
+          <p>The completed file is saved to Salesforce Files on the record, with a chain you can re-check.</p>
+          <ul>
+            <li>Salesforce Files on the record</li>
+            <li>SHA-256 audit chain</li>
+            <li>Re-checked on every view</li>
+            <li>Status stays in the org</li>
+          </ul>
+        </div>
+        <div class="module-card ds-automate">
+          <span class="tag">AUTOMATE</span>
+          <h3>Flow. Then Agentforce.</h3>
+          <p>Generate, send, and track from Flow. A platform event fires on every envelope change.</p>
+          <ul>
+            <li>Generate Document and Send for Signature</li>
+            <li>Get Signature Status, Cancel, and Resend</li>
+            <li>Platform event on every envelope change</li>
+            <li>Agentforce when it is available</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Who it's for</span>
+        <h2>Built for Salesforce teams who are done paying per signature.</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px; margin-bottom: 40px;">
+        <p>Pravadh DocSign is for admins and architects replacing Conga, S-Docs, or Nintex — and for any org that needs documents and signatures without a per-seat bill. Install the managed package, or deploy the open-source code straight from <a href="https://github.com/Dhairyasalesforce/Pravadh-DocSign" target="_blank" rel="noopener">GitHub</a>. Unlimited users. The product is free and open source. Services from Pravadh Labs — installation help, configuration, or a signing path built with you — are quoted separately.</p>
+      </div>
+      <a href="https://pravadhdocsign.pravadhlabs.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        Install Pravadh DocSign
+        <svg viewBox="0 0 15 15" width="15" height="15" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="section-border">
+    <div class="wrap">
+      <div class="persona-strip">
+        <a href="compare.html#pravadhdocsign" class="persona" style="text-decoration:none;">See how it sits against paid tools →</a>
+        <a href="security.html#pravadhdocsign" class="persona" style="text-decoration:none;">Pravadh DocSign security →</a>
+        <a href="https://pravadhdocsign.pravadhlabs.com" class="persona" style="text-decoration:none;" target="_blank" rel="noopener noreferrer">pravadhdocsign.pravadhlabs.com →</a>
+        <a href="https://github.com/Dhairyasalesforce/Pravadh-DocSign" class="persona" style="text-decoration:none;" target="_blank" rel="noopener">Source code on GitHub →</a>
+      </div>
+    </div>
+  </section>
+  <section class="section-border" id="caliber" style="padding-top:96px;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Hiring · Now live</span>
+        <h2>Caliber</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px; margin-bottom: 32px;">
+        <p>The first-round interviewer that actually listens. Interview. Seal. Govern. Caliber is an AI interviewer for first-round hiring: EMIE runs live voice interviews with candidates on camera, scores each answer against your rubric, and records integrity flags without interrupting the candidate.</p>
+        <p class="who-replaces">Every completed report is sealed so it can't be edited, and recordings are stored in your own cloud or server.</p>
+      </div>
+      <a href="https://caliberai.pravadhlabs.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        Visit caliberai.pravadhlabs.com
+        <svg viewBox="0 0 15 15" width="15" height="15" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </section>
 </main>
@@ -1598,40 +1887,50 @@ form.contact-form {
       <svg viewBox="0 0 1115 210" class="sponsor-banner" role="img" aria-label="Pravadh Labs, Proud Sponsor of West Africa Dreamin 2026">
         <defs>
           <linearGradient id="sponsorLineLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#1E5CEE" stop-opacity="0"/>
-            <stop offset="100%" stop-color="#1E5CEE" stop-opacity="1"/>
+            <stop offset="0%" stop-color="#2563eb" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#2563eb" stop-opacity="1"/>
           </linearGradient>
           <linearGradient id="sponsorLineRight" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#1E5CEE" stop-opacity="1"/>
-            <stop offset="100%" stop-color="#1E5CEE" stop-opacity="0"/>
+            <stop offset="0%" stop-color="#2563eb" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
           </linearGradient>
         </defs>
         <rect width="1115" height="210" rx="16" fill="#0B142A"/>
-        <rect x="45" y="55" width="100" height="100" rx="24" fill="#1E5CEE"/>
+        <rect x="45" y="55" width="100" height="100" rx="24" fill="#2563eb"/>
         <text x="95" y="128" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="64" fill="#FFFFFF">P</text>
         <rect x="108" y="35" width="72" height="28" rx="14" fill="#FD9E01"/>
         <text x="144" y="54" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#1A1200">LABS</text>
-        <text x="170" y="108" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="52" fill="#FFFFFF">Pravadh</text>
+        <text x="170" y="108" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="52" fill="#FFFFFF">Pravadh<tspan font-size="18" dy="-22">®</tspan></text>
         <rect x="170" y="128" width="48" height="2.5" fill="url(#sponsorLineLeft)"/>
         <text x="228" y="136" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="15" letter-spacing="3" fill="#FD9E01">LABS</text>
         <rect x="305" y="128" width="48" height="2.5" fill="url(#sponsorLineRight)"/>
-        <text x="170" y="162" font-family="'Segoe UI', sans-serif" font-weight="500" font-size="11" letter-spacing="2" fill="#868A95">POWERING ENTERPRISE INNOVATION</text>
+        <text x="170" y="162" font-family="'Segoe UI', sans-serif" font-weight="500" font-size="9" letter-spacing="1" fill="#868A95">UNIFY THE PROCESS. DRIVE THE NEXT ACTION.</text>
         <line x1="620" y1="40" x2="620" y2="170" stroke="#2A3550" stroke-width="1.5"/>
-        <text x="655" y="65" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="14" letter-spacing="2" fill="#4C8DFF">PROUD SPONSOR</text>
+        <text x="655" y="65" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="14" letter-spacing="2" fill="#FD9E01">BRONZE SPONSOR</text>
         <text x="655" y="100" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="30" fill="#FFFFFF">West Africa</text>
         <text x="655" y="136" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="30" fill="#FFFFFF">Dreamin 2026</text>
         <text x="655" y="166" font-family="'Segoe UI', sans-serif" font-weight="400" font-size="16" fill="#868A95">pravadhlabs.com</text>
       </svg>
     </div>
     <div class="footer-bottom">
-      <div class="copyright">© 2026 Pravadh Labs Private Limited</div>
+      <div class="footer-bottom__left">
+        <p class="brand-tagline brand-tagline--foot">You decide. We do the rest.</p>
+        <div class="copyright">© 2026 Pravadh Labs Private Limited. Pravadh® is a registered trademark. Salesforce is a trademark of Salesforce, Inc.</div>
+        <div class="social-links" aria-label="Social media">
+          <a href="https://www.linkedin.com/company/pravadhiq" target="_blank" rel="noopener noreferrer" aria-label="Pravadh Labs on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.34 8.5H3.67V18h2.67V8.5zM5 3.75A1.55 1.55 0 105 6.85 1.55 1.55 0 005 3.75zM13.34 8.28c-1.42 0-2.32.78-2.72 1.52V8.5H8.03V18h2.59v-5.1c0-1.35.72-2.21 1.9-2.21 1.1 0 1.72.77 1.72 2.21V18H16.8v-5.62c0-2.98-1.59-4.1-3.46-4.1z"/></svg></a>
+          <a href="https://www.youtube.com/@PravadhLabs" target="_blank" rel="noopener noreferrer" aria-label="Pravadh Labs on YouTube"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M21.6 8.2a2.5 2.5 0 00-1.76-1.77C18.3 6 12 6 12 6s-6.3 0-7.84.43A2.5 2.5 0 002.4 8.2 26.2 26.2 0 002 12a26.2 26.2 0 00.4 3.8 2.5 2.5 0 001.76 1.77C5.7 18 12 18 12 18s6.3 0 7.84-.43a2.5 2.5 0 001.76-1.77A26.2 26.2 0 0022 12a26.2 26.2 0 00-.4-3.8zM10.2 14.7V9.3L15.2 12l-5 2.7z"/></svg></a>
+          <a href="https://www.instagram.com/pravadhlabs/" target="_blank" rel="noopener noreferrer" aria-label="Pravadh Labs on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 7.4A4.6 4.6 0 1016.6 12 4.6 4.6 0 0012 7.4zm0 7.6A3 3 0 1115 12a3 3 0 01-3 3zm5.85-7.85a1.08 1.08 0 11-1.08-1.08 1.08 1.08 0 011.08 1.08zM12 3.5c-2.4 0-2.7.01-3.65.05a5.16 5.16 0 00-3.8 3.8C4.51 8.3 4.5 8.6 4.5 11s.01 2.7.05 3.65a5.16 5.16 0 003.8 3.8c.95.04 1.25.05 3.65.05s2.7-.01 3.65-.05a5.16 5.16 0 003.8-3.8c.04-.95.05-1.25.05-3.65s-.01-2.7-.05-3.65a5.16 5.16 0 00-3.8-3.8C14.7 3.51 14.4 3.5 12 3.5zm0 1.5c2.35 0 2.63.01 3.56.05a3.66 3.66 0 012.69 2.69c.04.93.05 1.21.05 3.56s-.01 2.63-.05 3.56a3.66 3.66 0 01-2.69 2.69c-.93.04-1.21.05-3.56.05s-2.63-.01-3.56-.05a3.66 3.66 0 01-2.69-2.69C5.51 14.63 5.5 14.35 5.5 12s.01-2.63.05-3.56a3.66 3.66 0 012.69-2.69C9.17 5.51 9.45 5.5 12 5.5z"/></svg></a>
+        </div>
+      </div>
       <div class="foot-links">
         <a href="products.html">Products</a>
         <a href="compare.html">Compare</a>
         <a href="security.html">Security</a>
         <a href="about.html">About</a>
-        <a href="dreamforce.html">Dreamforce</a>
+        <a href="partners.html">Partners</a>
+        <a href="events.html">Events</a>
         <a href="blogs_page.html">Insights</a>
+        <a href="eap.html">Early Access</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
@@ -1650,10 +1949,10 @@ if (themeToggle) {
   };
 
   // Sync initial state (head script sets data-theme before this runs)
-  setToggleState(document.documentElement.getAttribute('data-theme') || 'dark');
+  setToggleState(document.documentElement.getAttribute('data-theme') || 'light');
 
   themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     try { localStorage.setItem('pravadh-theme', next); } catch (e) { /* storage unavailable */ }
@@ -1737,6 +2036,18 @@ if (railDraw && !prefersReducedMotion) {
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="assets/js/effects.js" defer></script>
+<script src="assets/js/effects.js?v=21" defer></script>
+<script>
+document.querySelectorAll('.teaser').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    if (btn.classList.contains('is-playing')) return;
+    var id = btn.getAttribute('data-youtube');
+    var title = btn.getAttribute('aria-label').replace(/^Play the /, '').replace(/ teaser$/, '');
+    btn.classList.add('is-playing');
+    btn.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1" title="' + title + '" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+  });
+});
+</script>
+<script src="assets/js/attribution.js?v=1"></script>
 </body>
 </html>

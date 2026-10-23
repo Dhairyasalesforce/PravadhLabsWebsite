@@ -5,18 +5,18 @@
 (function() {
   try {
     var saved = localStorage.getItem('pravadh-theme');
-    var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    var theme = saved || 'light';
     document.documentElement.setAttribute('data-theme', theme);
   } catch (e) {
-    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.setAttribute('data-theme', 'light');
   }
 })();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Pravadh Labs</title>
-<meta name="description" content="Pravadh Labs is a product studio building focused, AI-first software for enterprise systems — starting with the Salesforce ecosystem.">
-<link rel="canonical" href="https://pravadhlabs.com/about.html">
+<title>About Pravadh Labs — AI-Native Salesforce Products</title>
+<meta name="description" content="Pravadh Labs is a founder-led team in Jaipur and Bangalore. Six products sit on the systems you already run. You approve the next action.">
+<link rel="canonical" href="https://pravadhlabs.com/about">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
@@ -29,55 +29,59 @@
 <meta name="theme-color" content="#14171F">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About — Pravadh Labs">
-<meta property="og:description" content="A product studio building focused, AI-first software for enterprise systems, starting with Salesforce.">
-<meta property="og:url" content="https://pravadhlabs.com/about.html">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="A founder-led team. Six products on the systems you already run. You approve the next action.">
+<meta property="og:url" content="https://pravadhlabs.com/about">
+<meta property="og:image" content="https://pravadhlabs.com/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="About — Pravadh Labs">
-<meta name="twitter:description" content="A product studio building focused, AI-first software for enterprise systems, starting with Salesforce.">
+<meta name="twitter:description" content="A founder-led team. Six products on the systems you already run. You approve the next action.">
+<meta name="twitter:image" content="https://pravadhlabs.com/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/effects.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================
    Pravadh Labs — Design Tokens
    ============================================ */
 :root {
-  --ink: #0B142A;
-  --ink-soft: #141F3D;
-  --paper: #EDEEF0;
+  --ink: #071430;
+  --ink-soft: #0d1f45;
+  --paper: #EAF3FF;
   --paper-raised: #F7F7F8;
   --line: #D4D4D0;
   --line-dark: #232F52;
   --muted: #868A95;
   --muted-light: #A9AFC0;
-  --teal: #1E5CEE;
-  --teal-text: #1E5CEE;
-  --teal-soft: rgba(30, 92, 238, 0.14);
+  --teal: #2563eb;
+  --teal-text: #2563eb;
+  --teal-soft: rgba(37, 99, 235, 0.14);
   --amber: #FD9E01;
   --amber-soft: rgba(253, 158, 1, 0.14);
-  --on-accent: #1A1200;
+  --on-accent: #ffffff;
   --header-bg: rgba(11, 20, 42, 0.88);
 
-  --font-display: Georgia, 'Times New Roman', serif;
-  --font-body: 'IBM Plex Sans', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-display: "Poppins", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", "Poppins", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --max-width: 1180px;
-  --edge: clamp(24px, 5vw, 72px);
+  --max-width: 1440px;
+  --edge: clamp(16px, 2.4vw, 40px);
 
   color-scheme: dark;
 }
 
 html[data-theme="light"] {
-  --ink: #FEFEFE;
-  --ink-soft: #F0F1F5;
-  --paper: #0E162C;
-  --line-dark: #E4E6ED;
-  --muted: #6E7178;
-  --muted-light: #4A4E56;
-  --teal-text: #1544B8;
-  --header-bg: rgba(254, 254, 254, 0.88);
+  --ink: #ffffff;
+  --ink-soft: #f3f4f6;
+  --paper: #0b1b3a;
+  --line-dark: #e5e7eb;
+  --muted: #5b6475;
+  --muted-light: #334155;
+  --teal-text: #1d4ed8;
+  --header-bg: rgba(255, 255, 255, 0.96);
   color-scheme: light;
 }
 
@@ -110,7 +114,7 @@ a { color: inherit; text-decoration: none; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 700;
   margin: 0;
   letter-spacing: -0.01em;
 }
@@ -324,7 +328,7 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
    Hero
    ============================================ */
 .hero {
-  padding: 108px 0 88px;
+  padding: 56px 0 40px;
   border-bottom: 1px solid var(--line-dark);
   position: relative;
   overflow: hidden;
@@ -414,7 +418,7 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
    Rail diagram (signature element)
    ============================================ */
 .rail-section {
-  padding: 88px 0;
+  padding: 52px 0;
   border-bottom: 1px solid var(--line-dark);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -436,12 +440,12 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 /* ============================================
    Sections
    ============================================ */
-section { padding: 88px 0; }
+section { padding: 52px 0; }
 .section-border { border-bottom: 1px solid var(--line-dark); }
 
 .section-head {
-  max-width: 640px;
-  margin-bottom: 56px;
+  max-width: none;
+  margin-bottom: 28px;
 }
 
 .section-head h2 {
@@ -508,15 +512,15 @@ section { padding: 88px 0; }
 /* Product overview cards (Products page top-level listing) */
 .product-overview-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
 .product-overview-card {
   display: block;
   border: 1px solid var(--line-dark);
   border-radius: 6px;
-  padding: 36px;
+  padding: 24px 22px;
   background: var(--ink-soft);
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
@@ -559,7 +563,7 @@ section { padding: 88px 0; }
 .module-card {
   border: 1px solid var(--line-dark);
   border-radius: 4px;
-  padding: 32px;
+  padding: 24px 22px;
   background: var(--ink-soft);
   position: relative;
   transition: border-color 0.2s ease, transform 0.2s ease;
@@ -662,8 +666,8 @@ footer .copyright {
    ============================================ */
 .about-block {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 64px;
+  grid-template-columns: minmax(140px, 0.7fr) 1.6fr;
+  gap: 40px;
   align-items: start;
 }
 
@@ -678,8 +682,8 @@ footer .copyright {
   font-size: 17px;
   color: var(--muted-light);
   margin-bottom: 20px;
-  max-width: 62ch;
-  line-height: 1.7;
+  max-width: none;
+  line-height: 1.65;
 }
 
 .about-copy p strong {
@@ -689,7 +693,7 @@ footer .copyright {
 
 .stat-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--line-dark);
   border-bottom: 1px solid var(--line-dark);
 }
@@ -719,8 +723,8 @@ footer .copyright {
    ============================================ */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 40px;
 }
 
 .contact-info h3 {
@@ -823,7 +827,7 @@ form.contact-form {
 .sponsor-banner-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  max-width: 640px;
+  max-width: none;
 }
 
 .sponsor-banner {
@@ -864,6 +868,7 @@ form.contact-form {
   .principles { grid-template-columns: repeat(2, 1fr); }
   .modules { grid-template-columns: repeat(2, 1fr); }
   .office-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-row { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Mobile: nav collapses, all grids go to a single column */
@@ -883,8 +888,8 @@ form.contact-form {
   .product-overview-grid { grid-template-columns: 1fr; }
   .persona-strip { gap: 10px; }
   .hero { padding: 64px 0 56px; }
-  section { padding: 56px 0; }
-  .rail-section { padding: 64px 0; }
+  section { padding: 40px 0; }
+  .rail-section { padding: 40px 0; }
 }
 
 /* Small phones: tighten spacing further, keep touch targets comfortable */
@@ -897,8 +902,8 @@ form.contact-form {
   .hero .sub { font-size: 16px; }
   .hero .actions { flex-direction: column; align-items: stretch; }
   .hero .actions .btn { justify-content: center; width: 100%; }
-  section { padding: 48px 0; }
-  .rail-section { padding: 48px 0; }
+  section { padding: 36px 0; }
+  .rail-section { padding: 36px 0; }
   .section-head { margin-bottom: 36px; }
   .principle { padding: 28px 24px; }
   .module-card { padding: 24px; }
@@ -961,13 +966,38 @@ form.contact-form {
 }
 
 </style>
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/site.css?v=58">
+<link rel="stylesheet" href="assets/css/effects.css?v=17">
+<style id="light-contrast">
+html[data-theme="light"] { --ink:#ffffff; --ink-soft:#f3f4f6; --paper:#0b1b3a; --line:#e5e7eb; --line-dark:#e5e7eb; --muted:#5b6475; --muted-light:#334155; --header-bg:rgba(255,255,255,.96); }
+html[data-theme="light"] body { background:#ffffff; color:#0b1b3a; }
+html[data-theme="light"] .aurora-bg { display:none !important; }
+html[data-theme="light"] .hero__orb { display:none !important; }
+html[data-theme="light"] .hero { background:none; }
+html[data-theme="light"] .hero h1 em, html[data-theme="light"] .hero-rotate__word { background:none !important; -webkit-text-fill-color:#1d4ed8 !important; color:#1d4ed8 !important; }
+html[data-theme="light"] .df-hero { min-height:0; align-items:flex-start; background:#ffffff; border-bottom:1px solid #e5e7eb; }
+html[data-theme="light"] .df-hero__media, html[data-theme="light"] .df-hero__shade { display:none !important; }
+html[data-theme="light"] .df-hero__content { padding:56px 0 40px; }
+html[data-theme="light"] .df-hero h1 { color:#0b1b3a !important; -webkit-text-fill-color:#0b1b3a !important; background:none !important; }
+html[data-theme="light"] .df-hero h1 em, html[data-theme="light"] .df-hero .brand-tagline--hero { color:#1d4ed8 !important; -webkit-text-fill-color:#1d4ed8 !important; background:none !important; }
+html[data-theme="light"] .df-hero .sub { color:#334155 !important; -webkit-text-fill-color:#334155 !important; background:none !important; }
+html[data-theme="light"] .df-hero .btn-secondary { color:#0b1b3a !important; background:#fff !important; border-color:#d1d5db !important; }
+html[data-theme="light"] .df-pill { color:#0b1b3a !important; background:#fff !important; border-color:#e5e7eb !important; }
+html[data-theme="light"] .ev-home__copy h2, html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { background:none !important; -webkit-text-fill-color:#0b1b3a !important; color:#0b1b3a !important; }
+html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { color:#1d4ed8 !important; -webkit-text-fill-color:#1d4ed8 !important; }
+</style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "url": "https://pravadhlabs.com/about.html",
-  "mainEntity": { "@type": "Organization", "name": "Pravadh Labs", "url": "https://pravadhlabs.com" }
+  "url": "https://pravadhlabs.com/about",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Pravadh Labs",
+    "url": "https://pravadhlabs.com",
+    "memberOf": { "@type": "Organization", "name": "Salesforce ISV Partner Program" }
+  }
 }
 </script>
 </head>
@@ -976,30 +1006,34 @@ form.contact-form {
 
 <header class="site-header">
   <div class="wrap">
-    <a href="index.html" class="logo">
-      <svg viewBox="0 0 210 52" width="132" height="33" class="header-logo header-logo-dark" aria-label="Pravadh Labs">
-        <rect x="2" y="6" width="42" height="42" rx="11" fill="#1E5CEE"/>
+    <div class="brand-lockup"><a href="index.html" class="logo">
+      <svg viewBox="0 0 224 52" width="140" height="33" class="header-logo header-logo-dark" aria-label="Pravadh Labs">
+        <rect x="2" y="6" width="42" height="42" rx="11" fill="#2563eb"/>
         <text x="23" y="37" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="27" fill="#FFFFFF">P</text>
         <rect x="30" y="0" width="34" height="15" rx="7.5" fill="#FD9E01"/>
         <text x="47" y="10.5" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="7.5" letter-spacing="0.5" fill="#1A1200">LABS</text>
-        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#FFFFFF">Pravadh</text>
+        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#FFFFFF">Pravadh<tspan font-size="10" dy="-11">®</tspan></text>
       </svg>
-      <svg viewBox="0 0 210 52" width="132" height="33" class="header-logo header-logo-light" aria-label="Pravadh Labs">
-        <rect x="2" y="6" width="42" height="42" rx="11" fill="#1E5CEE"/>
+      <svg viewBox="0 0 224 52" width="140" height="33" class="header-logo header-logo-light" aria-label="Pravadh Labs">
+        <rect x="2" y="6" width="42" height="42" rx="11" fill="#2563eb"/>
         <text x="23" y="37" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="27" fill="#FFFFFF">P</text>
         <rect x="30" y="0" width="34" height="15" rx="7.5" fill="#FD9E01"/>
         <text x="47" y="10.5" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="7.5" letter-spacing="0.5" fill="#1A1200">LABS</text>
-        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#0E162C">Pravadh</text>
+        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#0E162C">Pravadh<tspan font-size="10" dy="-11">®</tspan></text>
       </svg>
     </a>
+    <p class="brand-tagline">You decide. We do the rest.</p>
+    </div>
     <nav class="primary" id="primaryNav">
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
       <a href="compare.html">Compare</a>
       <a href="security.html">Security</a>
       <a href="about.html" class="active">About</a>
-      <a href="dreamforce.html">Dreamforce</a>
+      <a href="partners.html">Partners</a>
+      <a href="events.html">Events</a>
       <a href="blogs_page.html">Insights</a>
+      <a href="eap.html">Early Access</a>
       <a href="contact.html" class="nav-contact">Contact</a>
     </nav>
     <button class="theme-toggle" id="themeToggle" role="switch" aria-checked="false" aria-label="Toggle theme">
@@ -1015,9 +1049,9 @@ form.contact-form {
 <main id="main-content">
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">About</span>
-      <h1>Why Pravadh Labs</h1>
-      <p class="sub">A product studio, not a portfolio. We build one system deeply before we start the next.</p>
+      <p class="brand-tagline brand-tagline--hero">You decide. We do the rest.</p>
+      <h1>One record. Then the next action you approve.</h1>
+      <p class="sub">Pravadh Labs sits on the systems you already run. We do not ask you to replace them.</p>
     </div>
   </section>
 
@@ -1026,8 +1060,8 @@ form.contact-form {
       <div class="about-block reveal">
         <span class="label">01 / ORIGIN</span>
         <div class="about-copy">
-          <p>Pravadh Labs started with a narrow observation: enterprise teams inside the Salesforce ecosystem were running deployment, data migration, and governance as three disconnected disciplines — each with its own tool, its own owner, and its own blind spots.</p>
-          <p><strong>PravadhIQ is our answer to that.</strong> It's the first product on what we call the rail — a single control plane that later products will plug into as well.</p>
+          <p>The same customer was living in four places. CRM had one version. ERP had another. Files and tickets held the rest. Nobody owned the next step.</p>
+          <p><strong>Pravadh Labs started there.</strong> One record of that customer, across the systems that already hold the facts. Then one next action, and a person who approves it.</p>
         </div>
       </div>
     </div>
@@ -1038,8 +1072,9 @@ form.contact-form {
       <div class="about-block reveal">
         <span class="label">02 / HOW WE WORK</span>
         <div class="about-copy">
-          <p>We're a small, founder-led team, distributed across Jaipur and Bangalore. We'd rather ship one product that does one job completely than spread ourselves across a roadmap of half-finished ideas.</p>
-          <p>We build inside ecosystems our customers already trust — starting with Salesforce — instead of asking them to adopt something unfamiliar alongside it.</p>
+          <p>A small team, founder-led, in Jaipur and Bangalore. A product ships when it does one job completely.</p>
+          <p>Salesforce is one system on the rail, not the product. Pravadh Labs is a Salesforce ISV Partner. The same rail also sits beside ERP, files, and the tools a team already trusts.</p>
+          <p>People still decide. A fix, a send, or a signature waits until someone approves it.</p>
         </div>
       </div>
     </div>
@@ -1049,42 +1084,44 @@ form.contact-form {
     <div class="wrap">
       <div class="stat-row reveal-stagger">
         <div class="stat">
-          <div class="num">04</div>
-          <div class="label">Products live on the rail — IQ, GovernX, PM, SI</div>
+          <div class="num">05</div>
+          <div class="label">Products live — IQ, GovernX, PM, SI, DocSign</div>
         </div>
         <div class="stat">
           <div class="num">03</div>
-          <div class="label">Modules unified — SHIP, MOVE, GOVERN</div>
+          <div class="label">Jobs on IQ — FOUNDATION, SHIP, GOVERN</div>
         </div>
         <div class="stat">
-          <div class="num">15+</div>
-          <div class="label">Data sources connecting into Salesforce</div>
+          <div class="num">01</div>
+          <div class="label">Approval before anything reaches a person</div>
+        </div>
+        <div class="stat stat--badge">
+          <img class="isv-badge" src="assets/images/partners/salesforce-isv-partner.png" alt="Salesforce ISV Partner" width="88" height="88">
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section-border" id="founder" hidden>
+  <section class="section-border" id="founder">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Leadership</span>
         <h2>About our founder</h2>
       </div>
       <div class="founder reveal">
-        <div class="founder__media">
-          <img src="assets/images/dhairya-shah.png" alt="Dhairya Shah, Founder of Pravadh Labs" width="480" height="600" loading="lazy">
-        </div>
+        <figure class="founder__media">
+          <img src="assets/images/dhairya-shah.png" alt="Dhairya Shah, founder of Pravadh Labs" width="451" height="412">
+        </figure>
         <div class="founder__copy">
           <h3>Dhairya Shah</h3>
           <p class="founder__role">Founder, Pravadh Labs</p>
-          <p>A Salesforce professional with over eleven years of expertise, specializing in solution and enterprise architecture. Most recently served as Vice President of Salesforce Practice at Tekgeminus, where he oversaw Salesforce implementation practice strategy and worked with enterprise clients to deliver tailored solutions aligned to business outcomes.</p>
-          <p>His work spans designing technical solutions end to end — data models, process flows, and system integrations — as well as running technical workshops and stakeholder presentations. He has led architectural and delivery standards across large-scale transformation programs, including work in FMCG and complex multi-org environments, with a focus on data, platform architecture, and AI-ready Salesforce design.</p>
-          <p>An active Trailblazer, he holds multiple Salesforce certifications — including Certified Agentforce Specialist — and has achieved Agentblazer Legend status. He contributes to the broader Salesforce community through mentoring, published practice insights, and community recognition, including nomination for Salesforce MVP.</p>
+          <p>Eleven years designing CRM and the systems around it: data models, process, and the integrations that keep them honest.</p>
+          <p>He has led architecture and delivery on large transformation programmes, including FMCG and multi-org work. The products ship against those same standards.</p>
+          <p>He holds multiple platform certifications and mentors in the CRM community.</p>
           <ul class="founder__highlights">
-            <li>11+ years in Salesforce solution &amp; enterprise architecture</li>
-            <li>Former VP, Salesforce Practice — Tekgeminus</li>
-            <li>Agentforce Specialist · Agentblazer Legend</li>
-            <li>Community mentor &amp; Salesforce MVP nominee</li>
+            <li>11+ years in CRM and enterprise architecture</li>
+            <li>Architecture and delivery on large programmes</li>
+            <li>Community mentor</li>
           </ul>
           <div class="founder__actions">
             <a href="https://www.linkedin.com/in/dhairyasf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">LinkedIn profile
@@ -1102,7 +1139,8 @@ form.contact-form {
       <div class="about-block reveal">
         <span class="label">03 / THE RAIL</span>
         <div class="about-copy">
-          <p>PravadhIQ was the first system built on the Pravadh Labs rail. GovernX, Pravadh PM, and Pravadh SI plug into the same control plane — Salesforce change, data governance, white-label delivery, and AI sales intelligence — not bolted onto the side of it.</p>
+          <p>Six products. The tools you already run stay in place.</p>
+          <p><strong>PravadhIQ</strong> keeps one record per customer, then deploy, ready, and govern. <strong>GovernX</strong> connects, cleans, and governs — you approve the fix. <strong>Pravadh PM</strong> is delivery tracking in your brand. <strong>Pravadh SI</strong> finds the buyer and drafts the touch. Nothing sends until you approve. <strong>Pravadh DocSign</strong> generates, signs, and stores on the Salesforce record. Free. No licence to sign.</p>
         </div>
       </div>
       <div style="margin-top:48px;">
@@ -1120,40 +1158,50 @@ form.contact-form {
       <svg viewBox="0 0 1115 210" class="sponsor-banner" role="img" aria-label="Pravadh Labs, Proud Sponsor of West Africa Dreamin 2026">
         <defs>
           <linearGradient id="sponsorLineLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#1E5CEE" stop-opacity="0"/>
-            <stop offset="100%" stop-color="#1E5CEE" stop-opacity="1"/>
+            <stop offset="0%" stop-color="#2563eb" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#2563eb" stop-opacity="1"/>
           </linearGradient>
           <linearGradient id="sponsorLineRight" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#1E5CEE" stop-opacity="1"/>
-            <stop offset="100%" stop-color="#1E5CEE" stop-opacity="0"/>
+            <stop offset="0%" stop-color="#2563eb" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
           </linearGradient>
         </defs>
         <rect width="1115" height="210" rx="16" fill="#0B142A"/>
-        <rect x="45" y="55" width="100" height="100" rx="24" fill="#1E5CEE"/>
+        <rect x="45" y="55" width="100" height="100" rx="24" fill="#2563eb"/>
         <text x="95" y="128" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="64" fill="#FFFFFF">P</text>
         <rect x="108" y="35" width="72" height="28" rx="14" fill="#FD9E01"/>
         <text x="144" y="54" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#1A1200">LABS</text>
-        <text x="170" y="108" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="52" fill="#FFFFFF">Pravadh</text>
+        <text x="170" y="108" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="52" fill="#FFFFFF">Pravadh<tspan font-size="18" dy="-22">®</tspan></text>
         <rect x="170" y="128" width="48" height="2.5" fill="url(#sponsorLineLeft)"/>
         <text x="228" y="136" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="15" letter-spacing="3" fill="#FD9E01">LABS</text>
         <rect x="305" y="128" width="48" height="2.5" fill="url(#sponsorLineRight)"/>
-        <text x="170" y="162" font-family="'Segoe UI', sans-serif" font-weight="500" font-size="11" letter-spacing="2" fill="#868A95">POWERING ENTERPRISE INNOVATION</text>
+        <text x="170" y="162" font-family="'Segoe UI', sans-serif" font-weight="500" font-size="9" letter-spacing="1" fill="#868A95">UNIFY THE PROCESS. DRIVE THE NEXT ACTION.</text>
         <line x1="620" y1="40" x2="620" y2="170" stroke="#2A3550" stroke-width="1.5"/>
-        <text x="655" y="65" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="14" letter-spacing="2" fill="#4C8DFF">PROUD SPONSOR</text>
+        <text x="655" y="65" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="14" letter-spacing="2" fill="#FD9E01">BRONZE SPONSOR</text>
         <text x="655" y="100" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="30" fill="#FFFFFF">West Africa</text>
         <text x="655" y="136" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="30" fill="#FFFFFF">Dreamin 2026</text>
         <text x="655" y="166" font-family="'Segoe UI', sans-serif" font-weight="400" font-size="16" fill="#868A95">pravadhlabs.com</text>
       </svg>
     </div>
     <div class="footer-bottom">
-      <div class="copyright">© 2026 Pravadh Labs Private Limited</div>
+      <div class="footer-bottom__left">
+        <p class="brand-tagline brand-tagline--foot">You decide. We do the rest.</p>
+        <div class="copyright">© 2026 Pravadh Labs Private Limited. Pravadh® is a registered trademark. Salesforce is a trademark of Salesforce, Inc.</div>
+        <div class="social-links" aria-label="Social media">
+          <a href="https://www.linkedin.com/company/pravadhiq" target="_blank" rel="noopener noreferrer" aria-label="Pravadh Labs on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.34 8.5H3.67V18h2.67V8.5zM5 3.75A1.55 1.55 0 105 6.85 1.55 1.55 0 005 3.75zM13.34 8.28c-1.42 0-2.32.78-2.72 1.52V8.5H8.03V18h2.59v-5.1c0-1.35.72-2.21 1.9-2.21 1.1 0 1.72.77 1.72 2.21V18H16.8v-5.62c0-2.98-1.59-4.1-3.46-4.1z"/></svg></a>
+          <a href="https://www.youtube.com/@PravadhLabs" target="_blank" rel="noopener noreferrer" aria-label="Pravadh Labs on YouTube"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M21.6 8.2a2.5 2.5 0 00-1.76-1.77C18.3 6 12 6 12 6s-6.3 0-7.84.43A2.5 2.5 0 002.4 8.2 26.2 26.2 0 002 12a26.2 26.2 0 00.4 3.8 2.5 2.5 0 001.76 1.77C5.7 18 12 18 12 18s6.3 0 7.84-.43a2.5 2.5 0 001.76-1.77A26.2 26.2 0 0022 12a26.2 26.2 0 00-.4-3.8zM10.2 14.7V9.3L15.2 12l-5 2.7z"/></svg></a>
+          <a href="https://www.instagram.com/pravadhlabs/" target="_blank" rel="noopener noreferrer" aria-label="Pravadh Labs on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 7.4A4.6 4.6 0 1016.6 12 4.6 4.6 0 0012 7.4zm0 7.6A3 3 0 1115 12a3 3 0 01-3 3zm5.85-7.85a1.08 1.08 0 11-1.08-1.08 1.08 1.08 0 011.08 1.08zM12 3.5c-2.4 0-2.7.01-3.65.05a5.16 5.16 0 00-3.8 3.8C4.51 8.3 4.5 8.6 4.5 11s.01 2.7.05 3.65a5.16 5.16 0 003.8 3.8c.95.04 1.25.05 3.65.05s2.7-.01 3.65-.05a5.16 5.16 0 003.8-3.8c.04-.95.05-1.25.05-3.65s-.01-2.7-.05-3.65a5.16 5.16 0 00-3.8-3.8C14.7 3.51 14.4 3.5 12 3.5zm0 1.5c2.35 0 2.63.01 3.56.05a3.66 3.66 0 012.69 2.69c.04.93.05 1.21.05 3.56s-.01 2.63-.05 3.56a3.66 3.66 0 01-2.69 2.69c-.93.04-1.21.05-3.56.05s-2.63-.01-3.56-.05a3.66 3.66 0 01-2.69-2.69C5.51 14.63 5.5 14.35 5.5 12s.01-2.63.05-3.56a3.66 3.66 0 012.69-2.69C9.17 5.51 9.45 5.5 12 5.5z"/></svg></a>
+        </div>
+      </div>
       <div class="foot-links">
         <a href="products.html">Products</a>
       <a href="compare.html">Compare</a>
       <a href="security.html">Security</a>
         <a href="about.html">About</a>
-        <a href="dreamforce.html">Dreamforce</a>
+        <a href="partners.html">Partners</a>
+        <a href="events.html">Events</a>
         <a href="blogs_page.html">Insights</a>
+        <a href="eap.html">Early Access</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
@@ -1172,10 +1220,10 @@ if (themeToggle) {
   };
 
   // Sync initial state (head script sets data-theme before this runs)
-  setToggleState(document.documentElement.getAttribute('data-theme') || 'dark');
+  setToggleState(document.documentElement.getAttribute('data-theme') || 'light');
 
   themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     try { localStorage.setItem('pravadh-theme', next); } catch (e) { /* storage unavailable */ }
@@ -1259,6 +1307,7 @@ if (railDraw && !prefersReducedMotion) {
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="assets/js/effects.js" defer></script>
+<script src="assets/js/effects.js?v=21" defer></script>
+<script src="assets/js/attribution.js?v=1"></script>
 </body>
 </html>
