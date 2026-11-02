@@ -1,0 +1,5 @@
+/* Early Access stands out in the header on every page */
+nav.primary a.nav-eap { color: #1A1200 !important; background: #FD9E01; border-radius: 999px; padding-left: 14px !important; padding-right: 14px !important; font-weight: 600; }
+nav.primary a.nav-eap:hover { background: #ffb22e; }
+nav.primary a.nav-eap::after { display: none !important; }
+nav.primary a.nav-eap, nav.primary a.nav-eap.active { border-bottom: 0 !important; text-decoration: none !important; box-shadow: none !important; background-image: none !important; }

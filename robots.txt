@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pravadhlabs.com/sitemap.xml
