@@ -29,9 +29,7 @@
     '@keyframes dw-flicker{0%,100%{transform:scale(1) rotate(-2deg)}25%{transform:scale(1.08,.94) rotate(2deg)}50%{transform:scale(.94,1.06) rotate(-1deg)}75%{transform:scale(1.04,.98) rotate(1deg)}}',
     '@media (max-width:640px){.dw-greet{left:50%;right:auto;top:84px;bottom:auto;transform:translate(-50%,-10px);font-size:12.5px;padding:6px 8px 6px 10px;gap:8px;white-space:nowrap}.dw-greet.is-in{transform:translate(-50%,0)}.dw-greet small{display:none}.dw-greet .dw-diya{width:28px;height:25px}}',
     /* sparkles */
-    '.dw-sparks{position:fixed;inset:0;pointer-events:none;z-index:140;overflow:hidden;transition:opacity 1.2s ease}',
-    '.dw-sparks i{position:absolute;bottom:-12px;width:5px;height:5px;border-radius:50%;background:#ffd166;box-shadow:0 0 8px 2px rgba(253,158,1,.6);opacity:0;animation:dw-rise linear forwards}',
-    '@keyframes dw-rise{0%{opacity:0;transform:translate(0,0)}10%{opacity:.9}80%{opacity:.6}100%{opacity:0;transform:translate(var(--dx),-70vh)}}',
+    '.dw-sparks{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:141}',
     /* corner diyas that light up in dark mode */
     '.dw-lamp{position:fixed;bottom:14px;z-index:145;width:56px;height:50px;pointer-events:none;opacity:0;transform:translateY(16px) scale(.85);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}',
     '.dw-lamp--l{left:18px}',
@@ -103,26 +101,77 @@
       }, 6000);
     }
 
-    /* a short burst of rising sparkles after load */
-    var sparks;
-    if (!reduce) {
-      sparks = document.createElement('div');
+    /* fireworks: a few bursts on load (and when switching theme); colours suit light and dark */
+    var sparks = null, fwRaf = 0, fwParts = [], fwRockets = [], fwCtx = null, fwTimers = [];
+    function isDarkNow() { return document.documentElement.getAttribute('data-theme') === 'dark'; }
+    function fwPalette() {
+      return isDarkNow()
+        ? ['#ffd166', '#FD9E01', '#ff7a3d', '#fff4d6', '#60a5fa', '#f472b6']
+        : ['#d97706', '#e11d48', '#2563eb', '#c2410c', '#7c3aed', '#059669'];
+    }
+    function fwCanvas() {
+      if (sparks) return;
+      sparks = document.createElement('canvas');
       sparks.className = 'dw-sparks';
       sparks.setAttribute('aria-hidden', 'true');
       document.body.appendChild(sparks);
-      var count = window.innerWidth < 640 ? 10 : 22;
-      for (var k = 0; k < count; k++) {
-        var s = document.createElement('i');
-        s.style.left = (Math.random() * 100).toFixed(1) + '%';
-        s.style.setProperty('--dx', ((Math.random() - 0.5) * 120).toFixed(0) + 'px');
-        var size = (3 + Math.random() * 4).toFixed(1) + 'px';
-        s.style.width = size; s.style.height = size;
-        s.style.animationDuration = (4 + Math.random() * 4).toFixed(2) + 's';
-        s.style.animationDelay = (Math.random() * 3).toFixed(2) + 's';
-        sparks.appendChild(s);
-      }
-      setTimeout(function () { if (sparks) sparks.remove(); }, 11500);
+      fwCtx = sparks.getContext('2d');
+      fwResize();
+      window.addEventListener('resize', fwResize);
     }
+    function fwResize() {
+      if (!sparks) return;
+      var r = Math.min(window.devicePixelRatio || 1, 2);
+      sparks.width = window.innerWidth * r; sparks.height = window.innerHeight * r;
+      fwCtx.setTransform(r, 0, 0, r, 0, 0);
+    }
+    function fwLaunch() {
+      var w = window.innerWidth, h = window.innerHeight;
+      var x = w * (0.15 + Math.random() * 0.7);
+      fwRockets.push({ x: x, y: h + 10, tx: x + (Math.random() - 0.5) * 80, ty: h * (0.18 + Math.random() * 0.3), v: 9 + Math.random() * 3, col: fwPalette()[Math.floor(Math.random() * 6)] });
+      if (!fwRaf) fwRaf = requestAnimationFrame(fwTick);
+    }
+    function fwBurst(x, y) {
+      var pal = fwPalette(), n = window.innerWidth < 640 ? 34 : 56;
+      var c1 = pal[Math.floor(Math.random() * pal.length)], c2 = pal[Math.floor(Math.random() * pal.length)];
+      for (var i = 0; i < n; i++) {
+        var ang = (Math.PI * 2 * i) / n + Math.random() * 0.2, sp = 1.6 + Math.random() * 3.4;
+        fwParts.push({ x: x, y: y, px: x, py: y, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp, life: 1, decay: 0.012 + Math.random() * 0.012, col: i % 2 ? c1 : c2 });
+      }
+    }
+    function fwTick() {
+      var w = window.innerWidth, h = window.innerHeight, dark = isDarkNow();
+      fwCtx.clearRect(0, 0, w, h);
+      fwCtx.globalCompositeOperation = dark ? 'lighter' : 'source-over';
+      fwCtx.lineCap = 'round';
+      for (var i = fwRockets.length - 1; i >= 0; i--) {
+        var r = fwRockets[i], dy = r.ty - r.y, dx = r.tx - r.x, d = Math.sqrt(dx * dx + dy * dy);
+        var nx = r.x + (dx / d) * r.v, ny = r.y + (dy / d) * r.v;
+        fwCtx.strokeStyle = r.col; fwCtx.globalAlpha = 0.9; fwCtx.lineWidth = 2;
+        fwCtx.beginPath(); fwCtx.moveTo(r.x, r.y + 10); fwCtx.lineTo(nx, ny); fwCtx.stroke();
+        r.x = nx; r.y = ny;
+        if (d < r.v * 1.5) { fwBurst(r.x, r.y); fwRockets.splice(i, 1); }
+      }
+      for (var j = fwParts.length - 1; j >= 0; j--) {
+        var p = fwParts[j];
+        p.px = p.x; p.py = p.y;
+        p.vx *= 0.975; p.vy = p.vy * 0.975 + 0.045;
+        p.x += p.vx; p.y += p.vy; p.life -= p.decay;
+        if (p.life <= 0) { fwParts.splice(j, 1); continue; }
+        fwCtx.globalAlpha = Math.max(0, p.life);
+        fwCtx.strokeStyle = p.col; fwCtx.lineWidth = dark ? 2.2 : 3.2;
+        fwCtx.beginPath(); fwCtx.moveTo(p.px - p.vx * 2, p.py - p.vy * 2); fwCtx.lineTo(p.x, p.y); fwCtx.stroke();
+      }
+      fwCtx.globalAlpha = 1;
+      if (fwParts.length || fwRockets.length) fwRaf = requestAnimationFrame(fwTick);
+      else { fwRaf = 0; fwCtx.clearRect(0, 0, w, h); }
+    }
+    function fwShow(count, gap) {
+      if (reduce) return;
+      fwCanvas();
+      for (var k = 0; k < count; k++) fwTimers.push(setTimeout(fwLaunch, 300 + k * gap + Math.random() * 250));
+    }
+    fwShow(window.innerWidth < 640 ? 4 : 7, 650);
 
     /* corner diyas: light up when the site is in dark mode */
     var lampSvg =
@@ -157,7 +206,12 @@
     function isDark() {
       return root.getAttribute('data-theme') === 'dark'; /* site default is light */
     }
-    function syncLamps() { root.classList.toggle('dw-lit', isDark()); }
+    var firstSync = true;
+    function syncLamps() {
+      root.classList.toggle('dw-lit', isDark());
+      if (!firstSync) fwShow(3, 450);
+      firstSync = false;
+    }
     setTimeout(syncLamps, 600);
     var mo = new MutationObserver(syncLamps);
     mo.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
@@ -170,6 +224,8 @@
       g.classList.remove('is-in');
       setTimeout(function () { g.remove(); }, 500);
       if (garland) garland.remove();
+      fwTimers.forEach(clearTimeout); fwParts = []; fwRockets = [];
+      if (fwRaf) cancelAnimationFrame(fwRaf);
       if (sparks) sparks.remove();
     });
   }
