@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 825" width="1200" height="825" role="img" aria-label="West Africa Dreamin 2026 · 21 NOVEMBER 2026 · LAGOS, NIGERIA">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#071430"/><stop offset="1" stop-color="#0f2a63"/></linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#2563eb" stroke-opacity="0.14" stroke-width="1"/></pattern>
+    <radialGradient id="glow" cx="1" cy="0" r="0.9"><stop offset="0" stop-color="#d97706" stop-opacity="0.28"/><stop offset="1" stop-color="#d97706" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="825" fill="url(#bg)"/>
+  <rect width="1200" height="825" fill="url(#grid)"/>
+  <rect width="1200" height="825" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#d97706"/>
+  <rect x="80" y="86" width="401" height="46" rx="23" fill="#d97706"/>
+  <text x="280" y="117" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, Menlo, monospace" font-weight="700" font-size="20" letter-spacing="3" fill="#1A1200">BRONZE SPONSOR · SPEAKER</text>
+  <text x="80" y="232" font-family="'Segoe UI', Poppins, Helvetica, Arial, sans-serif" font-weight="700" font-size="66" fill="#FFFFFF">West Africa Dreamin 2026</text>
+  <text x="80" y="292" font-family="'JetBrains Mono', ui-monospace, Menlo, monospace" font-size="26" letter-spacing="1" fill="#60a5fa">21 NOVEMBER 2026 · LAGOS, NIGERIA</text>
+  <rect x="80" y="344" width="6" height="190" fill="#d97706"/>
+  <text x="116" y="402" font-family="Georgia, 'Times New Roman', serif" font-size="50" fill="#FFFFFF">AI-Driven Demand Aggregation in FMCG</text>
+  <text x="116" y="462" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#cbd5e1">Designed and Built Live with AI Agents</text>
+  <text x="116" y="518" font-family="'JetBrains Mono', ui-monospace, Menlo, monospace" font-size="24" letter-spacing="1" fill="#94a3b8">DEMO SESSION · DATA CLOUD · ADAPT-AI · AGENTFORCE</text>
+  <text x="80" y="700" font-family="'Segoe UI', Poppins, Helvetica, Arial, sans-serif" font-weight="700" font-size="40" fill="#FFFFFF">Dhairya Shah</text>
+  <text x="80" y="745" font-family="'Segoe UI', Poppins, Helvetica, Arial, sans-serif" font-size="26" fill="#cbd5e1">Founder &amp; CEO, Pravadh Labs</text>
+  <rect x="938" y="682" width="42" height="42" rx="11" fill="#2563eb"/>
+  <text x="959" y="713" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="27" fill="#FFFFFF">P</text>
+  <text x="992" y="712" font-family="Georgia, serif" font-size="28" fill="#FFFFFF">Pravadh Labs</text>
+</svg>
