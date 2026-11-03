@@ -2,14 +2,25 @@
 <html lang="en">
 <head>
 <script>
-(function() {
+/* Time-of-day theme: sunrise / day / dusk / night from the visitor's clock (see assets/js/sky.js) */
+(function () {
+  var d = document.documentElement, mode = 'auto', sky;
   try {
-    var saved = localStorage.getItem('pravadh-theme');
-    var theme = saved || 'light';
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch (e) {
-    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.removeItem('pravadh-theme'); /* retire the old light/dark-only setting */
+    var v = localStorage.getItem('pravadh-theme-mode');
+    if (v === 'light' || v === 'dark') mode = v;
+  } catch (e) {}
+  var q = (location.search.match(/[?&]theme=(sunrise|day|dusk|night)\b/) || [])[1];
+  if (q) sky = q;
+  else if (mode === 'light') sky = 'day';
+  else if (mode === 'dark') sky = 'night';
+  else {
+    var t = new Date(), m = t.getHours() * 60 + t.getMinutes();
+    sky = m >= 300 && m < 480 ? 'sunrise' : m >= 480 && m < 1020 ? 'day' : m >= 1020 && m < 1170 ? 'dusk' : 'night';
   }
+  d.setAttribute('data-sky', sky);
+  d.setAttribute('data-theme-mode', q ? 'preview' : mode);
+  d.setAttribute('data-theme', sky === 'sunrise' || sky === 'day' ? 'light' : 'dark');
 })();
 </script>
 <meta charset="UTF-8">
@@ -1010,6 +1021,7 @@ form.contact-form {
 <link rel="stylesheet" href="assets/css/site.css?v=60">
 <link rel="stylesheet" href="assets/css/effects.css?v=18">
 <link rel="stylesheet" href="assets/css/nav-eap.css?v=1">
+<link rel="stylesheet" href="assets/css/sky.css?v=3">
 <style id="light-contrast">
 html[data-theme="light"] { --ink:#ffffff; --ink-soft:#f3f4f6; --paper:#0b1b3a; --line:#e5e7eb; --line-dark:#e5e7eb; --muted:#5b6475; --muted-light:#334155; --header-bg:rgba(255,255,255,.96); }
 html[data-theme="light"] body { background:#ffffff; color:#0b1b3a; }
@@ -1421,27 +1433,7 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
 </footer>
 
 <script>
-// Theme toggle
-const themeToggle = document.getElementById('themeToggle');
-
-if (themeToggle) {
-  const setToggleState = (theme) => {
-    const isDark = theme === 'dark';
-    themeToggle.setAttribute('aria-checked', String(isDark));
-    themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-  };
-
-  // Sync initial state (head script sets data-theme before this runs)
-  setToggleState(document.documentElement.getAttribute('data-theme') || 'light');
-
-  themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    try { localStorage.setItem('pravadh-theme', next); } catch (e) { /* storage unavailable */ }
-    setToggleState(next);
-  });
-}
+// Theme toggle: handled by assets/js/sky.js (Auto / Light / Dark)
 
 // Rail draw-in animation, respecting reduced motion
 const railDraw = document.getElementById('railDraw');
@@ -1520,7 +1512,8 @@ if (railDraw && !prefersReducedMotion) {
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="assets/js/effects.js?v=21" defer></script>
-<script src="assets/js/diwali.js?v=5" defer></script>
+<script src="assets/js/sky.js?v=2" defer></script>
+<script src="assets/js/festive.js?v=2" defer></script>
 <script src="assets/js/attribution.js?v=1"></script>
 <script src="assets/js/emie.js?v=6" defer></script>
 </body>
