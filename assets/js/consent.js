@@ -4,6 +4,7 @@
  * Google Consent Mode v2 runs with everything "denied", so Google gets only
  * cookieless pings. The choice is remembered for 180 days. Any element with
  * data-cookie-settings re-opens the banner so a visitor can change their mind.
+ * Microsoft Clarity (heatmaps, project z8vmm8hm9n) loads only after Accept.
  */
 (function () {
   var GTM_ID = 'GTM-NP8DTJPZ';
@@ -33,11 +34,13 @@
     };
   }
 
+  function loadClarity(){if(window.__pvClarity)return;window.__pvClarity=1;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0]||l.head.firstChild;(y&&y.parentNode?y.parentNode.insertBefore(t,y):l.head.appendChild(t));})(window,document,"clarity","script","z8vmm8hm9n");}
+
   var stored = read();
   var d = state('denied');
   d.wait_for_update = 500;
   gtag('consent', 'default', d);
-  if (stored === 'granted') gtag('consent', 'update', state('granted'));
+  if (stored === 'granted') { gtag('consent', 'update', state('granted')); loadClarity(); }
 
   /* Google Tag Manager */
   window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
@@ -66,6 +69,7 @@
     save(choice);
     gtag('consent', 'update', state(choice));
     window.dataLayer.push({ event: 'consent_' + choice });
+    if (choice === 'granted') loadClarity();
     close();
   }
   function open() {
