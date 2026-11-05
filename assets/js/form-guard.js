@@ -68,6 +68,7 @@
     }).then(function (r) {
       if (timer) clearTimeout(timer);
       if (!r.ok) throw new Error('HTTP ' + r.status);
+      try { window.gtag && window.gtag('event', 'generate_lead', { send_to: 'G-47YMCNDQP0', app: 'website', form_name: formName }); } catch (e) { /* analytics is best-effort */ }
       return { ok: true };
     });
   }
