@@ -864,7 +864,8 @@
       { href: `${prefix}#pravadhpm`, label: 'Pravadh PM', dot: 'pm' },
       { href: `${prefix}#pravadhsi`, label: 'Pravadh SI', dot: 'si' },
       { href: `${prefix}#pravadhdocsign`, label: 'DocSign', dot: 'ds' },
-      { href: `${prefix}#caliber`, label: 'Caliber', dot: 'cb' }
+      { href: `${prefix}#caliber`, label: 'Caliber', dot: 'cb' },
+      { href: `${prefix}#pravadhix`, label: 'Pravadh IX', dot: 'ix' }
     ];
 
     const dock = document.createElement('nav');

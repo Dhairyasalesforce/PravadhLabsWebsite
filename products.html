@@ -25,8 +25,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Products — PravadhIQ, GovernX, PM, SI, DocSign, Caliber</title>
-<meta name="description" content="Six products on the systems you already run: PravadhIQ, GovernX, Pravadh PM, Pravadh SI, Pravadh DocSign and Caliber. Features, modules and links.">
+<title>Products — PravadhIQ, GovernX, PM, SI, IX, DocSign, Caliber</title>
+<meta name="description" content="Seven products on the systems you already run: PravadhIQ, GovernX, Pravadh PM, Pravadh SI, Pravadh IX, Pravadh DocSign and Caliber. Features, modules and links.">
 <link rel="canonical" href="https://pravadhlabs.com/products">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
@@ -48,7 +48,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Products — Pravadh Labs">
-<meta name="twitter:description" content="PravadhIQ, GovernX, Pravadh PM, Pravadh SI, Pravadh DocSign, and Caliber — six products. DocSign is free document generation and eSignature inside Salesforce.">
+<meta name="twitter:description" content="PravadhIQ, GovernX, Pravadh PM, Pravadh SI, Pravadh IX, Pravadh DocSign, and Caliber — seven products. DocSign is free document generation and eSignature inside Salesforce.">
 <meta name="twitter:image" content="https://pravadhlabs.com/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1031,7 +1031,7 @@ form.contact-form {
 
 </style>
 <link rel="stylesheet" href="assets/css/site.css?v=60">
-<link rel="stylesheet" href="assets/css/effects.css?v=18">
+<link rel="stylesheet" href="assets/css/effects.css?v=25">
 <link rel="stylesheet" href="assets/css/nav-eap.css?v=1">
 <link rel="stylesheet" href="assets/css/sky.css?v=3">
 <style id="light-contrast">
@@ -1109,6 +1109,16 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
     },
     {
       "@type": "SoftwareApplication",
+      "name": "Pravadh IX",
+      "url": "https://pravadhix.pravadhlabs.com",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "description": "Multi-country invoicing and AR/AP with GST, VAT and sales tax for 200 countries, multi-company profiles, quotes with versions, bills, expenses, ledgers, tax returns and an 18-month AI revenue forecast.",
+      "offers": { "@type": "Offer", "price": "25", "priceCurrency": "USD", "description": "Per user per month; each additional company profile $10 per month" },
+      "brand": { "@type": "Organization", "name": "Pravadh Labs" }
+    },
+    {
+      "@type": "SoftwareApplication",
       "name": "Caliber",
       "url": "https://caliberai.pravadhlabs.com",
       "applicationCategory": "BusinessApplication",
@@ -1120,6 +1130,14 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
 }
 </script>
 <script src="/assets/js/consent.js?v=2"></script>
+<style>
+/* Seven product cards: 3 on the first row, 4 on the second */
+@media (min-width: 1101px) {
+  .product-overview-grid { grid-template-columns: repeat(12, 1fr) !important; }
+  .product-overview-card:nth-child(-n+3) { grid-column: span 4 !important; }
+  .product-overview-card:nth-child(n+4) { grid-column: span 3 !important; }
+}
+</style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to content</a>
@@ -1170,7 +1188,7 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
   <section class="hero" style="padding-bottom: 48px;">
     <div class="wrap">
       <p class="brand-tagline brand-tagline--hero">You decide. We do the rest.</p>
-      <h1>Six products. One rail.</h1>
+      <h1>Seven products. One rail.</h1>
       <p class="sub">Releases you can prove. Data you can trust. Delivery with an agent crew. Outreach you approve. Documents signed inside Salesforce, free. Interviews scored and sealed.</p>
     </div>
   </section>
@@ -1266,6 +1284,20 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
             <svg viewBox="0 0 15 15" width="13" height="13" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
+        <a href="#pravadhix" class="product-overview-card">
+          <svg class="product-overview-icon" viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
+            <rect x="4" y="4" width="56" height="56" rx="15" fill="#2563eb"/>
+            <text x="26" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="34" fill="#FFFFFF">P</text>
+            <rect x="40" y="0" width="24" height="20" rx="8" fill="#FD9E01"/>
+            <text x="52" y="14" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="10" fill="#1A1200">IX</text>
+          </svg>
+          <h3>Pravadh IX</h3>
+          <p>One login. Every company. Multi-country invoicing with GST, VAT and sales tax for 200 countries, bills, ledgers and an AI revenue forecast.</p>
+          <span class="wl-badge">New · Finance</span>
+          <span class="product-overview-link">Explore Pravadh IX
+            <svg viewBox="0 0 15 15" width="13" height="13" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -1309,7 +1341,7 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">One rail. One trail.</span>
-        <h2>Six products. Start with the job in front of you.</h2>
+        <h2>Seven products. Start with the job in front of you.</h2>
       </div>
       <div class="journey-strip reveal-stagger">
         <a href="#pravadhiq" class="journey-card journey-card--entry">
@@ -1344,6 +1376,11 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
         <span class="journey-underneath__tag">Hiring</span>
         <strong class="journey-underneath__name">Caliber</strong>
         <span class="journey-underneath__desc">AI first-round voice interviews, scored against your rubric and sealed.</span>
+      </a>
+      <a href="#pravadhix" class="journey-underneath">
+        <span class="journey-underneath__tag">Finance</span>
+        <strong class="journey-underneath__name">Pravadh IX</strong>
+        <span class="journey-underneath__desc">Invoicing, GST, VAT and sales tax for every company you run, from one login.</span>
       </a>
     </div>
   </section>
@@ -1954,6 +1991,68 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
       </a>
     </div>
   </section>
+  <section class="section-border" id="pravadhix" style="padding-top:96px;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Finance · Now live</span>
+        <h2>Pravadh IX</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px; margin-bottom: 32px;">
+        <p>One login. Every company. Pravadh IX is multi-country invoicing and AR/AP. Run your India, UK and US entities from one place: the right GST, VAT or sales tax is picked for every invoice, payments are locked to the right country&rsquo;s bank account, and an AI forecast projects the next 18 months of revenue.</p>
+        <p class="who-replaces">Move in from Zoho Books, Xero, QuickBooks, Tally or FreshBooks in an afternoon. Syncs with Tally, Oracle NetSuite, Oracle Fusion, Odoo, Xero, QuickBooks and Pravadh MW. <a href="compare.html#pravadhix">See what it replaces</a>.</p>
+      </div>
+      <div class="modules modules-4 reveal-stagger" style="margin-bottom: 32px;">
+        <div class="module-card ds-generate">
+          <span class="tag">TAX ENGINE</span>
+          <h3>The right tax, picked for you</h3>
+          <p>Tax rules for 200 countries come built in. IX reads who is selling, who is buying and where, then applies the right split, rate or exemption.</p>
+          <ul>
+            <li>CGST + SGST or IGST in India, from the GSTIN state code</li>
+            <li>UK VAT, EU reverse charge, US state sales tax, Canadian HST</li>
+            <li>GSTIN, VAT numbers and EIN checked as you type</li>
+            <li>GSTR-1, GSTR-3B, UK VAT100 and US sales tax by state</li>
+          </ul>
+        </div>
+        <div class="module-card ds-sign">
+          <span class="tag">COMPANIES</span>
+          <h3>Every entity, one login</h3>
+          <p>Each company gets its own profile, with its own country, currency, tax registration, bank accounts and invoice numbering.</p>
+          <ul>
+            <li>Bank accounts locked to each profile&rsquo;s country</li>
+            <li>Multi-currency on every plan, rates stored per transaction</li>
+            <li>24 invoice designs with your logo and signature</li>
+            <li>The same GSTIN or VAT number can never be added twice</li>
+          </ul>
+        </div>
+        <div class="module-card ds-store">
+          <span class="tag">BOOKS</span>
+          <h3>From quote to ledger</h3>
+          <p>Quotes, invoices, bills, expenses and double-entry books for every profile, in one app.</p>
+          <ul>
+            <li>Quotes with versions; the accepted one becomes an invoice in a click</li>
+            <li>Vendor bills with duplicate checks and approvals</li>
+            <li>Credit notes with an adjustments statement on every invoice</li>
+            <li>Recurring invoices, payment links and reminders</li>
+          </ul>
+        </div>
+        <div class="module-card ds-automate">
+          <span class="tag">FORECAST</span>
+          <h3>Know what&rsquo;s coming in</h3>
+          <p>IX learns trend and seasonality from your last 18 months of invoices and projects revenue with a confidence range.</p>
+          <ul>
+            <li>A plain-English summary of what drives the numbers</li>
+            <li>Receivables aging with overdue follow-ups</li>
+            <li>Unlimited invoices, bills, customers and vendors</li>
+            <li>$25 per user a month, plus $10 for each extra company</li>
+          </ul>
+        </div>
+      </div>
+      <a href="https://pravadhix.pravadhlabs.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        Visit pravadhix.pravadhlabs.com
+        <svg viewBox="0 0 15 15" width="15" height="15" fill="none"><path d="M3 7.5h9M8 3l4.5 4.5L8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -2092,7 +2191,7 @@ if (railDraw && !prefersReducedMotion) {
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="assets/js/effects.js?v=21" defer></script>
+<script src="assets/js/effects.js?v=22" defer></script>
 <script src="assets/js/sky.js?v=2" defer></script>
 <script src="assets/js/festive.js?v=2" defer></script>
 <script>
@@ -2107,6 +2206,6 @@ document.querySelectorAll('.teaser').forEach(function (btn) {
 });
 </script>
 <script src="assets/js/attribution.js?v=1"></script>
-<script src="assets/js/emie.js?v=6" defer></script>
+<script src="assets/js/emie.js?v=7" defer></script>
 </body>
 </html>
