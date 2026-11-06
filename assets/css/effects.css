@@ -1908,6 +1908,7 @@ html[data-theme="light"] .product-ticker__fade--left {
 .product-ticker__dot--si { background: #6BA3FF; animation-delay: -1.5s; }
 .product-ticker__dot--ds { background: #0891b2; animation-delay: -2s; }
 .product-ticker__dot--cb { background: #7c3aed; animation-delay: -2.5s; }
+.product-ticker__dot--ix { background: #16a34a; animation-delay: -3s; }
 
 .product-ticker__tag {
   font-size: 11px;

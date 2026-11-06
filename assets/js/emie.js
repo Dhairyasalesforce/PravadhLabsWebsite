@@ -75,7 +75,7 @@
     partners: '[Partners](partners.html)'
   };
   var CHIPS_MAIN = ['Early Access Program', 'What do you build?', 'Pricing', 'Talk to the team'];
-  var CHIPS_PRODUCTS = ['PravadhIQ', 'GovernX', 'Pravadh PM', 'Pravadh SI', 'DocSign', 'Caliber'];
+  var CHIPS_PRODUCTS = ['PravadhIQ', 'GovernX', 'Pravadh PM', 'Pravadh SI', 'Pravadh IX', 'DocSign', 'Caliber'];
 
   var KB = [
     { id: 'greet', keys: ['hi', 'hello', 'hey', 'hii', 'good morning', 'good evening', 'namaste', 'yo'],
@@ -94,14 +94,14 @@
       a: 'The program is built for **businesses with a real requirement**, not just curiosity. A strong application tells us:\n• Which Pravadh products you want to use\n• The business challenge you want them to solve\n• Who on your team would use them, and when you\'d start\n\nYou\'ll need a company email. Our team reads every application and replies from a pravadhlabs.com address.',
       chips: ['Check if I qualify', 'Which products?'] },
     { id: 'eap-products', keys: ['which products', 'what products are included', 'included in eap', 'eap products'],
-      a: 'You can apply for early access to **PravadhIQ, GovernX, Pravadh PM, Pravadh SI and Caliber**, or pick "Not sure yet" and we\'ll help you find the right fit. Pravadh DocSign is already free on AppExchange, so it isn\'t part of the program.',
+      a: 'You can apply for early access to **PravadhIQ, GovernX, Pravadh PM, Pravadh SI, Caliber and Pravadh IX**, or pick "Not sure yet" and we\'ll help you find the right fit. Pravadh DocSign is already free on AppExchange, so it isn\'t part of the program.',
       chips: ['Check if I qualify', 'What do you build?'] },
     { id: 'eap-cost', keys: ['eap cost', 'is eap free', 'catch', 'after six months', 'after 6 months', 'credit card'],
       a: 'Selected applicants use the products they\'re approved for **at no cost for six months**. What happens after that is agreed with you directly, and the team will walk you through it during onboarding.',
       chips: ['Check if I qualify', 'Pricing'] },
 
     { id: 'company', keys: ['what do you build', 'what do you do', 'pravadh labs', 'about', 'company', 'who is pravadh', 'what is pravadh', 'overview', 'products', 'product', 'offer', 'solutions', 'services'],
-      a: 'Pravadh Labs builds **AI-native products for Salesforce teams**. Six products, one rail:\n• **PravadhIQ**: Salesforce DevOps and data migration, proven on an audit chain\n• **GovernX**: connect, clean and govern data across CRM, ERP and finance\n• **Pravadh PM**: tracker, service desk and docs with an AI delivery crew\n• **Pravadh SI**: AI sales prospecting; nothing sends until you approve\n• **Pravadh DocSign**: documents and eSignature inside Salesforce, free\n• **Caliber**: AI first-round voice interviews\n\nAI does the heavy lifting, a person approves what matters. See ' + LINK.products + '.',
+      a: 'Pravadh Labs builds **AI-native products for Salesforce teams**. Seven products, one rail:\n• **PravadhIQ**: Salesforce DevOps and data migration, proven on an audit chain\n• **GovernX**: connect, clean and govern data across CRM, ERP and finance\n• **Pravadh PM**: tracker, service desk and docs with an AI delivery crew\n• **Pravadh SI**: AI sales prospecting; nothing sends until you approve\n• **Pravadh DocSign**: documents and eSignature inside Salesforce, free\n• **Caliber**: AI first-round voice interviews\n• **Pravadh IX**: multi-country invoicing with GST, VAT and sales tax\n\nAI does the heavy lifting, a person approves what matters. See ' + LINK.products + '.',
       chips: CHIPS_PRODUCTS },
 
     { id: 'iq', keys: ['pravadhiq', 'pravadh iq', ' iq', 'devops', 'ci/cd', 'cicd', 'deployment', 'deploy', 'release', 'rollback', 'migration', 'migrate', 'copado', 'gearset', 'github', 'foundation', 'data readiness'],
@@ -122,9 +122,12 @@
     { id: 'caliber', keys: ['caliber', 'interview', 'hiring', 'recruit', 'candidate', 'hr', 'talent', 'proctor'],
       a: '**Caliber**: Every candidate, heard.\nAn AI interviewer for first-round hiring. EMIE runs live voice interviews on camera, follows up when an answer is thin, and scores every answer against your rubric.\n• Quiet integrity flags (pasted text, second display, another person on camera…)\n• Every report sealed with a SHA-256 fingerprint\n• Recordings stay in your Google Drive, OneDrive, S3 or server\n\nPlans from **₹5,000 / $59 a month**. [Visit Caliber](https://caliberai.pravadhlabs.com)',
       chips: ['Caliber early access', 'Pricing'] },
+    { id: 'ix', keys: ['pravadh ix', 'pravadhix', ' ix ', 'invoice', 'invoicing', 'gst', 'vat', 'sales tax', 'tax', 'billing', 'accounting', 'ledger', 'books', 'quickbooks', 'xero', 'tally', 'freshbooks', 'credit note', 'receivable', 'payable', 'multi-country', 'multi currency', 'multi-currency', 'expenses'],
+      a: '**Pravadh IX**: One login. Every company.\nMulti-country invoicing and AR/AP for teams with entities in more than one country:\n• GST, VAT and sales tax for 200 countries, picked from seller and buyer location\n• A profile per company, with its own currency, tax ID and bank accounts locked to its country\n• Quotes with versions, bills, expenses, ledgers and returns (GSTR-1, GSTR-3B, VAT100)\n• An 18-month AI revenue forecast with a confidence range\n• Move in from Zoho Books, Xero, QuickBooks, Tally or FreshBooks\n\n**$25 per user a month**, plus $10 for each extra company. [Visit Pravadh IX](https://pravadhix.pravadhlabs.com)',
+      chips: ['Pravadh IX early access', 'Pricing'] },
 
     { id: 'pricing', keys: ['price', 'pricing', 'cost', 'how much', 'plans', 'plan', 'quote', 'license', 'licence', 'subscription', 'budget', 'expensive', 'cheap', 'free'],
-      a: 'Pricing depends on the product:\n• **PravadhIQ**: free plan to start; Data, Unified and Enterprise plans above it\n• **Pravadh SI**: pay as you go, a base platform plus the modules you switch on\n• **Pravadh PM**: a fixed monthly fee per AI agent per project\n• **Caliber**: from ₹5,000 / $59 a month\n• **DocSign**: free\n\nOr apply to the ' + LINK.eap + ' for six months free if you\'re selected. For a quote, leave your details and the team will reply.',
+      a: 'Pricing depends on the product:\n• **PravadhIQ**: free plan to start; Data, Unified and Enterprise plans above it\n• **Pravadh SI**: pay as you go, a base platform plus the modules you switch on\n• **Pravadh PM**: a fixed monthly fee per AI agent per project\n• **Caliber**: from ₹5,000 / $59 a month\n• **Pravadh IX**: $25 per user a month, plus $10 for each extra company\n• **DocSign**: free\n\nOr apply to the ' + LINK.eap + ' for six months free if you\'re selected. For a quote, leave your details and the team will reply.',
       chips: ['Check if I qualify', 'Get a quote'] },
     { id: 'security', keys: ['security', 'secure', 'compliance', 'gdpr', 'soc', 'iso', 'encryption', 'privacy', 'data residency', 'audit', 'pii', 'safe'],
       a: 'Three things are true on every product:\n• **Logged**: every deploy, migration and governance action is attributable and reversible\n• **In your org**: CRM records stay in your org; we don\'t become a second system of record\n• **You approve**: nothing moves without a person, and you choose what a model prompt may include\n\nExamples include AES-256 encryption at rest, TLS in transit, a SHA-256 audit chain and PII redaction on ingest. Details per product on ' + LINK.security + '.',
@@ -159,6 +162,7 @@
     { label: 'Pravadh PM', value: 'pravadh-pm' },
     { label: 'Pravadh SI', value: 'pravadh-si' },
     { label: 'Caliber', value: 'caliber' },
+    { label: 'Pravadh IX', value: 'pravadh-ix' },
     { label: 'Not sure yet', value: 'not-sure' }
   ];
   var TIMELINE_CHOICES = [
@@ -561,6 +565,7 @@
     if (/pravadh pm| pm /.test(t)) out.push('pravadh-pm');
     if (/pravadh si| si /.test(t)) out.push('pravadh-si');
     if (/caliber/.test(t)) out.push('caliber');
+    if (/pravadh ix|pravadhix| ix /.test(t)) out.push('pravadh-ix');
     if (!out.length && /not sure|unsure|dont know|help me pick|all of them|any/.test(t)) out.push('not-sure');
     return out;
   }

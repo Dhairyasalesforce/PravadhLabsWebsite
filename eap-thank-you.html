@@ -977,7 +977,7 @@ form.contact-form {
 
 </style>
 <link rel="stylesheet" href="assets/css/site.css?v=60">
-<link rel="stylesheet" href="assets/css/effects.css?v=18">
+<link rel="stylesheet" href="assets/css/effects.css?v=25">
 <link rel="stylesheet" href="assets/css/nav-eap.css?v=1">
 <link rel="stylesheet" href="assets/css/sky.css?v=3">
 <style id="light-contrast">
@@ -1274,6 +1274,12 @@ fieldset.field legend { font-size: 13px; font-family: var(--font-mono); color: v
           <p>Live AI voice interviews on camera, scored against your rubric, with sealed reports and recordings kept in your own storage. Plans from ₹5,000 / $59 a month.</p>
           <a class="more" href="https://caliberai.pravadhlabs.com" target="_blank" rel="noopener">Try Caliber →</a>
         </article>
+        <article class="ty-dyk" data-product="pravadh-ix">
+          <span class="k">Did you know? · Pravadh IX</span>
+          <h3>Pravadh IX adds a company for $10, not another subscription.</h3>
+          <p>Run every legal entity from one login, with GST, VAT and sales tax for 200 countries applied for you and an 18-month AI revenue forecast. $25 per user a month.</p>
+          <a class="more" href="https://pravadhix.pravadhlabs.com" target="_blank" rel="noopener">Try Pravadh IX →</a>
+        </article>
         <article class="ty-dyk" data-product="partners">
           <span class="k">Did you know? · Partners</span>
           <h3>You can earn 20% by introducing Pravadh.</h3>
@@ -1455,7 +1461,7 @@ if (railDraw && !prefersReducedMotion) {
 <script>
 /* Personalise the thank-you from what the EAP form saved (sessionStorage only; nothing is sent). */
 (function () {
-  var NAMES = { 'pravadhiq': 'PravadhIQ', 'governx': 'GovernX', 'pravadh-pm': 'Pravadh PM', 'pravadh-si': 'Pravadh SI', 'caliber': 'Caliber', 'not-sure': 'help choosing the right product' };
+  var NAMES = { 'pravadhiq': 'PravadhIQ', 'governx': 'GovernX', 'pravadh-pm': 'Pravadh PM', 'pravadh-si': 'Pravadh SI', 'caliber': 'Caliber', 'pravadh-ix': 'Pravadh IX', 'not-sure': 'help choosing the right product' };
   var d = null;
   try { d = JSON.parse(sessionStorage.getItem('pravadh-eap-thanks') || 'null'); } catch (e) { /* ignore */ }
   // EMIE: they've applied, so don't pop the Early Access invite here.
@@ -1487,9 +1493,9 @@ if (railDraw && !prefersReducedMotion) {
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="assets/js/effects.js?v=21" defer></script>
+<script src="assets/js/effects.js?v=22" defer></script>
 <script src="assets/js/sky.js?v=2" defer></script>
 <script src="assets/js/festive.js?v=2" defer></script>
-<script src="assets/js/emie.js?v=6" defer></script>
+<script src="assets/js/emie.js?v=7" defer></script>
 </body>
 </html>
