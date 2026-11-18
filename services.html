@@ -25,8 +25,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services — Salesforce managed services &amp; iOS, Android, Flutter app development | Pravadh Labs</title>
-<meta name="description" content="Twenty years of Salesforce and ten years of iOS, Android and Flutter in one team. Salesforce managed services on autopilot, and mobile apps that work with your CRM.">
+<title>Services — Web apps, Salesforce, native and hybrid mobile apps | Pravadh Labs</title>
+<meta name="description" content="Web apps with AI agents and MCP, Salesforce done properly, and native or hybrid mobile apps, from one team. Plus managed services on autopilot.">
 <link rel="canonical" href="https://pravadhlabs.com/services">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
@@ -39,16 +39,16 @@
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <meta name="theme-color" content="#14171F">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Services — Salesforce managed services &amp; iOS, Android, Flutter app development | Pravadh Labs">
-<meta property="og:description" content="Twenty years of Salesforce and ten years of iOS, Android and Flutter in one team. Salesforce managed services on autopilot, and mobile apps that work with your CRM.">
+<meta property="og:title" content="Services — Web apps, Salesforce, native and hybrid mobile apps | Pravadh Labs">
+<meta property="og:description" content="Web apps with AI agents and MCP, Salesforce done properly, and native or hybrid mobile apps, from one team. Plus managed services on autopilot.">
 <meta property="og:url" content="https://pravadhlabs.com/services">
 <meta property="og:image" content="https://pravadhlabs.com/assets/og-image.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Services — Salesforce managed services &amp; iOS, Android, Flutter app development | Pravadh Labs">
-<meta name="twitter:description" content="Twenty years of Salesforce and ten years of iOS, Android and Flutter in one team. Salesforce managed services on autopilot, and mobile apps that work with your CRM.">
+<meta name="twitter:title" content="Services — Web apps, Salesforce, native and hybrid mobile apps | Pravadh Labs">
+<meta name="twitter:description" content="Web apps with AI agents and MCP, Salesforce done properly, and native or hybrid mobile apps, from one team. Plus managed services on autopilot.">
 <meta name="twitter:image" content="https://pravadhlabs.com/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1000,7 +1000,7 @@ form.contact-form {
 .sv-strands .dot-mob{fill:var(--mob)}
 .sv-strands.is-drawing .s{stroke-dasharray:1;stroke-dashoffset:1}
 .sv-strands.is-drawing .sv-fade{opacity:0}
-.sv-strands.is-on .s-sf{animation:svdraw 1.4s cubic-bezier(.6,0,.2,1) forwards}
+.sv-strands.is-on .s-sf,.sv-strands.is-on .s-web{animation:svdraw 1.4s cubic-bezier(.6,0,.2,1) forwards}
 .sv-strands.is-on .s-mob{animation:svdraw 1.4s cubic-bezier(.6,0,.2,1) .15s forwards}
 .sv-strands.is-on .s-one{animation:svdraw .5s ease-out 1.5s forwards}
 .sv-strands.is-on .sv-fade{animation:svfade .5s ease-out 1.6s forwards}
@@ -1069,6 +1069,55 @@ form.contact-form {
  .sv-ledger .row{grid-template-columns:1fr;gap:4px}.sv-ledger .to{display:none}.sv-ledger .head{display:none}
 }
 @media (prefers-reduced-motion:reduce){.sv-strands.is-drawing .s{stroke-dasharray:none;stroke-dashoffset:0}.sv-strands.is-drawing .sv-fade{opacity:1}.sv-strands.is-on *{animation:none!important}}
+
+/* ===== Services v7: three strands ===== */
+.sv{--web:#22c55e}
+
+.sv-hero h1 .sv-l--web{color:var(--web)}
+.sv-strands .s-web{stroke:var(--web)}
+.sv-strands .dot-web{fill:var(--web)}
+.sv-key .k-web{border-color:var(--web)}
+.sv-svc{border-top:1px solid var(--line-dark)}
+.sv-svc__row{display:grid;grid-template-columns:minmax(260px,0.9fr) 2fr;gap:clamp(24px,4vw,64px);padding:clamp(36px,4vw,56px) 0;border-bottom:1px solid var(--line-dark)}
+.sv-svc__name{border-left:4px solid var(--c);padding-left:18px}
+.sv-svc__name h3{font-size:clamp(24px,2.6vw,32px);line-height:1.15;margin:0 0 10px}
+.sv-svc__name p{color:var(--muted-light);font-size:16px;line-height:1.55;margin:0}
+.sv-svc__name .tag{color:var(--c);font-weight:600;font-size:15px;margin:0 0 10px}
+.sv-svc__list{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(20px,3vw,40px);margin:0;padding:0;list-style:none;align-content:start}
+.sv-svc__list li{padding:12px 0;border-bottom:1px solid var(--line-dark);font-size:15.5px;line-height:1.45}
+.sv-svc__list li span{display:block;color:var(--muted-light);font-size:14px;margin-top:2px}
+.c-web{--c:var(--web)} .c-crm{--c:var(--sf)} .c-mob{--c:var(--mob)}
+.sv-cherry{background:var(--ink-soft);border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);padding:clamp(64px,8vw,104px) 0;position:relative;overflow:hidden}
+.sv-cherry__kicker{font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--muted-light);margin:0 0 10px}
+.sv-cherry h2{font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-0.025em;max-width:16ch;margin:0 0 18px}
+.sv-cherry .lede{max-width:60ch;color:var(--muted-light);font-size:17px;line-height:1.6;margin:0 0 32px}
+.sv-cherry__mark{position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:min(420px,40vw);opacity:.9;pointer-events:none}
+.sv-cherry__mark path{fill:none;stroke-width:5;stroke-linecap:round}
+@media (max-width:900px){.sv-svc__row{grid-template-columns:1fr}.sv-svc__list{grid-template-columns:1fr}.sv-cherry__mark{display:none}}
+
+/* ===== Services v8: tricolour ===== */
+.sv{--saf:#FF9933;--mid:#FFFFFF;--grn:#2FA84A;--web:var(--saf);--sf:var(--mid);--mob:var(--grn)}
+html[data-theme="light"] .sv{--mid:#000080;--grn:#138808}
+.sv-hero h1 .sv-l--tri{background:linear-gradient(180deg,var(--saf) 0 38%,var(--mid) 38% 63%,var(--grn) 63% 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.sv-strands .s-one{stroke-width:5}
+.sv-strands .s-one.o1{stroke:var(--saf)} .sv-strands .s-one.o2{stroke:var(--mid)} .sv-strands .s-one.o3{stroke:var(--grn)}
+.sv-strands .lbl-tri{font:700 19px var(--font-display)}
+.sv-key .k-one{border-image:linear-gradient(180deg,var(--saf) 0 33%,var(--mid) 33% 66%,var(--grn) 66%) 1}
+
+/* ===== Services v9: polish ===== */
+.sv-hero h1 .sv-l--plain{color:var(--paper)}
+.sv .btn-primary{background:var(--saf);color:#1b1206}
+.sv .btn-primary:hover{background:#ffad55}
+.sv-origin{font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--muted-light);margin:0 0 18px}
+.sv-origin i{display:inline-block;width:22px;height:12px;margin-right:10px;vertical-align:-1px;background:linear-gradient(180deg,var(--saf) 0 33.3%,var(--mid) 33.3% 66.6%,var(--grn) 66.6%);border-radius:2px}
+html[data-theme="light"] .sv-origin i{background:linear-gradient(180deg,#FF9933 0 33.3%,#ffffff 33.3% 66.6%,#138808 66.6%);box-shadow:0 0 0 1px #e5e7eb}
+.sv-shipgroup{margin:0 0 40px}
+.sv-shipgroup h3{font-size:18px;margin:0 0 6px;color:var(--c)}
+.sv-shipgroup > p{color:var(--muted-light);font-size:15px;margin:0 0 6px;max-width:64ch}
+.sv-proof a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--line-dark)}
+.sv-proof a:hover,.sv-proof a:focus-visible{border-bottom-color:var(--c,var(--paper))}
+.sv-proof--products{grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.sv-proof--products{grid-template-columns:1fr}}
 </style>
 <link rel="stylesheet" href="assets/css/site.css?v=60">
 <link rel="stylesheet" href="assets/css/effects.css?v=25">
@@ -1094,22 +1143,13 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
 </style>
 
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {"@type": "WebPage", "name": "Pravadh Labs services", "url": "https://pravadhlabs.com/services",
-     "description": "Twenty years of Salesforce and ten years of iOS, Android and Flutter in one team. Salesforce managed services on autopilot, and mobile apps that work with your CRM.",
-     "publisher": {"@type": "Organization", "name": "Pravadh Labs", "url": "https://pravadhlabs.com"}},
-    {"@type": "Service", "name": "Salesforce managed services", "serviceType": "Salesforce managed services",
-     "url": "https://pravadhlabs.com/services#managed-services",
-     "description": "Ongoing Salesforce release, data and support work run on PravadhIQ and Pravadh PM.",
-     "provider": {"@type": "Organization", "name": "Pravadh Labs", "url": "https://pravadhlabs.com"}, "areaServed": "Worldwide"},
-    {"@type": "Service", "name": "Mobile app development", "serviceType": "iOS, Android and Flutter app development",
-     "url": "https://pravadhlabs.com/services#mobile-apps",
-     "description": "Native iOS (Swift, SwiftUI), native Android (Kotlin, Jetpack Compose) and cross-platform Flutter apps, from prototype to App Store and Google Play release and ongoing care.",
-     "provider": {"@type": "Organization", "name": "Pravadh Labs", "url": "https://pravadhlabs.com"}, "areaServed": "Worldwide"}
-  ]
-}
+{"@context": "https://schema.org", "@graph": [
+{"@type": "WebPage", "name": "Pravadh Labs services", "url": "https://pravadhlabs.com/services", "description": "Web apps with AI agents and MCP, Salesforce done properly, and native or hybrid mobile apps, from one team. Plus managed services on autopilot.", "publisher": {"@type": "Organization", "name": "Pravadh Labs", "url": "https://pravadhlabs.com"}},
+{"@type": "Service", "name": "Web app development", "serviceType": "Custom web application and SaaS development", "url": "https://pravadhlabs.com/services#web-apps", "description": "SaaS products, portals and internal tools with AI agents, MCP integrations, dashboards and payments.", "provider": {"@type": "Organization", "name": "Pravadh Labs", "url": "https://pravadhlabs.com"}, "areaServed": "Worldwide"},
+{"@type": "Service", "name": "Salesforce consulting", "serviceType": "CRM implementation and integration", "url": "https://pravadhlabs.com/services#crm", "description": "Agentforce 360, Data 360, Sales, Service and Field Service, migrations and SAP integrations.", "provider": {"@type": "Organization", "name": "Pravadh Labs", "url": "https://pravadhlabs.com"}, "areaServed": "Worldwide"},
+{"@type": "Service", "name": "Custom mobile app development", "serviceType": "Native and hybrid iOS and Android app development", "url": "https://pravadhlabs.com/services#mobile-apps", "description": "Native iOS and Android, hybrid Flutter and React Native apps with on-device AI, connected to Salesforce.", "provider": {"@type": "Organization", "name": "Pravadh Labs", "url": "https://pravadhlabs.com"}, "areaServed": "Worldwide"},
+{"@type": "Service", "name": "Managed services", "serviceType": "Application and CRM managed services", "url": "https://pravadhlabs.com/services#managed-services", "description": "Ongoing requests and releases run on Pravadh PM and PravadhIQ.", "provider": {"@type": "Organization", "name": "Pravadh Labs", "url": "https://pravadhlabs.com"}, "areaServed": "Worldwide"}
+]}
 </script>
 <script src="/assets/js/consent.js?v=2"></script>
 </head>
@@ -1162,59 +1202,115 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
 <main id="main-content" class="sv">
   <section class="sv-hero">
     <div class="wrap">
-      <p class="brand-tagline brand-tagline--hero">You decide. We do the rest.</p>
-      <h1><span class="sv-l sv-l--sf">Twenty years of Salesforce.</span><span class="sv-l sv-l--mob">Ten years of mobile.</span><span class="sv-l">One team.</span></h1>
-      <p class="sub">Most firms do one or the other, so your app and your CRM end up built by people who never meet. Ours are built by the same team, on the same project, from the first call.</p>
+      <p class="sv-origin"><i aria-hidden="true"></i>Built in India. Delivered worldwide.</p>
+      <h1><span class="sv-l sv-l--web">Web apps.</span><span class="sv-l sv-l--sf">Salesforce.</span><span class="sv-l sv-l--mob">Mobile apps.</span><span class="sv-l sv-l--plain">One team.</span></h1>
+      <p class="sub">Most firms do one of these, so your product, your CRM and your app end up built by people who never meet. We do all three, with the same team that designed and built the Pravadh products.</p>
       <div class="actions">
         <a href="contact.html" class="btn btn-primary">Talk to us</a>
-        <a href="#together" class="btn btn-secondary">See what we build</a>
+        <a href="#services" class="btn btn-secondary">See our services</a>
       </div>
       <div class="sv-strands is-drawing" id="svStrands">
-        <svg viewBox="0 0 1000 280" role="img" aria-labelledby="svStrandsTitle">
-          <title id="svStrandsTitle">Twenty years of Salesforce and ten years of mobile come together as one team.</title>
-          <path class="s s-sf" pathLength="1" d="M40 74 C 460 74, 720 74, 905 140"/>
-          <path class="s s-mob" pathLength="1" d="M40 206 C 460 206, 720 206, 905 140"/>
-          <path class="s s-one" pathLength="1" d="M905 140 L 988 140"/>
-          <circle class="dot-sf" cx="40" cy="74" r="7"/>
-          <circle class="dot-mob" cx="40" cy="206" r="7"/>
-          <circle class="dot sv-fade" cx="905" cy="140" r="9"/>
-          <text class="lbl" x="62" y="52">Salesforce services</text>
-          <text class="lbl-sub" x="62" y="104">Agentforce 360, Data 360, hosted MCP servers, Agentforce Voice, Slack agents</text>
-          <text class="lbl" x="62" y="184">Mobile app services</text>
-          <text class="lbl-sub" x="62" y="236">iOS, Android, Flutter, Kotlin Multiplatform, on-device AI, Siri and App Intents, Live Activities, passkeys</text>
-          <text class="lbl sv-fade" x="988" y="114" text-anchor="end">One team</text>
+        <svg viewBox="0 0 1000 300" role="img" aria-labelledby="svStrandsTitle">
+          <title id="svStrandsTitle">Web apps, Salesforce and mobile apps come together as one team.</title>
+          <path class="s s-web" pathLength="1" d="M40 60 C 460 60, 720 60, 905 150"/>
+          <path class="s s-sf" pathLength="1" d="M40 150 L 905 150"/>
+          <path class="s s-mob" pathLength="1" d="M40 240 C 460 240, 720 240, 905 150"/>
+          <defs><linearGradient id="svTri" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--saf)"/><stop offset=".38" style="stop-color:var(--saf)"/><stop offset=".38" style="stop-color:var(--mid)"/><stop offset=".63" style="stop-color:var(--mid)"/><stop offset=".63" style="stop-color:var(--grn)"/><stop offset="1" style="stop-color:var(--grn)"/></linearGradient></defs>
+          <path class="s s-one o1" pathLength="1" d="M905 144 L 988 144"/>
+          <path class="s s-one o2" pathLength="1" d="M905 150 L 988 150"/>
+          <path class="s s-one o3" pathLength="1" d="M905 156 L 988 156"/>
+          <circle class="dot-web" cx="40" cy="60" r="7"/>
+          <circle class="dot-sf" cx="40" cy="150" r="7"/>
+          <circle class="dot-mob" cx="40" cy="240" r="7"/>
+          <circle class="sv-fade" cx="905" cy="150" r="12" fill="url(#svTri)"/>
+          <text class="lbl" x="62" y="40">Web apps</text>
+          <text class="lbl-sub" x="62" y="88">AI agents and copilots, MCP integrations, real-time dashboards, payments and SaaS</text>
+          <text class="lbl" x="62" y="130">Salesforce</text>
+          <text class="lbl-sub" x="62" y="178">Agentforce 360, Data 360, hosted MCP servers, Agentforce Voice, Slack agents</text>
+          <text class="lbl" x="62" y="220">Mobile apps</text>
+          <text class="lbl-sub" x="62" y="268">Native iOS and Android, Flutter and React Native, on-device AI, Live Activities, passkeys</text>
+          <text class="lbl sv-fade" x="988" y="124" text-anchor="end">One team</text>
         </svg>
         <ul class="sv-key">
-          <li class="k-sf"><strong>Salesforce services</strong>Agentforce 360, Data 360, hosted MCP servers, Agentforce Voice, Slack agents</li>
-          <li class="k-mob"><strong>Mobile app services</strong>iOS, Android, Flutter and Kotlin Multiplatform. On-device AI, Siri and App Intents, Live Activities, passkeys</li>
-          <li class="k-one"><strong>One team</strong>Both crafts on every project</li>
+          <li class="k-web"><strong>Web apps</strong>AI agents and copilots, MCP integrations, real-time dashboards, payments and SaaS</li>
+          <li class="k-sf"><strong>Salesforce</strong>Agentforce 360, Data 360, hosted MCP servers, Agentforce Voice, Slack agents</li>
+          <li class="k-mob"><strong>Mobile apps</strong>Native iOS and Android, Flutter and React Native, on-device AI, Live Activities, passkeys</li>
+          <li class="k-one"><strong>One team</strong>All three on every project</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="sv-sec" id="together">
+  <section class="sv-sec" id="services">
     <div class="wrap">
-      <h2>What we build when both teams sit together.</h2>
-      <p class="lede">An app is only as good as the data behind it. When the people who know your Salesforce org also build your app, it syncs properly, works offline, and never needs a second team to fix the integration.</p>
-      <dl class="sv-proof sv-uses">
-        <div><dt>Field technician apps</dt><dd>Jobs, parts and signatures from Field Service, working offline and syncing back when the signal returns.</dd></div>
-        <div><dt>Dealer and service apps</dt><dd>Bookings, job cards and stock for automotive networks, on the same data as head office.</dd></div>
-        <div><dt>Loyalty apps</dt><dd>Points, tiers and offers straight from Loyalty Management, so the app and the store always agree.</dd></div>
-        <div><dt>Sales apps</dt><dd>Accounts, quotes and orders that sync with your org, with Agentforce helping reps on the road.</dd></div>
-      </dl>
+      <h2>Three services, one standard.</h2>
+      <p class="lede">Each one is run by specialists. All of them are held to the bar we set for our own products.</p>
+      <div class="sv-svc">
+        <div class="sv-svc__row c-web" id="web-apps">
+          <div class="sv-svc__name">
+            <p class="tag">Web apps</p>
+            <h3>Built by the team that built our products.</h3>
+            <p>The people who designed and shipped the Pravadh platform build your SaaS product, portal or internal tool, with today's features built in from day one.</p>
+          </div>
+          <ul class="sv-svc__list">
+            <li>AI agents and copilots<span>Assistants that act inside your app, not a chat box on the side</span></li>
+            <li>MCP and API integrations<span>Let Claude, ChatGPT and your other tools work with your data</span></li>
+            <li>Real-time dashboards<span>Live numbers, alerts and reports your team actually opens</span></li>
+            <li>Payments and subscriptions<span>Checkout, invoicing and tax for India and abroad</span></li>
+            <li>Multi-tenant SaaS<span>One codebase, many customers, data kept apart</span></li>
+            <li>Secure by default<span>Single sign-on, roles, audit trails from the first release</span></li>
+          </ul>
+        </div>
+        <div class="sv-svc__row c-crm" id="crm">
+          <div class="sv-svc__name">
+            <p class="tag">Salesforce</p>
+            <h3>The CRM you have, done properly.</h3>
+            <p>Architects who have run large Salesforce programmes, from first design to the years after go-live.</p>
+          </div>
+          <ul class="sv-svc__list">
+            <li>Agentforce 360 and Data 360<span>AI agents grounded in your own customer data</span></li>
+            <li>Sales, Service and Field Service<span>Plus CPQ, Revenue Cloud and Loyalty Management</span></li>
+            <li>Migrations and integrations<span>From Siebel and legacy CRMs, and with SAP and ERP</span></li>
+            <li>Agentforce Voice and Slack<span>Agents customers can talk to, and agents where your team works</span></li>
+            <li>Hosted MCP for Salesforce<span>Let Claude and other AI tools work with your org safely</span></li>
+            <li>Salesforce DevOps<span>Releases, tests and rollbacks with PravadhIQ</span></li>
+          </ul>
+        </div>
+        <div class="sv-svc__row c-mob" id="mobile-apps">
+          <div class="sv-svc__name">
+            <p class="tag">Custom mobile apps</p>
+            <h3>Native when it matters. Hybrid when it pays.</h3>
+            <p>We pick the approach that fits your budget and your users, and tell you why. Either way, the app passes review, opens fast and keeps its ratings.</p>
+          </div>
+          <ul class="sv-svc__list">
+            <li>Native iOS and Android<span>Swift and SwiftUI, Kotlin and Jetpack Compose</span></li>
+            <li>Hybrid apps<span>Flutter and React Native, one codebase for both stores</span></li>
+            <li>On-device AI<span>Smart features that work fast and keep data on the phone</span></li>
+            <li>Siri, widgets and Live Activities<span>Your app where users already look</span></li>
+            <li>Passkeys and offline-first<span>Sign-in without passwords, work without signal</span></li>
+            <li>Connected to Salesforce<span>Your CRM data, synced both ways</span></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="sv-sec" id="managed-services">
+  <section class="sv-cherry" id="managed-services">
+    <svg class="sv-cherry__mark" viewBox="0 0 400 300" aria-hidden="true">
+      <path d="M0 60 C 160 60, 250 60, 320 150" style="stroke:var(--web)"/>
+      <path d="M0 150 L 320 150" style="stroke:var(--sf)"/>
+      <path d="M0 240 C 160 240, 250 240, 320 150" style="stroke:var(--mob)"/>
+      <path d="M320 143 L 400 143" style="stroke:var(--saf)"/><path d="M320 150 L 400 150" style="stroke:var(--mid)"/><path d="M320 157 L 400 157" style="stroke:var(--grn)"/>
+    </svg>
     <div class="wrap">
+      <p class="sv-cherry__kicker">And once it is live</p>
       <h2>Your managed services, on autopilot.</h2>
-      <p class="lede">For Salesforce partners and in-house teams whose backlog never empties. We run the work on our own products, PravadhIQ and Pravadh PM.</p>
+      <p class="lede">Whatever we build, or whatever you already run, we keep it moving on our own products. Requests become shipped work in Pravadh PM. Releases are deployed and proven with PravadhIQ.</p>
       <div class="sv-ledger" role="table" aria-label="What you send us and what comes back">
         <div class="row head" role="row"><span class="in" role="columnheader">You send us</span><span class="to" aria-hidden="true"></span><span class="out" role="columnheader">What comes back</span></div>
-        <div class="row" role="row"><span class="in" role="cell">A client request</span><span class="to" aria-hidden="true">&rarr;</span><span class="out" role="cell">A tracked task, built and tested with AI agents in <b>Pravadh PM</b>.</span></div>
+        <div class="row" role="row"><span class="in" role="cell">A request</span><span class="to" aria-hidden="true">&rarr;</span><span class="out" role="cell">A tracked task, built and tested with AI agents in <b>Pravadh PM</b>.</span></div>
         <div class="row" role="row"><span class="in" role="cell">A release</span><span class="to" aria-hidden="true">&rarr;</span><span class="out" role="cell">Deployed, verified and reversible with <b>PravadhIQ</b>.</span></div>
-        <div class="row" role="row"><span class="in" role="cell">A status meeting</span><span class="to" aria-hidden="true">&rarr;</span><span class="out" role="cell">One live view per client instead.</span></div>
+        <div class="row" role="row"><span class="in" role="cell">A status meeting</span><span class="to" aria-hidden="true">&rarr;</span><span class="out" role="cell">One live view of what changed, what shipped and what is next.</span></div>
       </div>
       <div class="actions">
         <a href="contact.html" class="btn btn-primary">Talk about managed services</a>
@@ -1228,7 +1324,7 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
       <h2>How a project runs.</h2>
       <ol class="sv-steps">
         <li><div><h3>See it before we build it</h3><p>A clickable prototype or solution design and a fixed scope, agreed before any build starts.</p></div></li>
-        <li><div><h3>Something working every two weeks</h3><p>A sandbox you can test or an app build on your phone at the end of every sprint.</p></div></li>
+        <li><div><h3>Something working every two weeks</h3><p>A sandbox, a staging site or an app build on your phone at the end of every sprint.</p></div></li>
         <li><div><h3>Launch, then look after it</h3><p>Go-live, store releases, monitoring and updates, with the same people who built it.</p></div></li>
       </ol>
     </div>
@@ -1237,12 +1333,35 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
   <section class="sv-sec" id="experience">
     <div class="wrap">
       <h2>Already shipped.</h2>
-      <dl class="sv-proof">
-        <div><dt>Siebel to Salesforce</dt><dd>Legacy CRM migrations for automotive dealer and service networks.</dd></div>
-        <div><dt>SAP ERP and Salesforce</dt><dd>Order, stock and finance integrations that hold up at month-end.</dd></div>
-        <div><dt>Field Service at scale</dt><dd>After-sales service for a leading Indian automaker, and field automation in Australia.</dd></div>
-        <div><dt>Loyalty across clouds</dt><dd>Loyalty Management connected to Commerce, Service, Data and Marketing Cloud.</dd></div>
-      </dl>
+      <p class="lede">Proof you can open, not a wall of logos.</p>
+      <div class="sv-shipgroup c-web">
+        <h3>Web apps: seven live products, built by this team</h3>
+        <p>Every one is in production today. Click through and try them.</p>
+        <dl class="sv-proof sv-proof--products">
+          <div><dt><a href="https://pravadhiq.pravadhlabs.com/" target="_blank" rel="noopener">PravadhIQ</a></dt><dd>Salesforce DevOps, data migration and verification</dd></div>
+          <div><dt><a href="https://pravadhsi.pravadhlabs.com/" target="_blank" rel="noopener">Pravadh SI</a></dt><dd>AI sales agent for prospecting and outreach</dd></div>
+          <div><dt><a href="https://pravadhpm.pravadhlabs.com/" target="_blank" rel="noopener">Pravadh PM</a></dt><dd>Project management with AI agents that ship</dd></div>
+          <div><dt><a href="https://caliberai.pravadhlabs.com/" target="_blank" rel="noopener">Caliber</a></dt><dd>AI interviewer for first-round interviews</dd></div>
+          <div><dt><a href="https://pravadhix.pravadhlabs.com/" target="_blank" rel="noopener">Pravadh IX</a></dt><dd>Multi-country invoicing with GST, VAT and sales tax</dd></div>
+          <div><dt><a href="https://pravadhdocsign.pravadhlabs.com/" target="_blank" rel="noopener">DocSign</a></dt><dd>Document generation and eSignature for Salesforce</dd></div>
+          <div><dt><a href="https://pravadhgx.pravadhlabs.com/" target="_blank" rel="noopener">GovernX</a></dt><dd>CRM, ERP and finance data governance</dd></div>
+        </dl>
+      </div>
+      <div class="sv-shipgroup c-crm">
+        <h3>Salesforce: large programmes, delivered</h3>
+        <dl class="sv-proof">
+          <div><dt>Siebel to Salesforce</dt><dd>Legacy CRM migrations for automotive dealer and service networks.</dd></div>
+          <div><dt>SAP ERP and Salesforce</dt><dd>Order, stock and finance integrations that hold up at month-end.</dd></div>
+          <div><dt>Field Service at scale</dt><dd>After-sales service for a leading Indian automaker, and field automation in Australia.</dd></div>
+          <div><dt>Loyalty across clouds</dt><dd>Loyalty Management connected to Commerce, Service, Data and Marketing Cloud.</dd></div>
+        </dl>
+      </div>
+      <div class="sv-shipgroup c-mob">
+        <h3>Mobile: Pravadh SI is going mobile</h3>
+        <dl class="sv-proof">
+          <div><dt><a href="https://pravadhsi.pravadhlabs.com/" target="_blank" rel="noopener">Pravadh SI mobile app</a></dt><dd>In development now: prospects, replies and meetings from the AI sales agent, in your pocket.</dd></div>
+        </dl>
+      </div>
     </div>
   </section>
 
