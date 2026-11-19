@@ -975,6 +975,13 @@ form.contact-form {
   .hero h1, .hero .eyebrow, .hero .sub, .hero .actions { animation: none; }
 }
 
+
+/* NDPA section */
+.ndpa-rows{max-width:980px;border-top:1px solid var(--line-dark);margin:0 0 24px}
+.ndpa-row{display:grid;grid-template-columns:minmax(200px,0.8fr) 2fr;gap:8px 32px;padding:18px 0;border-bottom:1px solid var(--line-dark)}
+.ndpa-row h3{font-size:17px;margin:0;line-height:1.35}
+.ndpa-row p{margin:0;color:var(--muted-light);font-size:15.5px;line-height:1.6}
+@media (max-width:760px){.ndpa-row{grid-template-columns:1fr}}
 </style>
 <link rel="stylesheet" href="assets/css/site.css?v=60">
 <link rel="stylesheet" href="assets/css/effects.css?v=25">
@@ -1351,6 +1358,37 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
     </div>
   </section>
 
+  <section class="section-border" id="data-protection">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Data protection</span>
+        <h2>One standard, wherever your customers are.</h2>
+      </div>
+      <div class="about-copy" style="max-width: 800px; margin-bottom: 28px;">
+        <p>Data protection laws differ by country, but they ask for the same core things: collect only what you need, keep it secure, be accountable, respect people's rights and be careful where data travels. We build every product to those principles, so the same controls serve you in Lagos, London, Mumbai or San Francisco.</p>
+      </div>
+      <div class="ndpa-rows">
+        <div class="ndpa-row"><h3>Only the data we need</h3><p>Your CRM stays the system of record. Our products work on what a task needs, and Pravadh SI never scrapes LinkedIn or buys contact lists for you.</p></div>
+        <div class="ndpa-row"><h3>A person approves first</h3><p>Nothing in Pravadh SI reaches a real person until you approve it. Consent settings in DocSign and Caliber are set by you, per workspace.</p></div>
+        <div class="ndpa-row"><h3>Kept secure</h3><p>Encryption in transit across every product, AES-256 encryption at rest where we store sensitive data, role-based access, and automatic PII redaction in PravadhIQ.</p></div>
+        <div class="ndpa-row"><h3>Accountable</h3><p>Audit trails on deployments, approvals and changes, and sealed, tamper-evident reports in Caliber and DocSign.</p></div>
+        <div class="ndpa-row"><h3>Your rights</h3><p>Ask for a copy of your personal data, a correction or deletion by writing to <a href="mailto:support@pravadhlabs.com" style="color:var(--teal-text);">support@pravadhlabs.com</a>.</p></div>
+        <div class="ndpa-row"><h3>Where data lives</h3><p>Our cloud runs in India. If your data must stay in your country or on your own infrastructure, PravadhIQ, GovernX, Pravadh PM and Pravadh SI can run on your own servers from signed images.</p></div>
+      </div>
+      <p style="max-width:800px;color:var(--muted-light);font-size:15px;line-height:1.6;margin:0 0 14px;">The laws we design to:</p>
+      <div class="persona-strip" style="margin-bottom:22px;">
+        <div class="persona">EU and UK GDPR</div>
+        <div class="persona">India's DPDP Act 2023</div>
+        <div class="persona">Nigeria's NDPA 2023</div>
+        <div class="persona">Kenya's Data Protection Act 2019</div>
+        <div class="persona">South Africa's POPIA</div>
+        <div class="persona">California's CCPA</div>
+        <div class="persona">UAE and Saudi PDPL</div>
+      </div>
+      <p style="max-width:800px;color:var(--muted-light);font-size:14.5px;line-height:1.6;margin:0;">Designing to these principles is not the same as a formal compliance sign-off. Where a formal review is under way, we list it with our certifications below and update this page when it is complete.</p>
+    </div>
+  </section>
+
   <section class="section-border">
     <div class="wrap">
       <div class="section-head reveal">
@@ -1365,6 +1403,7 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
         <div class="persona">ISO 27001 — in progress</div>
         <div class="persona">GDPR compliance review — in progress</div>
         <div class="persona">India's DPDP Act — in progress</div>
+        <div class="persona">Nigeria's NDPA 2023 — in progress</div>
       </div>
     </div>
   </section>
