@@ -87,8 +87,8 @@
       a: 'I\'m EMIE, a simple assistant that answers common questions about Pravadh Labs. EMIE is also the name of the AI co-pilot inside our products. For anything I can\'t answer, leave your email and a person from the team will reply.',
       chips: ['Talk to the team', 'What do you build?'] },
 
-    { id: 'eap', keys: ['early access', 'eap', 'beta', 'pilot', 'free access', 'six months', '6 months', 'program', 'programme', 'try it free', 'free trial', 'trial', 'join', 'sign up', 'signup', 'qualify'],
-      a: '**The Early Access Program** gives selected businesses **six months of free access** to eligible Pravadh products, before general availability.\n\nSelected teams get:\n• Six months free on the products they\'re approved for\n• Early access to new releases\n• Regular feedback sessions with the people building the product\n• Priority onboarding with hands-on setup help\n\nIt\'s for teams with a real business problem to solve. Every application is reviewed individually, and places depend on fit and availability.',
+    { id: 'eap', keys: ['early access', 'eap', 'beta', 'pilot', 'free access', 'six months', '6 months', 'december', '31 december', 'how long', 'program', 'programme', 'try it free', 'free trial', 'trial', 'join', 'sign up', 'signup', 'qualify'],
+      a: '**The Early Access Program** gives selected businesses **free access until 31 December 2026** to eligible Pravadh products, before general availability.\n\nSelected teams get:\n• Free until 31 December 2026 on the products they\'re approved for\n• Early access to new releases\n• Regular feedback sessions with the people building the product\n• Priority onboarding with hands-on setup help\n\nIt\'s for teams with a real business problem to solve. Every application is reviewed individually, and places depend on fit and availability.',
       chips: ['Check if I qualify', 'Who is it for?', 'Which products?'] },
     { id: 'eap-who', keys: ['who is it for', 'eligible', 'eligibility', 'criteria', 'requirements', 'who can apply', 'selected', 'selection', 'review'],
       a: 'The program is built for **businesses with a real requirement**, not just curiosity. A strong application tells us:\n• Which Pravadh products you want to use\n• The business challenge you want them to solve\n• Who on your team would use them, and when you\'d start\n\nYou\'ll need a company email. Our team reads every application and replies from a pravadhlabs.com address.',
@@ -96,8 +96,8 @@
     { id: 'eap-products', keys: ['which products', 'what products are included', 'included in eap', 'eap products'],
       a: 'You can apply for early access to **PravadhIQ, GovernX, Pravadh PM, Pravadh SI, Caliber and Pravadh IX**, or pick "Not sure yet" and we\'ll help you find the right fit. Pravadh DocSign is already free on AppExchange, so it isn\'t part of the program.',
       chips: ['Check if I qualify', 'What do you build?'] },
-    { id: 'eap-cost', keys: ['eap cost', 'is eap free', 'catch', 'after six months', 'after 6 months', 'credit card'],
-      a: 'Selected applicants use the products they\'re approved for **at no cost for six months**. What happens after that is agreed with you directly, and the team will walk you through it during onboarding.',
+    { id: 'eap-cost', keys: ['eap cost', 'is eap free', 'catch', 'after six months', 'after 6 months', 'after december', 'after 31 december', 'after the free period', 'credit card'],
+      a: 'Selected applicants use the products they\'re approved for **at no cost until 31 December 2026**. What happens after that is agreed with you directly, and the team will walk you through it during onboarding.',
       chips: ['Check if I qualify', 'Pricing'] },
 
     { id: 'company', keys: ['what do you build', 'what do you do', 'pravadh labs', 'about', 'company', 'who is pravadh', 'what is pravadh', 'overview', 'products', 'product', 'offer', 'solutions', 'services'],
@@ -127,7 +127,7 @@
       chips: ['Pravadh IX early access', 'Pricing'] },
 
     { id: 'pricing', keys: ['price', 'pricing', 'cost', 'how much', 'plans', 'plan', 'quote', 'license', 'licence', 'subscription', 'budget', 'expensive', 'cheap', 'free'],
-      a: 'Pricing depends on the product:\n• **PravadhIQ**: free plan to start; Data, Unified and Enterprise plans above it\n• **Pravadh SI**: pay as you go, a base platform plus the modules you switch on\n• **Pravadh PM**: a fixed monthly fee per AI agent per project\n• **Caliber**: from ₹5,000 / $59 a month\n• **Pravadh IX**: $25 per user a month, plus $10 for each extra company\n• **DocSign**: free\n\nOr apply to the ' + LINK.eap + ' for six months free if you\'re selected. For a quote, leave your details and the team will reply.',
+      a: 'Pricing depends on the product:\n• **PravadhIQ**: free plan to start; Data, Unified and Enterprise plans above it\n• **Pravadh SI**: pay as you go, a base platform plus the modules you switch on\n• **Pravadh PM**: a fixed monthly fee per AI agent per project\n• **Caliber**: from ₹5,000 / $59 a month\n• **Pravadh IX**: $25 per user a month, plus $10 for each extra company\n• **DocSign**: free\n\nOr apply to the ' + LINK.eap + ' for free access until 31 December 2026 if you\'re selected. For a quote, leave your details and the team will reply.',
       chips: ['Check if I qualify', 'Get a quote'] },
     { id: 'security', keys: ['security', 'secure', 'compliance', 'gdpr', 'soc', 'iso', 'encryption', 'privacy', 'data residency', 'audit', 'pii', 'safe'],
       a: 'Three things are true on every product:\n• **Logged**: every deploy, migration and governance action is attributable and reversible\n• **In your org**: CRM records stay in your org; we don\'t become a second system of record\n• **You approve**: nothing moves without a person, and you choose what a model prompt may include\n\nExamples include AES-256 encryption at rest, TLS in transit, a SHA-256 audit chain and PII redaction on ingest. Details per product on ' + LINK.security + '.',
@@ -174,7 +174,7 @@
 
   var TEASER = ON_EAP
     ? { tag: 'Early Access', title: 'Questions before you apply?', body: 'I can tell you what selected teams get, who the program is for, and which products are included.', primary: 'Ask EMIE', primaryAction: 'open' }
-    : { tag: 'Early Access · Now open', title: 'Use Pravadh free for 6 months.', body: 'We\'re picking a small group of teams to get our AI products before launch, with hands-on setup and a direct line to the people building them.', primary: 'See if I qualify', primaryAction: 'eap', secondary: 'Ask a question' };
+    : { tag: 'Early Access · Now open', title: 'Use Pravadh free till 31 December.', body: 'We\'re picking a small group of teams to get our AI products before launch, with hands-on setup and a direct line to the people building them.', primary: 'See if I qualify', primaryAction: 'eap', secondary: 'Ask a question' };
 
   // ---- Styles ------------------------------------------------------------------
   var css = [
@@ -461,7 +461,7 @@
     session.pending = 'eap';
     var hello = ON_EAP
       ? 'Hi, I\'m EMIE. Thinking about the Early Access Program? Ask me anything, or I can take your details and pass them to the team.'
-      : 'Hi, I\'m EMIE from Pravadh Labs.\n\nWe\'re opening an **Early Access Program**: selected teams get **six months free** on our AI products, before launch. Want to see if you qualify, or ask me something first?';
+      : 'Hi, I\'m EMIE from Pravadh Labs.\n\nWe\'re opening an **Early Access Program**: selected teams get **free access until 31 December 2026** on our AI products, before launch. Want to see if you qualify, or ask me something first?';
     botSays(hello, ON_EAP
       ? ['Who is it for?', 'Which products?', 'What do selected teams get?', 'Talk to the team']
       : [{ label: 'Check if I qualify', primary: true }, 'What do you build?', 'Pricing', 'Talk to the team']);
