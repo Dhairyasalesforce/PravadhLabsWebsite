@@ -1152,6 +1152,7 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
 ]}
 </script>
 <script src="/assets/js/consent.js?v=2"></script>
+<link rel="stylesheet" href="assets/css/nav-v2.css?v=1">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to content</a>
@@ -1176,18 +1177,36 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
     </a>
     <p class="brand-tagline">You decide. We do the rest.</p>
     </div>
-    <nav class="primary" id="primaryNav">
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
+    <nav class="primary nv" id="primaryNav" aria-label="Main menu">
+      <div class="nv-item nv-item--mega"><button type="button" class="nv-trigger" aria-expanded="false" aria-controls="nv-products">Products<svg class="nv-caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5L5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nv-panel nv-panel--mega" id="nv-products">
+        <div class="nv-group">
+          <div class="nv-group__head"><p>Build &amp; run Salesforce</p><small>For Salesforce partners and in-house teams</small></div>
+          <a class="nv-link nv-prod" href="https://pravadhiq.pravadhlabs.com" style="--c:#2563eb"><b>PravadhIQ</b><span>Releases, data migration and proof every change landed</span></a>
+          <a class="nv-link nv-prod" href="https://pravadhgx.pravadhlabs.com" style="--c:#d97706"><b>GovernX</b><span>Clean and govern CRM, ERP and finance data</span></a>
+          <a class="nv-link nv-prod" href="https://pravadhpm.pravadhlabs.com" style="--c:#0f766e"><b>Pravadh PM</b><span>Projects your AI crew builds, tests and ships</span></a>
+          <a class="nv-link nv-prod" href="https://pravadhdocsign.pravadhlabs.com" style="--c:#0891b2"><b>DocSign <em class="nv-free">Free</em></b><span>Document generation and eSignature in Salesforce</span></a>
+        </div>
+        <div class="nv-group">
+          <div class="nv-group__head"><p>Sell &amp; bill</p><small>For founders, sales and finance teams</small></div>
+          <a class="nv-link nv-prod" href="https://pravadhsi.pravadhlabs.com" style="--c:#0a66c2"><b>Pravadh SI</b><span>Finds the right buyers and drafts outreach you approve</span></a>
+          <a class="nv-link nv-prod" href="https://pravadhix.pravadhlabs.com" style="--c:#16a34a"><b>Pravadh IX</b><span>Invoicing with GST, VAT and sales tax in 200 countries</span></a>
+        </div>
+        <div class="nv-group">
+          <div class="nv-group__head"><p>Hire</p><small>For HR and recruiting teams</small></div>
+          <a class="nv-link nv-prod" href="https://caliberai.pravadhlabs.com" style="--c:#7c3aed"><b>Caliber</b><span>AI interviewer for first-round interviews</span></a>
+        </div>
+        <div class="nv-start">
+          <p>Not sure where to start?</p>
+          <small>Selected teams use any Pravadh product free until 31 December 2026.</small>
+          <a class="nv-cta" href="eap.html">Get free early access</a>
+          <a class="nv-plain" href="products.html">See all products &rarr;</a>
+          <a class="nv-plain" href="compare.html">Compare products &rarr;</a>
+        </div></div></div>
       <a href="services.html" class="active" aria-current="page">Services</a>
-      <a href="compare.html">Compare</a>
-      <a href="security.html">Security</a>
-      <a href="about.html">About</a>
-      <a href="partners.html">Partners</a>
-      <a href="events.html">Events</a>
-      <a href="blogs_page.html">Insights</a>
-      <a href="eap.html" class="nav-eap">Early Access</a>
-      <a href="contact.html" class="nav-contact">Contact</a>
+      <a href="partners.html" class="">Partners</a>
+      <div class="nv-item"><button type="button" class="nv-trigger" aria-expanded="false" aria-controls="nv-resources">Resources<svg class="nv-caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5L5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nv-panel" id="nv-resources"><a class="nv-link" href="events.html"><b>Events</b><span>Where to meet us next</span></a><a class="nv-link" href="compare.html"><b>Compare</b><span>Pravadh against the tools you use today</span></a><a class="nv-link" href="security.html"><b>Security</b><span>How your data is protected</span></a></div></div>
+      <div class="nv-item"><button type="button" class="nv-trigger" aria-expanded="false" aria-controls="nv-company">Company<svg class="nv-caret" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5L5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="nv-panel" id="nv-company"><a class="nv-link" href="about.html"><b>About</b><span>Who we are and how we build</span></a><a class="nv-link" href="contact.html"><b>Contact</b><span>Talk to the team</span></a></div></div>
+      <a href="eap.html" class="nav-eap">Get early access</a>
     </nav>
     <button class="theme-toggle" id="themeToggle" role="switch" aria-checked="false" aria-label="Toggle theme">
       <svg class="icon-sun" viewBox="0 0 20 20" width="17" height="17" fill="none"><circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M10 2v2.2M10 15.8V18M2 10h2.2M15.8 10H18M4.5 4.5l1.6 1.6M13.9 13.9l1.6 1.6M4.5 15.5l1.6-1.6M13.9 6.1l1.6-1.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
@@ -1377,60 +1396,49 @@ html[data-theme="light"] .stat .num, html[data-theme="light"] .stat-row .num { c
   </section>
 </main>
 
-<footer>
+<footer class="fx">
   <div class="wrap">
-    <div class="sponsor-banner-wrap">
-      <svg viewBox="0 0 1115 210" class="sponsor-banner" role="img" aria-label="Pravadh Labs, Proud Sponsor of West Africa Dreamin 2026">
-        <defs>
-          <linearGradient id="sponsorLineLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#2563eb" stop-opacity="0"/>
-            <stop offset="100%" stop-color="#2563eb" stop-opacity="1"/>
-          </linearGradient>
-          <linearGradient id="sponsorLineRight" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#2563eb" stop-opacity="1"/>
-            <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <rect width="1115" height="210" rx="16" fill="#0B142A"/>
-        <rect x="45" y="55" width="100" height="100" rx="24" fill="#2563eb"/>
-        <text x="95" y="128" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="64" fill="#FFFFFF">P</text>
-        <rect x="108" y="35" width="72" height="28" rx="14" fill="#FD9E01"/>
-        <text x="144" y="54" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#1A1200">LABS</text>
-        <text x="170" y="108" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="52" fill="#FFFFFF">Pravadh<tspan font-size="18" dy="-22">®</tspan></text>
-        <rect x="170" y="128" width="48" height="2.5" fill="url(#sponsorLineLeft)"/>
-        <text x="228" y="136" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="15" letter-spacing="3" fill="#FD9E01">LABS</text>
-        <rect x="305" y="128" width="48" height="2.5" fill="url(#sponsorLineRight)"/>
-        <text x="170" y="162" font-family="'Segoe UI', sans-serif" font-weight="500" font-size="9" letter-spacing="1" fill="#868A95">YOU DECIDE. WE DO THE REST.</text>
-        <line x1="620" y1="40" x2="620" y2="170" stroke="#2A3550" stroke-width="1.5"/>
-        <text x="655" y="65" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="14" letter-spacing="2" fill="#FD9E01">BRONZE SPONSOR</text>
-        <text x="655" y="100" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="30" fill="#FFFFFF">West Africa</text>
-        <text x="655" y="136" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="30" fill="#FFFFFF">Dreamin 2026</text>
-        <text x="655" y="166" font-family="'Segoe UI', sans-serif" font-weight="400" font-size="16" fill="#868A95">pravadhlabs.com</text>
+    <div class="fx-top">
+      <div class="fx-brand">
+        <a href="index.html" class="logo" aria-label="Pravadh Labs home"><svg viewBox="0 0 224 52" width="140" height="33" class="header-logo header-logo-dark" aria-label="Pravadh Labs">
+        <rect x="2" y="6" width="42" height="42" rx="11" fill="#2563eb"/>
+        <text x="23" y="37" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="27" fill="#FFFFFF">P</text>
+        <rect x="30" y="0" width="34" height="15" rx="7.5" fill="#FD9E01"/>
+        <text x="47" y="10.5" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="7.5" letter-spacing="0.5" fill="#1A1200">LABS</text>
+        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#FFFFFF">Pravadh<tspan font-size="10" dy="-11">®</tspan></text>
       </svg>
+      <svg viewBox="0 0 224 52" width="140" height="33" class="header-logo header-logo-light" aria-label="Pravadh Labs">
+        <rect x="2" y="6" width="42" height="42" rx="11" fill="#2563eb"/>
+        <text x="23" y="37" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="27" fill="#FFFFFF">P</text>
+        <rect x="30" y="0" width="34" height="15" rx="7.5" fill="#FD9E01"/>
+        <text x="47" y="10.5" text-anchor="middle" font-family="Poppins, 'Segoe UI', sans-serif" font-weight="700" font-size="7.5" letter-spacing="0.5" fill="#1A1200">LABS</text>
+        <text x="56" y="35" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="26" fill="#0E162C">Pravadh<tspan font-size="10" dy="-11">®</tspan></text>
+      </svg></a>
+        <p class="fx-tag">You decide. We do the rest.</p>
+        <p>AI agents for Salesforce delivery, sales and hiring. Each one does the work, then waits for your OK. No token fees.</p>
+      </div>
+      <div class="fx-col"><h3>Build &amp; run Salesforce</h3>
+        <a href="https://pravadhiq.pravadhlabs.com">PravadhIQ</a><a href="https://pravadhgx.pravadhlabs.com">GovernX</a><a href="https://pravadhpm.pravadhlabs.com">Pravadh PM</a><a href="https://pravadhdocsign.pravadhlabs.com">DocSign (free)</a>
+      </div>
+      <div class="fx-col"><h3>Sell, bill &amp; hire</h3>
+        <h4>Sell &amp; bill</h4><a href="https://pravadhsi.pravadhlabs.com">Pravadh SI</a><a href="https://pravadhix.pravadhlabs.com">Pravadh IX</a>
+        <h4>Hire</h4><a href="https://caliberai.pravadhlabs.com">Caliber</a>
+      </div>
+      <div class="fx-col"><h3>Company</h3>
+        <a href="about.html">About</a><a href="services.html">Services</a><a href="partners.html">Partners</a><a href="security.html">Security</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="fx-col"><h3>Get started</h3>
+        <a href="eap.html">Get free early access</a><a href="products.html">All products</a><a href="compare.html">Compare products</a><a href="events.html">Events</a><a href="https://calendly.com/partners-pravadhlabs" target="_blank" rel="noopener noreferrer">Schedule a call</a>
+      </div>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-bottom__left">
-        <p class="brand-tagline brand-tagline--foot">You decide. We do the rest.</p>
-        <div class="copyright">© 2026 Pravadh Labs Private Limited. Pravadh® is a registered trademark. Salesforce is a trademark of Salesforce, Inc.</div>
-        <div class="social-links" aria-label="Social media">
+    <div class="fx-bottom">
+      <div class="copyright">© 2026 Pravadh Labs Private Limited, Ahmedabad, India. Pravadh® is a registered trademark. Salesforce is a trademark of Salesforce, Inc.</div>
+      <div class="fx-legal"><a href="#" data-cookie-settings>Cookie settings</a></div>
+      <div class="social-links" aria-label="Social media">
           <a href="https://www.linkedin.com/company/pravadhiq" target="_blank" rel="noopener noreferrer" aria-label="Pravadh Labs on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.34 8.5H3.67V18h2.67V8.5zM5 3.75A1.55 1.55 0 105 6.85 1.55 1.55 0 005 3.75zM13.34 8.28c-1.42 0-2.32.78-2.72 1.52V8.5H8.03V18h2.59v-5.1c0-1.35.72-2.21 1.9-2.21 1.1 0 1.72.77 1.72 2.21V18H16.8v-5.62c0-2.98-1.59-4.1-3.46-4.1z"/></svg></a>
           <a href="https://www.youtube.com/@PravadhLabs" target="_blank" rel="noopener noreferrer" aria-label="Pravadh Labs on YouTube"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M21.6 8.2a2.5 2.5 0 00-1.76-1.77C18.3 6 12 6 12 6s-6.3 0-7.84.43A2.5 2.5 0 002.4 8.2 26.2 26.2 0 002 12a26.2 26.2 0 00.4 3.8 2.5 2.5 0 001.76 1.77C5.7 18 12 18 12 18s6.3 0 7.84-.43a2.5 2.5 0 001.76-1.77A26.2 26.2 0 0022 12a26.2 26.2 0 00-.4-3.8zM10.2 14.7V9.3L15.2 12l-5 2.7z"/></svg></a>
           <a href="https://www.instagram.com/pravadhlabs/" target="_blank" rel="noopener noreferrer" aria-label="Pravadh Labs on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 7.4A4.6 4.6 0 1016.6 12 4.6 4.6 0 0012 7.4zm0 7.6A3 3 0 1115 12a3 3 0 01-3 3zm5.85-7.85a1.08 1.08 0 11-1.08-1.08 1.08 1.08 0 011.08 1.08zM12 3.5c-2.4 0-2.7.01-3.65.05a5.16 5.16 0 00-3.8 3.8C4.51 8.3 4.5 8.6 4.5 11s.01 2.7.05 3.65a5.16 5.16 0 003.8 3.8c.95.04 1.25.05 3.65.05s2.7-.01 3.65-.05a5.16 5.16 0 003.8-3.8c.04-.95.05-1.25.05-3.65s-.01-2.7-.05-3.65a5.16 5.16 0 00-3.8-3.8C14.7 3.51 14.4 3.5 12 3.5zm0 1.5c2.35 0 2.63.01 3.56.05a3.66 3.66 0 012.69 2.69c.04.93.05 1.21.05 3.56s-.01 2.63-.05 3.56a3.66 3.66 0 01-2.69 2.69c-.93.04-1.21.05-3.56.05s-2.63-.01-3.56-.05a3.66 3.66 0 01-2.69-2.69C5.51 14.63 5.5 14.35 5.5 12s.01-2.63.05-3.56a3.66 3.66 0 012.69-2.69C9.17 5.51 9.45 5.5 12 5.5z"/></svg></a>
         </div>
-      </div>
-      <div class="foot-links">
-        <a href="products.html">Products</a>
-        <a href="services.html">Services</a>
-      <a href="compare.html">Compare</a>
-      <a href="security.html">Security</a>
-        <a href="about.html">About</a>
-        <a href="partners.html">Partners</a>
-        <a href="events.html">Events</a>
-        <a href="blogs_page.html">Insights</a>
-        <a href="eap.html">Early Access</a>
-        <a href="contact.html">Contact</a>
-        <a href="#" data-cookie-settings>Cookie settings</a>
-      </div>
     </div>
   </div>
 </footer>
@@ -1581,7 +1589,7 @@ if (railDraw && !prefersReducedMotion) {
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="assets/js/effects.js?v=22" defer></script>
+<script src="assets/js/effects.js?v=23" defer></script>
 <script src="assets/js/sky.js?v=2" defer></script>
 <script src="assets/js/festive.js?v=2" defer></script>
 <script src="assets/js/attribution.js?v=1"></script>
@@ -1592,5 +1600,6 @@ var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches
 if(rm||!('IntersectionObserver' in window)){el.classList.remove('is-drawing');return;}
 var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){el.classList.add('is-on');o.disconnect();}},{threshold:.3});o.observe(el);})();
 </script>
+<script src="assets/js/nav-v2.js?v=1" defer></script>
 </body>
 </html>
